@@ -16,22 +16,6 @@ public class IfAccountController {
     private Button danhgia;
 
     @FXML
-    // Phần text hiển thị thông tin dữ liệu của tài khoản
-    private TextField ifAccount;
-
-    @FXML
-    // Phần text hiển thị thông tin dữ liệu của email
-    private TextField ifEmail;
-
-    @FXML
-    // Phần text hiển thị thông tin của SDT
-    private TextField ifSdt;
-
-    @FXML
-    // Phần text hiển thị thông tin stk ngân hàng
-    private TextField ifStk;
-
-    @FXML
     // Nút để đăng xuất tài khoản
     private Button logout_Button;
 

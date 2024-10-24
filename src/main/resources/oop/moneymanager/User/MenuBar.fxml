@@ -5,17 +5,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0"
-            prefWidth="200.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
    <AnchorPane prefHeight="79.0" prefWidth="200.0">
-      <Label layoutX="41.0" layoutY="14.0" text="Truong Chien Nguyen" AnchorPane.leftAnchor="40.0"/>
-      <Label layoutX="80.0" layoutY="44.0" text="123456" AnchorPane.leftAnchor="60.0"/>
-      <Text layoutX="49.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ID : "
-            AnchorPane.leftAnchor="40.0"/>
+      <Label layoutX="41.0" layoutY="14.0" text="Truong Chien Nguyen" AnchorPane.leftAnchor="40.0" />
+      <Label layoutX="80.0" layoutY="44.0" text="123456" AnchorPane.leftAnchor="60.0" />
+      <Text layoutX="49.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ID : " AnchorPane.leftAnchor="40.0" />
    </AnchorPane>
-   <Button layoutX="63.0" layoutY="125.0" mnemonicParsing="false" text="Hàng ngày"/>
-   <Button layoutX="67.0" layoutY="177.0" mnemonicParsing="false" text="Thống kê"/>
-   <Button layoutX="66.0" layoutY="229.0" mnemonicParsing="false" text="Tài khoản"/>
-   <Button layoutX="44.0" layoutY="283.0" mnemonicParsing="false" text="Thông tin cá nhân"/>
+   <Button layoutX="46.0" layoutY="125.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="106.0" text="Hàng ngày" />
+   <Button layoutX="45.0" layoutY="177.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="112.0" text="Thống kê" />
+   <Button layoutX="44.0" layoutY="229.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="112.0" text="Tài khoản" />
+   <Button layoutX="44.0" layoutY="283.0" mnemonicParsing="false" text="Thông tin cá nhân" />
 </AnchorPane>
