@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 /**
- * JavaFX App
+ * Đây là Class gốc cũng như bao gồm cả Entry point của chương trình.
  */
 public class App extends Application {
 
