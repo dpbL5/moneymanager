@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="700.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="oop.moneymanager.User.DailyBoard">
+<AnchorPane prefHeight="700.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="oop.moneymanager.Controller_DailyBoard">
    <Text layoutX="349.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Giao dịch" wrappingWidth="101.15335845947266">
       <font>
          <Font size="22.0" />

@@ -17,18 +17,35 @@ public class TestEntryController {
 
     @FXML
     protected void changeToLoginScene(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("LoginScreenView.fxml"));
-        root = loader.load();
-        stage = (Stage)((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+//        FXMLLoader loader = new FXMLLoader(getClass().getResource("LoginScreenView.fxml"));
+//        root = loader.load();
+//        stage = (Stage)((Node) event.getSource()).getScene().getWindow();
+//        scene = new Scene(root);
+//        stage.setScene(scene);
+//        stage.show();
+        try {
+            Controller_Switch controllerSwitch = new Controller_Switch();
+            controllerSwitch.switchToScreenLogin(event);
+        }
+        catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
         
     }
 
     @FXML
-    protected void changeToMainScene() throws IOException {
-        // FXMLLoader loader = new FXMLLoader(getClass().getResource("../User/ifAccount.fxml"));
-        // loader.load();
+    protected void changeToMainScene(ActionEvent event) throws IOException {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("User/MainScreen.fxml"));
+            root = loader.load();
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        }
+        catch (Exception e) {
+            System.out.println(e.toString());
+        }
     }
 }

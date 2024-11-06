@@ -6,7 +6,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 
-public class AddController {
+public class Controller_Add {
 
     @FXML
     private Button Button_Chi;
