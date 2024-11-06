@@ -2,6 +2,7 @@
 
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -13,13 +14,23 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1">
    <left>
-      <AnchorPane prefHeight="400.0" prefWidth="300.0" style="-fx-background-color: #00000;" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="400.0" prefWidth="300.0" style="-fx-background-color: #e78300;" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fitHeight="587.0" fitWidth="600.0" layoutX="-300.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="312.0" fitWidth="297.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../../../../../Downloads/5a2f0400f672a200014026d8_Sunset.jpg" />
+                  <Image url="@../images/Logo.png" />
                </image>
             </ImageView>
+            <Label layoutX="106.0" layoutY="228.0" text="Welcome To">
+               <font>
+                  <Font name="Ebrima Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="75.0" layoutY="247.0" prefHeight="50.0" prefWidth="167.0" text="Money Manager">
+               <font>
+                  <Font name="Impact" size="25.0" />
+               </font>
+            </Label>
          </children></AnchorPane>
    </left>
    <center>
