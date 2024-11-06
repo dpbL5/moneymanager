@@ -26,8 +26,6 @@ public class App extends Application {
             // primaryStage.setTitle("Money Manager");
             // primaryStage.setScene(new Scene(root, 1280, 720));
             // primaryStage.show();
-
-            // Parent calendarView = FXMLLoader.load(getClass().getResource(STYLESHEET_CASPIAN));
         } catch (Exception e) {
             e.printStackTrace();
         }
