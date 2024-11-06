@@ -15,7 +15,7 @@ public class App extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("User/ifAccount.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("User/MenuBar.fxml"));
         primaryStage.setTitle("Money Manager");
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
