@@ -10,9 +10,10 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1">
-    <top>
-        <AnchorPane prefHeight="101.0" prefWidth="600.0" style="-fx-background-color: #e78300;" BorderPane.alignment="CENTER">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23"  xmlns:fx="http://javafx.com/fxml/1">
+
+    <top >
+        <AnchorPane prefHeight="101.0" prefWidth="600.0" style="-fx-background-color: #e78300;" BorderPane.alignment="CENTER" >
             <children>
                 <ImageView fitHeight="98.0" fitWidth="100.0" layoutX="469.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
                     <image>
