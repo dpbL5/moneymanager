@@ -12,7 +12,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="oop.moneymanager.Controller_Login">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="oop.moneymanager.Controller_Login">
    <left>
       <AnchorPane prefHeight="400.0" prefWidth="300.0" style="-fx-background-color: #e78300;" BorderPane.alignment="CENTER">
          <children>
@@ -45,11 +45,16 @@
                   <Font size="18.0" />
                </font>
             </Text>
-            <Button fx:id="login" onAction="#bttLogIn" layoutX="91.0" layoutY="255.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="117.0" style="-fx-background-color: #e78300;" text="Login" textFill="#f7f7f7" />
+            <Button fx:id="login" layoutX="92.0" layoutY="229.0" mnemonicParsing="false" onAction="#bttLogIn" prefHeight="40.0" prefWidth="117.0" style="-fx-background-color: #e78300;" text="Login" textFill="#f7f7f7" />
             <FontAwesomeIconView fill="#e78300" glyphName="USERS" layoutX="125.0" layoutY="52.0" size="35" wrappingWidth="13.657069206237793" />
             <Text fill="#e78300" layoutX="96.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User Login">
                <font>
                   <Font size="22.0" />
+               </font>
+            </Text>
+            <Text fill="#e78300" layoutX="115.0" layoutY="319.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Registe ?">
+               <font>
+                  <Font size="18.0" />
                </font>
             </Text>
          </children>

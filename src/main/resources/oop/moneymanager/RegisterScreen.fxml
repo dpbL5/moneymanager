@@ -4,46 +4,63 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1 ">
-    <children>
-        <AnchorPane prefHeight="107.0" prefWidth="600.0" style="-fx-background-color: #e78300;">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1">
+    <top>
+        <AnchorPane prefHeight="101.0" prefWidth="600.0" style="-fx-background-color: #e78300;" BorderPane.alignment="CENTER">
             <children>
-                <FontAwesomeIconView fill="#fafafa" glyphName="USERS" layoutX="47.0" layoutY="65.0" size="40" />
-                <Label layoutX="111.0" layoutY="33.0" text="User registration" textFill="WHITE">
+                <ImageView fitHeight="98.0" fitWidth="100.0" layoutX="469.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@images/Logo.png" />
+                    </image>
+                </ImageView>
+                <FontAwesomeIconView fill="WHITE" glyphName="USERS" layoutX="38.0" layoutY="70.0" size="40" wrappingWidth="18.457118034362793" />
+                <Label layoutX="111.0" layoutY="39.0" text="User Registration" textFill="#fafafa">
                     <font>
-                        <Font size="24.0" />
+                        <Font name="System Bold" size="23.0" />
                     </font>
                 </Label>
             </children>
         </AnchorPane>
-        <TextField layoutX="94.0" layoutY="158.0" prefHeight="26.0" prefWidth="411.0" />
-        <TextField layoutX="94.0" layoutY="230.0" prefHeight="26.0" prefWidth="411.0" />
-        <TextField layoutX="94.0" layoutY="298.0" prefHeight="26.0" prefWidth="411.0" />
-        <TextField layoutX="94.0" layoutY="370.0" prefHeight="26.0" prefWidth="411.0" />
-        <Button layoutX="94.0" layoutY="427.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="411.0" style="-fx-background-color: #e78300;" text="Register" textFill="WHITE" />
-        <Label layoutX="94.0" layoutY="126.0" text="User name">
-            <font>
-                <Font size="20.0" />
-            </font>
-        </Label>
-        <Label layoutX="94.0" layoutY="199.0" text="Email">
-            <font>
-                <Font size="20.0" />
-            </font>
-        </Label>
-        <Label layoutX="94.0" layoutY="267.0" text="Password">
-            <font>
-                <Font size="20.0" />
-            </font>
-        </Label>
-        <Label layoutX="95.0" layoutY="339.0" text="Password confirm">
-            <font>
-                <Font size="20.0" />
-            </font>
-        </Label>
-    </children>
-</AnchorPane>
+    </top>
+    <center>
+        <AnchorPane prefHeight="260.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+            <children>
+                <TextField layoutX="92.0" layoutY="50.0" prefHeight="26.0" prefWidth="416.0" />
+                <TextField layoutX="92.0" layoutY="120.0" prefHeight="26.0" prefWidth="416.0" />
+                <TextField layoutX="92.0" layoutY="199.0" prefHeight="26.0" prefWidth="416.0" />
+                <TextField layoutX="92.0" layoutY="274.0" prefHeight="26.0" prefWidth="416.0" />
+                <Label layoutX="92.0" layoutY="14.0" text="Email">
+                    <font>
+                        <Font size="20.0" />
+                    </font>
+                </Label>
+                <Label layoutX="92.0" layoutY="88.0" text="User name">
+                    <font>
+                        <Font size="20.0" />
+                    </font>
+                </Label>
+                <Label layoutX="92.0" layoutY="164.0" text="Password">
+                    <font>
+                        <Font size="20.0" />
+                    </font>
+                </Label>
+                <Label layoutX="92.0" layoutY="241.0" text="Confirm Password">
+                    <font>
+                        <Font size="20.0" />
+                    </font>
+                </Label>
+                <Button layoutX="92.0" layoutY="331.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="416.0" style="-fx-background-color: #e78300;" text="Register" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font>
+                </Button>
+            </children>
+        </AnchorPane>
+    </center>
+</BorderPane>
