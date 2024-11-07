@@ -35,9 +35,9 @@
             <Font size="31.0" />
          </font>
       </Text>
-      <Button fx:id="logout_Button" layoutX="139.0" layoutY="514.0" mnemonicParsing="false" onMouseClicked="#logOut" prefHeight="52.0" prefWidth="97.0" style="-fx-background-color: FFA500; -fx-border-color: #000000;" text="Đăng xuất" textFill="#030202" />
-      <Button fx:id="change_PassWord" layoutX="368.0" layoutY="514.0" mnemonicParsing="false" onMouseClicked="#changePassword" prefHeight="52.0" prefWidth="98.0" style="-fx-background-color: FFA500; -fx-border-color: #000000;" text="Đổi mật khẩu" />
-      <Button fx:id="danhgia" layoutX="598.0" layoutY="514.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="98.0" style="-fx-background-color: FFA500; -fx-border-color: #000000;" text="Đánh giá" />
+      <Button fx:id="logout_Button" layoutX="139.0" layoutY="514.0" mnemonicParsing="false" onMouseClicked="#logOut" prefHeight="52.0" prefWidth="97.0" style="-fx-background-color: F2613F; -fx-border-color: #000000;" text="Đăng xuất" textFill="WHITE" />
+      <Button fx:id="change_PassWord" layoutX="368.0" layoutY="514.0" mnemonicParsing="false" onMouseClicked="#changePassword" prefHeight="52.0" prefWidth="98.0" style="-fx-background-color: F2613F; -fx-border-color: #000000;" text="Đổi mật khẩu" textFill="#ececec" />
+      <Button fx:id="danhgia" layoutX="598.0" layoutY="514.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="98.0" style="-fx-background-color: F2613F; -fx-border-color: #000000;" text="Đánh giá" textFill="WHITE" />
       <Label layoutX="372.0" layoutY="168.0" text="VO HOANG AN" AnchorPane.leftAnchor="370.0">
          <font>
             <Font size="20.0" />
