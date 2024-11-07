@@ -9,6 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
+import oop.moneymanager.service.LoginHandle;
 
 import java.io.File;
 import java.io.IOException;
@@ -18,12 +19,14 @@ import java.util.ResourceBundle;
 
 public class Controller_Login implements Initializable {
     @FXML
-    private TextField Username = new TextField();
+    private TextField Username;
     @FXML
-    private PasswordField Password = new PasswordField();
+    private PasswordField Password ;
     @FXML
-    private Button login = new Button();
-    Controller_Switch switchController = new Controller_Switch();
+    private Button login ;
+
+    private LoginHandle loginHandle = new LoginHandle();
+
     @FXML
     public Scene setScene() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("LoginScreenView.fxml"));
@@ -33,22 +36,24 @@ public class Controller_Login implements Initializable {
     }
     public void bttLogIn  (ActionEvent event) throws IOException {
         try{
-            String username = Username.getText();
-            String password = Password.getText();
+            String username = Username.getText().toString();
+            String password = Password.getText().toString();
+//            String username = "bao1";
+//            String password = "12345";
+            System.out.println(username + " " + password + " " + "taisao");
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Đăng Nhập");
             alert.setHeaderText("Thông báo đăng nhập:");
             System.out.println("heloo");
-//        if (loginHandler.isValidLogin(username, password)) {
-//            alert.setContentText("Đăng nhập thành công. Chào mừng bạn!");
-//            SwitchController switchController = new SwitchController();
-//            switchController.switchToSceneMain(event);
-//        }
-//        else {
-//            alert.setContentText("Thông tin đăng nhập không chính xác. Vui lòng kiểm tra lại và thử đăng nhập lại.");
-//        }
-            alert.show();
+        if (loginHandle.isValidLogin(username, password)) {
+            alert.setContentText("Đăng nhập thành công. Chào mừng bạn!");
+            Controller_Switch switchController = new  Controller_Switch();
             switchController.switchToSceneMain(event);
+        }
+        else {
+            alert.setContentText("Thông tin đăng nhập không chính xác. Vui lòng kiểm tra lại và thử đăng nhập lại.");
+        }
+            alert.show();
         }
         catch (Exception e){
             System.out.println(e.toString());
@@ -60,9 +65,9 @@ public class Controller_Login implements Initializable {
        try {
             login.setDisable(true);
             // cai dat mac dinh
-//            Username.textProperty().addListener((observable, oldValue, newValue) -> {
-//                login.setDisable(newValue.trim().isEmpty());
-//            });
+            Username.textProperty().addListener((observable, oldValue, newValue) -> {
+                login.setDisable(newValue.trim().isEmpty());
+            });
         }
        catch (Exception e){
            System.out.println(e.toString());

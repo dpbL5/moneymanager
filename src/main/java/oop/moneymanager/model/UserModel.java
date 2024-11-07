@@ -1,24 +1,37 @@
 package oop.moneymanager.model;
 
 public class UserModel {
-    private String userName;
+    private String user_id;
+    private String name;
     private String email;
     private String passWord;
-    private float budgets;
+    private String phone;
+    private String money;
 
-    public UserModel(String userName, String email, String passWord, float budgets) {
-        this.userName = userName;
+    public UserModel(String user_id, String userName, String email, String passWord, String phone, String budgets) {
+        this.user_id = user_id;
+        this.name = userName;
         this.email = email;
         this.passWord = passWord;
-        this.budgets = budgets;
+        this.phone = phone;
+        this.money = budgets;
+
+    }
+
+    public String getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(String user_id) {
+        this.user_id = user_id;
     }
 
     public String getUserName() {
-        return userName;
+        return name;
     }
 
     public void setUserName(String userName) {
-        this.userName = userName;
+        this.name = userName;
     }
 
     public String getEmail() {
@@ -37,15 +50,24 @@ public class UserModel {
         this.passWord = passWord;
     }
 
-    public float getBudgets() {
-        return budgets;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setBudgets(float budgets) {
-        this.budgets = budgets;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
+
+    public String getBudgets() {
+        return money;
+    }
+
+    public void setBudgets(String budgets) {
+        this.money = budgets;
+    }
+
     @Override
     public String toString() {
-        return String.join(" ", userName,email, passWord, String.valueOf(budgets));
+        return String.join(" ",user_id, name,email, passWord, phone, String.valueOf(money));
     }
 }

@@ -23,13 +23,9 @@ public class TestEntryController {
 //        scene = new Scene(root);
 //        stage.setScene(scene);
 //        stage.show();
-        try {
-            Controller_Switch controllerSwitch = new Controller_Switch();
-            controllerSwitch.switchToScreenLogin(event);
-        }
-        catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
+        Controller_Switch controllerSwitch = new Controller_Switch();
+        controllerSwitch.switchToScreenLogin(event);
+
 
         
     }
