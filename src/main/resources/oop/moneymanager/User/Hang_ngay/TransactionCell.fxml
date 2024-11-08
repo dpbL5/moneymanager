@@ -6,8 +6,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane prefHeight="63.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="oop.moneymanager.User.TransactionCell">
+<AnchorPane prefHeight="65.0" prefWidth="650.0" stylesheets="@../Stylesheet/TransactionCell.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="oop.moneymanager.User.TransactionCell">
    <children>
       <Label layoutX="29.0" layoutY="23.0" text="20-10-2024" />
       <Label layoutX="142.0" layoutY="23.0" text="Ăn uống">
