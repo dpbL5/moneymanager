@@ -17,7 +17,7 @@ public class App extends Application {
     public void start(Stage primaryStage) throws IOException {
         try {
             // Directing Scene
-            Parent testEntry = FXMLLoader.load(getClass().getResource("LoginScreenView.fxml"));
+            Parent testEntry = FXMLLoader.load(getClass().getResource("TestEntry.fxml"));
             primaryStage.setTitle("test");
             primaryStage.setScene(new Scene(testEntry));
             primaryStage.show();
@@ -25,7 +25,6 @@ public class App extends Application {
             e.printStackTrace();
         }
     }
-
     public static void main(String[] args) {
         launch(args);
     }

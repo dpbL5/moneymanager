@@ -25,9 +25,6 @@ public class TestEntryController {
 //        stage.show();
         Controller_Switch controllerSwitch = new Controller_Switch();
         controllerSwitch.switchToScreenLogin(event);
-
-
-        
     }
 
     @FXML
