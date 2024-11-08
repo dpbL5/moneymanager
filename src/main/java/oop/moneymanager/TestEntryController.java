@@ -27,8 +27,12 @@ public class TestEntryController {
     }
 
     @FXML
-    protected void changeToMainScene() throws IOException {
-        // FXMLLoader loader = new FXMLLoader(getClass().getResource("../User/ifAccount.fxml"));
-        // loader.load();
+    protected void changeToMainScene(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("RegisterScreen.fxml"));
+        root = loader.load();
+        stage = (Stage)((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 }
