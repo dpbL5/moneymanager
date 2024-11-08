@@ -1,0 +1,28 @@
+/* Nền tổng thể */
+.anchor-pane {
+    -fx-background-color: #f2f2f2; /* Màu nền xám nhạt */
+}
+
+/* Nút có viền và chữ màu cam */
+.menu-button {
+    -fx-background-color: white; /* Nền trắng cho nút */
+    -fx-border-color: #ff9800; /* Viền cam */
+    -fx-border-width: 2px; /* Độ dày viền */
+    -fx-text-fill: #ff9800; /* Chữ màu cam */
+    -fx-font-size: 16px; /* Kích thước chữ */
+    -fx-font-weight: bold; /* Độ đậm của chữ */
+    -fx-background-radius: 8; /* Bo tròn góc */
+    -fx-border-radius: 8;
+    -fx-padding: 8 20; /* Padding cho nút */
+    -fx-cursor: hand; /* Đổi con trỏ khi trỏ chuột */
+}
+
+/* Hiệu ứng hover */
+.menu-button:hover {
+    -fx-background-color: #ffe0b2; /* Màu nền nhạt khi hover */
+}
+
+/* Hiệu ứng khi nhấn */
+.menu-button:pressed {
+    -fx-background-color: #ffcc80; /* Màu nền khi nhấn */
+}

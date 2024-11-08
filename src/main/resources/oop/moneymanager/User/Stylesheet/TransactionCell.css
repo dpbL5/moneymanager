@@ -1,0 +1,4 @@
+.anchor-pane {
+    -fx-border-width: 0 0 1px 0; /* Viền dưới */
+    -fx-border-color: black; /* Màu viền đen */
+}

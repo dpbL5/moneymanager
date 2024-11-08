@@ -9,24 +9,19 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane prefHeight="700.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="oop.moneymanager.User.DailyBoard">
-   <children>
-      <Text layoutX="349.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Giao dịch" wrappingWidth="101.15335845947266">
-         <font>
-            <Font size="22.0" />
-         </font>
-      </Text>
-      <Button layoutX="651.0" layoutY="70.0" mnemonicParsing="false" text="Xuất Excel">
-         <graphic>
-            <ImageView fitHeight="20.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../images/Excel_icon.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
-      <ListView layoutX="329.0" layoutY="222.0" prefHeight="560.0" prefWidth="750.0" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0" />
-      <ChoiceBox layoutX="41.0" layoutY="69.0" prefHeight="33.0" prefWidth="150.0" />
-   </children>
+<AnchorPane prefHeight="700.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="oop.moneymanager.Controller_DailyBoard">
+   <Text layoutX="349.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Giao dịch" wrappingWidth="101.15335845947266">
+      <font>
+         <Font size="22.0" />
+      </font>
+   </Text>
+   <Button layoutX="626.0" layoutY="72.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="150.0" text="Xuất Excel">
+      <graphic>
+         <ImageView fitHeight="20.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../../images/Excel_icon.png" />
+         </ImageView>
+      </graphic>
+   </Button>
+   <ListView layoutX="25.0" layoutY="222.0" prefHeight="560.0" prefWidth="750.0" style="-fx-border-color: black; -fx-border-width: 1px;" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0" />
+   <ChoiceBox layoutX="25.0" layoutY="69.0" prefHeight="33.0" prefWidth="150.0" />
 </AnchorPane>

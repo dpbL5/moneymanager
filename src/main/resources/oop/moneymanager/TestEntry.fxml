@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="oop.moneymanager.TestEntryController">
+   <children>
+      <Label prefHeight="54.0" prefWidth="532.0" text="Đây là Scene Entry Test Scene, Sau khi hoàn thành sẽ kh dùng nó nữa!, Click để test scene" />
+      <AnchorPane prefHeight="200.0" prefWidth="200.0">
+         <children>
+            <Button layoutX="143.0" layoutY="15.0" mnemonicParsing="false" onAction="#changeToLoginScene" text="LoginScene" />
+            <Button layoutX="361.0" layoutY="15.0" mnemonicParsing="false" onAction="#changeToMainScene" text="MainScene" />
+         </children>
+      </AnchorPane>
+   </children>
+</VBox>
