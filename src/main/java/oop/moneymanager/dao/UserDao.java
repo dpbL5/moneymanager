@@ -1,5 +1,6 @@
 package oop.moneymanager.dao;
 
+<<<<<<< Updated upstream
 import oop.moneymanager.model.UserModel;
 
 import java.sql.Connection;
@@ -126,4 +127,7 @@ public class UserDao implements DaoInterface<UserModel> {
         }
         return user;
     }
+=======
+public class UserDao {
+>>>>>>> Stashed changes
 }
