@@ -12,16 +12,21 @@ public class RegisterHandle {
         return new RegisterHandle();
     }
     public int isRegister(String username,String email, String password, String confirmpassword) throws SQLException {
-       UserModel userCheck = null;
-        System.out.println(username + " " + password);
-        userCheck = UserDao.getInstance().selectByUserName(username);
-        if(userCheck != null){
-            return 2;
+        try {
+            UserModel userCheck = null;
+            System.out.println(username + " " + password);
+            userCheck = UserDao.getInstance().selectByUserName(username);
+            if (userCheck != null) {
+                return 2;
+            }
+            if (password.equals(confirmpassword) && !password.isEmpty() && !username.isEmpty()) {
+                UserModel user = new UserModel("1", username, password, email, "000000000", "0000.00");
+                UserDao.getInstance().insert(user);
+                return 1;
+            }
         }
-        if(password.equals(confirmpassword) && !password.isEmpty() && !username.isEmpty()  ){
-            UserModel user = new UserModel("1",username, password, email, "000000000","0000.00");
-            UserDao.getInstance().insert(user);
-            return 1;
+        catch (Exception e) {
+            System.out.println(e.getMessage());
         }
         return 0;
     }

@@ -14,7 +14,7 @@ public class UserDao implements DaoInterface<UserModel> {
     }
     @Override
     public int insert(UserModel user) throws SQLException {
-        String url = "INSERT INTO user (user_id,username,email, password,phone,budget)VALUES(?, ?, ?, ?,?,?)";
+        String url = "INSERT INTO user (user_id,name,email, password,phone,money)VALUES(?, ?, ?, ?,?,?)";
         try (Connection con = JDBCUtil.getConnection(); PreparedStatement stmt = con.prepareStatement(url)) {
             stmt.setString(1,user.getUser_id());
             stmt.setString(2,user.getUserName());

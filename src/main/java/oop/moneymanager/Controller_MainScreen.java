@@ -11,9 +11,6 @@ import java.io.IOException;
 public class Controller_MainScreen {
 
 
-
-
-
     public Scene setScene() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("User/MainScreen.fxml"));
         Parent root = loader.load();
