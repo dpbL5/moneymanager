@@ -52,7 +52,9 @@
                   <Font size="22.0" />
                </font>
             </Text>
+          
             <Button fx:id="register" layoutX="22.0" layoutY="230.0" mnemonicParsing="false" onAction="#bttregister" prefHeight="34.0" prefWidth="106.0" style="-fx-background-color: #e78300;" text="Register" textFill="#f7f7f7" />
+            <Button fx:id="login1" layoutX="92.0" layoutY="279.0" mnemonicParsing="false" onAction="#bttLogIn" prefHeight="40.0" prefWidth="117.0" style="-fx-background-color: #e78300;" text="Register ?" textFill="#f7f7f7" />
          </children>
       </AnchorPane>
    </center>

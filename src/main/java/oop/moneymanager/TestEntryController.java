@@ -17,17 +17,8 @@ public class TestEntryController {
 
     @FXML
     protected void changeToLoginScene(ActionEvent event) throws IOException {
-//        FXMLLoader loader = new FXMLLoader(getClass().getResource("LoginScreenView.fxml"));
-//        root = loader.load();
-//        stage = (Stage)((Node) event.getSource()).getScene().getWindow();
-//        scene = new Scene(root);
-//        stage.setScene(scene);
-//        stage.show();
-        Controller_Switch controllerSwitch = new Controller_Switch();
-        controllerSwitch.switchToScreenLogin(event);
-
-
-        
+      Controller_Switch controllerSwitch = new Controller_Switch();
+      controllerSwitch.switchToScreenLogin(event);
     }
 
     @FXML

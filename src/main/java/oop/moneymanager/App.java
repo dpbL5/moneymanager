@@ -21,16 +21,10 @@ public class App extends Application {
             primaryStage.setTitle("test");
             primaryStage.setScene(new Scene(testEntry));
             primaryStage.show();
-
-            // Parent root = FXMLLoader.load(getClass().getResource("User/ifAccount.fxml"));
-            // primaryStage.setTitle("Money Manager");
-            // primaryStage.setScene(new Scene(root, 1280, 720));
-            // primaryStage.show();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-
     public static void main(String[] args) {
         launch(args);
     }
