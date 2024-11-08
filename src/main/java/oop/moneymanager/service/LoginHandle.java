@@ -13,9 +13,6 @@ public class LoginHandle {
             System.out.println(username + " " + password);
             user = UserDao.getInstance().selectByUserNamePassWord(username, password);
             System.out.println(user);
-            if(user == null){
-                System.out.println("fix loi di ma");
-            }
             return user != null && user.getUserName().equals(username) && user.getPassWord().equals(password);
         }catch (Exception e){
             // do user co the null

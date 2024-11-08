@@ -52,7 +52,7 @@
                   <Font size="22.0" />
                </font>
             </Text>
-            <Text fill="#e78300" layoutX="115.0" layoutY="319.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Registe ?">
+            <Text fill="#e78300" layoutX="115.0" layoutY="319.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-cursor: hand;" text="Register?">
                <font>
                   <Font size="18.0" />
                </font>

@@ -32,16 +32,7 @@ public class TestEntryController {
 
     @FXML
     protected void changeToMainScene(ActionEvent event) throws IOException {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("User/MainScreen.fxml"));
-            root = loader.load();
-            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
-        }
-        catch (Exception e) {
-            System.out.println(e.toString());
-        }
+      Controller_Switch controllerSwitch = new Controller_Switch();
+      controllerSwitch.switchToSceneMain(event);
     }
 }

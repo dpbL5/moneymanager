@@ -7,6 +7,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import oop.moneymanager.service.RegisterHandle;
+import org.w3c.dom.Text;
 
 import java.awt.*;
 import java.io.IOException;
@@ -22,6 +23,7 @@ public class Controller_Register {
     @FXML
     private TextField confirmPassword;
 
+
     private RegisterHandle registerHandle = new RegisterHandle();
     public Scene setScene() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("RegisterScreen.fxml"));
@@ -30,7 +32,7 @@ public class Controller_Register {
         return scene;
     }
     public void setSubmit (ActionEvent event) throws IOException, SQLException {
-        String usernameText = username.getText();
+        String usernameText = this.username.getText();
         String emailText = this.email.getText();
         String passwordText = this.password.getText();
         String confirmPasswordText = this.confirmPassword.getText();
@@ -38,7 +40,7 @@ public class Controller_Register {
         alert.setTitle("Register");
         alert.setHeight(250);
         alert.setHeaderText("Thông báo đăng kí!");
-        int isRegister =  registerHandle.isRegister(usernameText,emailText, passwordText, passwordText);
+        int isRegister =  registerHandle.isRegister(usernameText,emailText, passwordText, confirmPasswordText);
         if (isRegister == 1) {
             alert.setContentText("Bạn đã đăng kí tài khoản thành công");
             // set hanh dong sau khi an ok o alert

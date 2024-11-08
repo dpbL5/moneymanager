@@ -32,18 +32,52 @@ public class UserDao implements DaoInterface<UserModel> {
     }
 
     @Override
-    public int update(UserModel userModel) {
-        return 0;
+    public int update(UserModel user) {
+        String url = "UPDATE user SET password = ? WHERE name = ? and email = ?";
+        // try-with-resources
+        try (Connection con = JDBCUtil.getConnection();
+             PreparedStatement stmt = con.prepareStatement(url)) {
+            stmt.setString(1, user.getPassWord());
+            stmt.setString(2, user.getUserName());
+            stmt.setString(3, user.getEmail());
+            int row = stmt.executeUpdate();
+            System.out.println("Số dữ liệu được cập nhật là: " + row);
+            return row;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
     public int delete(UserModel userModel) {
-        return 0;
+        String url = "DELETE FROM user WHERE name = ? and email = ?";
+        try (Connection con = JDBCUtil.getConnection();
+        PreparedStatement stmt = con.prepareStatement(url)) {
+            stmt.setString(1, userModel.getUserName());
+            stmt.setString(2, userModel.getEmail());
+            int row = stmt.executeUpdate();
+            return row;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
-    public ArrayList<UserModel> selectAll() {
-        return null;
+    public ArrayList<UserModel> selectAll()  {
+        String url = "SELECT * FROM user";
+        ArrayList<UserModel> users = new ArrayList<>();
+        try (Connection con = JDBCUtil.getConnection();
+             PreparedStatement stmt = con.prepareStatement(url)) {
+            ResultSet rs = stmt.executeQuery();
+            while(rs.next()){
+                UserModel x = new UserModel(rs.getString("user_id"),rs.getString("name"),rs.getString("email"),
+                        rs.getString("password"),rs.getString("phone"),rs.getString("money"));
+                users.add(x);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return users;
     }
 
     @Override
@@ -82,14 +116,10 @@ public class UserDao implements DaoInterface<UserModel> {
             stmt.setString(1,userName);
             stmt.setString(2,passWord);
             ResultSet rs = stmt.executeQuery();
-            try{
-                System.out.println(rs.getString("user_id"));
-            }catch (SQLException e){
-                System.out.println(e.getMessage());
-            }
+
             while(rs.next()){
-     user = new UserModel(rs.getString("user_id"),rs.getString("name"),rs.getString("email"),
-     rs.getString("password"),rs.getString("phone"),rs.getString("money"));
+            user = new UserModel(rs.getString("user_id"),rs.getString("name"),rs.getString("email"),
+            rs.getString("password"),rs.getString("phone"),rs.getString("money"));
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);

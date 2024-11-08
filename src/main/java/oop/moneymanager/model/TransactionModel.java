@@ -6,13 +6,24 @@ public class TransactionModel {
     private String income;
     private String outcome;
     private String note;
+    private String username;
     private String date;
 
-    public TransactionModel(String category, String income, String outcome, String note, String date) {
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public TransactionModel(String transactionID, String category, String income, String outcome, String note, String username, String date) {
+        this.transactionID = transactionID;
         this.category = category;
         this.income = income;
         this.outcome = outcome;
         this.note = note;
+        this.username = username;
         this.date = date;
     }
 
