@@ -10,8 +10,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="oop.moneymanager.Controller_Login">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="oop.moneymanager.Controller_Register">
     <top>
         <AnchorPane prefHeight="101.0" prefWidth="600.0" style="-fx-background-color: #e78300;" BorderPane.alignment="CENTER">
             <children>
@@ -30,12 +29,12 @@
         </AnchorPane>
     </top>
     <center>
-        <AnchorPane prefHeight="260.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+        <AnchorPane prefHeight="406.0" prefWidth="600.0" BorderPane.alignment="CENTER">
             <children>
-                <TextField layoutX="92.0" layoutY="50.0" prefHeight="26.0" prefWidth="416.0" />
-                <TextField layoutX="92.0" layoutY="120.0" prefHeight="26.0" prefWidth="416.0" />
-                <TextField layoutX="92.0" layoutY="199.0" prefHeight="26.0" prefWidth="416.0" />
-                <TextField layoutX="92.0" layoutY="274.0" prefHeight="26.0" prefWidth="416.0" />
+                <TextField fx:id="Usermail" layoutX="92.0" layoutY="50.0" prefHeight="26.0" prefWidth="416.0" />
+                <TextField fx:id="email" layoutX="92.0" layoutY="120.0" prefHeight="26.0" prefWidth="416.0" />
+                <TextField fx:id="Password" layoutX="92.0" layoutY="199.0" prefHeight="26.0" prefWidth="416.0" />
+                <TextField fx:id="confirmPassword" layoutX="92.0" layoutY="274.0" prefHeight="26.0" prefWidth="416.0" />
                 <Label layoutX="92.0" layoutY="14.0" text="Email">
                     <font>
                         <Font size="20.0" />
@@ -56,11 +55,16 @@
                         <Font size="20.0" />
                     </font>
                 </Label>
-                <Button layoutX="92.0" layoutY="331.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="416.0" style="-fx-background-color: #e78300;" text="Register" textFill="WHITE">
+                <Button layoutX="92.0" layoutY="317.0" mnemonicParsing="false" onAction="#setSubmit" prefHeight="26.0" prefWidth="416.0" style="-fx-background-color: #e78300;" text="Register" textFill="WHITE">
                     <font>
                         <Font name="System Bold" size="12.0" />
                     </font>
                 </Button>
+            <Button layoutX="92.0" layoutY="357.0" mnemonicParsing="false" onAction="#setCancel" prefHeight="26.0" prefWidth="416.0" style="-fx-background-color: #e78300;" text="Cancel" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
             </children>
         </AnchorPane>
     </center>

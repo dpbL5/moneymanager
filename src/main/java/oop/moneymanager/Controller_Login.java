@@ -62,6 +62,10 @@ public class Controller_Login implements Initializable {
             System.out.println(Username.getText());
         }
     }
+    public void bttregister(ActionEvent event) throws IOException {
+        Controller_Switch switchController = new  Controller_Switch();
+        switchController.switchToScreenRegister(event);
+    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
        try {
