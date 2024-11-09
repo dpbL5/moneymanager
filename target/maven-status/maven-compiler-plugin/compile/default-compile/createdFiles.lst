@@ -15,6 +15,7 @@ oop\moneymanager\dao\JDBCUtil.class
 oop\moneymanager\Controller_Add.class
 oop\moneymanager\Controller_Switch.class
 oop\moneymanager\App.class
+oop\moneymanager\Statistical_Controller.class
 oop\moneymanager\service\LoginHandle.class
 oop\moneymanager\service\ExportFileHandle.class
 oop\moneymanager\TestEntryController.class
