@@ -6,22 +6,21 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.TextField;
 import oop.moneymanager.service.RegisterHandle;
 import org.w3c.dom.Text;
-
+import javafx.scene.control.Button;
 import java.awt.*;
 import java.io.IOException;
 import java.sql.SQLException;
 
 public class Controller_Register {
-    @FXML
-    private TextField username;
-    @FXML
-    private TextField email;
-    @FXML
-    private TextField password;
-    @FXML
-    private TextField confirmPassword;
+    public Button cancel_btn;
+    public TextField re_email_fld;
+    public TextField re_username_fld;
+    public TextField re_password_fld;
+    public TextField re_confirm_fld;
+
 
     private RegisterHandle registerHandle = new RegisterHandle();
     public Scene setScene() throws IOException {
