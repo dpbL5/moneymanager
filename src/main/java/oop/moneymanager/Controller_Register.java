@@ -15,10 +15,15 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 public class Controller_Register {
+    @FXML
     public Button cancel_btn;
+    @FXML
     public TextField re_email_fld;
+    @FXML
     public TextField re_username_fld;
+    @FXML
     public TextField re_password_fld;
+    @FXML
     public TextField re_confirm_fld;
 
 
@@ -30,11 +35,17 @@ public class Controller_Register {
         return scene;
     }
     public void setSubmit (ActionEvent event) throws IOException, SQLException {
-      try   {
-            String usernameText = "bao5";
-            String emailText = "bao5@gmail.com";
-            String passwordText = "123456";
-            String confirmPasswordText = "123456";
+        try   {
+
+            String emailText = re_email_fld.getText().toString();
+            String usernameText = re_username_fld.getText().toString();
+            String passwordText = re_password_fld.getText().toString();
+            String confirmPasswordText = re_confirm_fld.getText().toString();
+            System.out.println(usernameText + " " + emailText + " " + passwordText + " " + confirmPasswordText);
+//            String usernameText = "bao5";
+//            String emailText = "bao5@gmail.com";
+//            String passwordText = "123456";
+//            String confirmPasswordText = "123456";
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Register");
             alert.setHeight(250);
@@ -58,11 +69,11 @@ public class Controller_Register {
                 alert.setContentText("username hoặc email đã được sử dụng để tạo tài khoản vui lòng nhập username và email khác " +
                         "\nNếu bạn đã có tài khoản nhưng không nhớ mật khẩu hãy chuyển sang màn hình loing và chọn tính năng Forgot password");
             }
-          alert.show();
+            alert.show();
         }
-      catch (Exception e) {
-          System.out.println(e.getMessage());
-      }
+        catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
 
     }
 
