@@ -20,7 +20,7 @@ public class RegisterHandle {
                 return 2;
             }
             if (password.equals(confirmpassword) && !password.isEmpty() && !username.isEmpty()) {
-                UserModel user = new UserModel("1", username, email, password, "000000000", "0000.00");
+                UserModel user = new UserModel(username, email, password, "000000000", "0000.00");
                 UserDao.getInstance().insert(user);
                 return 1;
             }

@@ -14,14 +14,13 @@ public class UserDao implements DaoInterface<UserModel> {
     }
     @Override
     public int insert(UserModel user) throws SQLException {
-        String url = "INSERT INTO user (user_id,name,email, password,phone,money)VALUES(?, ?, ?, ?,?,?)";
+        String url = "INSERT INTO user (name,email, password,phone,money)VALUES( ?, ?, ?,?,?)";
         try (Connection con = JDBCUtil.getConnection(); PreparedStatement stmt = con.prepareStatement(url)) {
-            stmt.setString(1,user.getUser_id());
-            stmt.setString(2,user.getUserName());
-            stmt.setString(3,user.getEmail());
-            stmt.setString(4,user.getPassWord());
-            stmt.setString(5,user.getPhone());
-            stmt.setString(6,user.getBudgets());
+            stmt.setString(1,user.getUserName());
+            stmt.setString(2,user.getEmail());
+            stmt.setString(3,user.getPassWord());
+            stmt.setString(4,user.getPhone());
+            stmt.setString(5,user.getBudgets());
             int row = stmt.executeUpdate();
             System.out.println("Số dữ liệu được cập nhật là: " + row);
             return row;
@@ -70,7 +69,7 @@ public class UserDao implements DaoInterface<UserModel> {
              PreparedStatement stmt = con.prepareStatement(url)) {
             ResultSet rs = stmt.executeQuery();
             while(rs.next()){
-                UserModel x = new UserModel(rs.getString("user_id"),rs.getString("name"),rs.getString("email"),
+                UserModel x = new UserModel(rs.getString("name"),rs.getString("email"),
                         rs.getString("password"),rs.getString("phone"),rs.getString("money"));
                 users.add(x);
             }
@@ -98,7 +97,7 @@ public class UserDao implements DaoInterface<UserModel> {
             stmt.setString(1,userName);
             ResultSet rs = stmt.executeQuery();
             while(rs.next()){
-                user = new UserModel(rs.getString("user_id"),rs.getString("name"),rs.getString("email"),
+                user = new UserModel(rs.getString("name"),rs.getString("email"),
                         rs.getString("password"),rs.getString("phone"),rs.getString("money"));
             }
         } catch (SQLException e) {
@@ -118,7 +117,7 @@ public class UserDao implements DaoInterface<UserModel> {
             ResultSet rs = stmt.executeQuery();
 
             while(rs.next()){
-            user = new UserModel(rs.getString("user_id"),rs.getString("name"),rs.getString("email"),
+            user = new UserModel(rs.getString("name"),rs.getString("email"),
             rs.getString("password"),rs.getString("phone"),rs.getString("money"));
             }
         } catch (SQLException e) {
