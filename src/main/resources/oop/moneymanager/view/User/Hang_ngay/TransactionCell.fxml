@@ -13,7 +13,7 @@
          <graphic>
             <ImageView fitHeight="18.0" fitWidth="15.0">
                <image>
-                  <Image url="@../../images/eat_icon.png" />
+                  <Image url="@../../../images/eat_icon.png" />
                </image>
             </ImageView>
          </graphic>

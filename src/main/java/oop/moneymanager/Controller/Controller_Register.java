@@ -1,4 +1,4 @@
-package oop.moneymanager;
+package oop.moneymanager.Controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -8,9 +8,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import oop.moneymanager.service.RegisterHandle;
-import org.w3c.dom.Text;
 import javafx.scene.control.Button;
-import java.awt.*;
+
 import java.io.IOException;
 import java.sql.SQLException;
 
@@ -29,7 +28,7 @@ public class Controller_Register {
 
     private RegisterHandle registerHandle = new RegisterHandle();
     public Scene setScene() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("RegisterScreen.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/oop/moneymanager/view/RegisterScreen.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
         return scene;
