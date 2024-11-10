@@ -1,15 +1,13 @@
 package oop.moneymanager.model;
 
 public class UserModel {
-    private String user_id;
     private String name;
     private String email;
     private String passWord;
     private String phone;
     private String money;
 
-    public UserModel(String user_id, String userName, String email, String passWord, String phone, String budgets) {
-        this.user_id = user_id;
+    public UserModel( String userName, String email, String passWord, String phone, String budgets) {
         this.name = userName;
         this.email = email;
         this.passWord = passWord;
@@ -17,15 +15,6 @@ public class UserModel {
         this.money = budgets;
 
     }
-
-    public String getUser_id() {
-        return user_id;
-    }
-
-    public void setUser_id(String user_id) {
-        this.user_id = user_id;
-    }
-
     public String getUserName() {
         return name;
     }
@@ -68,6 +57,6 @@ public class UserModel {
 
     @Override
     public String toString() {
-        return String.join(" ",user_id, name,email, passWord, phone, String.valueOf(money));
+        return String.join(" ",name,email, passWord, phone, String.valueOf(money));
     }
 }
