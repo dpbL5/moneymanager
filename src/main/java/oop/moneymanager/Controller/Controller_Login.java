@@ -1,22 +1,16 @@
-package oop.moneymanager;
+package oop.moneymanager.Controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.stage.Stage;
 import oop.moneymanager.service.LoginHandle;
-import org.w3c.dom.Text;
 
-import java.awt.event.MouseEvent;
-import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class Controller_Login implements Initializable {
@@ -31,7 +25,7 @@ public class Controller_Login implements Initializable {
 
     @FXML
     public Scene setScene() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("LoginScreenView.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/oop/moneymanager/view/LoginScreenView.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
         return scene;
