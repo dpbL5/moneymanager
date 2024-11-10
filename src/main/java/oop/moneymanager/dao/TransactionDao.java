@@ -2,12 +2,8 @@ package oop.moneymanager.dao;
 
 import oop.moneymanager.model.TransactionModel;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
-import java.util.Date;
 
 public class TransactionDao implements DaoInterface<TransactionModel> {
     public static TransactionDao instance()
@@ -26,7 +22,7 @@ public class TransactionDao implements DaoInterface<TransactionModel> {
             stmt.setString(4,transaction.getOutcome());
             stmt.setString(5,transaction.getNote());
             stmt.setString(6,transaction.getUsername());
-            stmt.setString(6,transaction.getDate());
+            stmt.setDate(6, (Date) transaction.getDate());
             int row = stmt.executeUpdate();
             return row;
         }
@@ -54,7 +50,7 @@ public class TransactionDao implements DaoInterface<TransactionModel> {
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
                 TransactionModel x = new TransactionModel(rs.getString("tran_id"),rs.getString("category"),rs.getString("income"),rs.getString("outcome"),
-                        rs.getString("note"),rs.getString("username"),rs.getString("date")
+                        rs.getString("note"),rs.getString("username"),rs.getDate("date")
                         );
                 transactions.add(x);
             }
@@ -75,7 +71,7 @@ public class TransactionDao implements DaoInterface<TransactionModel> {
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
                 TransactionModel x = new TransactionModel(rs.getString("tran_id"),rs.getString("category"),rs.getString("income"),rs.getString("outcome"),
-                        rs.getString("note"),rs.getString("username"),rs.getString("date")
+                        rs.getString("note"),rs.getString("username"),rs.getDate("date")
                 );
                 transactions.add(x);
             }

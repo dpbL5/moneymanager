@@ -1,5 +1,7 @@
 package oop.moneymanager.model;
 
+import java.util.Date;
+
 public class TransactionModel {
     private String transactionID;
     private String category;
@@ -7,7 +9,7 @@ public class TransactionModel {
     private String outcome;
     private String note;
     private String username;
-    private String date;
+    private Date date;
 
     public String getUsername() {
         return username;
@@ -17,7 +19,7 @@ public class TransactionModel {
         this.username = username;
     }
 
-    public TransactionModel(String transactionID, String category, String income, String outcome, String note, String username, String date) {
+    public TransactionModel(String transactionID, String category, String income, String outcome, String note, String username, Date date) {
         this.transactionID = transactionID;
         this.category = category;
         this.income = income;
@@ -29,7 +31,7 @@ public class TransactionModel {
 
     @Override
     public String toString() {
-        return String.join(" ",transactionID,category,income,outcome,note,date);
+        return String.join(" ",transactionID,category,income,outcome,note,date.toString());
     }
 
     public String getCategory() {
@@ -72,11 +74,11 @@ public class TransactionModel {
         this.note = note;
     }
 
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 }
