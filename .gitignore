@@ -1,4 +1,6 @@
-/target
+# Ignore Files
+/target/
+
 
 # Log file
 *.log
