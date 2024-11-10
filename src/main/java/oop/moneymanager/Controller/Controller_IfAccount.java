@@ -1,4 +1,4 @@
-package oop.moneymanager.Controller;
+package oop.moneymanager.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;

@@ -7,7 +7,8 @@ module oop.moneymanager {
 
     opens oop.moneymanager to javafx.fxml;
     exports oop.moneymanager;
-    exports oop.moneymanager.Controller;
-    opens oop.moneymanager.Controller to javafx.fxml;
+    
+    opens oop.moneymanager.controller to javafx.fxml;
+    exports oop.moneymanager.controller;
 
 }

@@ -6,7 +6,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane fx:id="client_parent" xmlns="http://javafx.com/javafx" fx:controller="oop.moneymanager.Controller.Controller_MainScreen"
+<BorderPane fx:id="client_parent" xmlns="http://javafx.com/javafx" fx:controller="oop.moneymanager.controller.Controller_MainScreen"
             xmlns:fx="http://javafx.com/fxml">
     <left>
         <fx:include source="MenuBar.fxml"/>

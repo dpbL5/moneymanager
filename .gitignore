@@ -1,5 +1,5 @@
-# Ignore Files
-/target/
+# Ignore Folder
+target/
 
 
 # Log file
