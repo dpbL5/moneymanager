@@ -20,7 +20,7 @@ public class UserDao implements DaoInterface<UserModel> {
             stmt.setString(2,user.getEmail());
             stmt.setString(3,user.getPassWord());
             stmt.setString(4,user.getPhone());
-            stmt.setString(5,user.getBudgets());
+            stmt.setString(5,user.getMoney());
             int row = stmt.executeUpdate();
             System.out.println("Số dữ liệu được cập nhật là: " + row);
             return row;

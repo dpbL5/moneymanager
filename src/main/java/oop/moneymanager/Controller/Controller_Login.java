@@ -7,6 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import oop.moneymanager.PreferencesHelper;
 import oop.moneymanager.service.LoginHandle;
 
 import java.io.IOException;
@@ -34,6 +35,7 @@ public class Controller_Login implements Initializable {
         try{
             String username = Username.getText().toString();
             String password = Password.getText().toString();
+
 //            String username = "bao1";
 //            String password = "12345";
             System.out.println(username + " " + password + " " + "taisao");
@@ -42,9 +44,10 @@ public class Controller_Login implements Initializable {
             alert.setHeaderText("Thông báo đăng nhập:");
             System.out.println("heloo");
         if (loginHandle.isValidLogin(username, password)) {
+            PreferencesHelper.saveLoginInfo(username, password);
             alert.setContentText("Đăng nhập thành công. Chào mừng bạn!");
             Controller_Switch switchController = new  Controller_Switch();
-            switchController.switchToSceneMain(event);
+            switchController.switchToScreenifAccount(event);
         }
         else {
             alert.setContentText("Thông tin đăng nhập không chính xác. Vui lòng kiểm tra lại và thử đăng nhập lại.");

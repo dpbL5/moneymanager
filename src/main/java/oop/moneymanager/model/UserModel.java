@@ -47,12 +47,13 @@ public class UserModel {
         this.phone = phone;
     }
 
-    public String getBudgets() {
+
+    public String getMoney() {
         return money;
     }
 
-    public void setBudgets(String budgets) {
-        this.money = budgets;
+    public void setMoney(String money) {
+        this.money = money;
     }
 
     @Override
