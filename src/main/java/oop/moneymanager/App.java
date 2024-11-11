@@ -22,7 +22,7 @@ public class App extends Application {
             primaryStage.setScene(new Scene(testEntry));
             primaryStage.show();
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
     }
     public static void main(String[] args) {
