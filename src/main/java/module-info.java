@@ -4,6 +4,7 @@ module oop.moneymanager {
     requires javafx.fxml;
     requires java.sql;
     requires java.desktop;
+    requires java.prefs;
 
     opens oop.moneymanager to javafx.fxml;
     exports oop.moneymanager;

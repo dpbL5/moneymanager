@@ -21,7 +21,10 @@ public class TestEntryController {
 
     @FXML
     protected void changeToMainScene(ActionEvent event) throws IOException {
-      Controller_Switch controllerSwitch = new Controller_Switch();
-      controllerSwitch.switchToSceneMain(event);
+//      Controller_Switch controllerSwitch = new Controller_Switch();
+//      controllerSwitch.switchToSceneMain(event);
+        Controller_Switch controllerSwitch = new Controller_Switch();
+        controllerSwitch.switchToScreenifAccount(event);
     }
+
 }
