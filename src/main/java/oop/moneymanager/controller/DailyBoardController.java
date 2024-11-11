@@ -1,4 +1,4 @@
-package oop.moneymanager.controllers;
+package oop.moneymanager.controller;
 
 public class DailyBoardController {
     

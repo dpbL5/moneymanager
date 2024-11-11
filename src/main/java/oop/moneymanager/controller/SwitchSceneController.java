@@ -1,4 +1,4 @@
-package oop.moneymanager.controllers;
+package oop.moneymanager.controller;
 
 import javafx.event.ActionEvent;
 import javafx.scene.Node;

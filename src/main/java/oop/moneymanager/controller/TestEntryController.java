@@ -1,4 +1,4 @@
-package oop.moneymanager.controllers;
+package oop.moneymanager.controller;
 
 import java.io.IOException;
 import javafx.event.ActionEvent;
