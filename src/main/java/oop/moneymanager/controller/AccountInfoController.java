@@ -42,14 +42,14 @@ public class AccountInfoController implements Initializable {
     }
 
     public Scene setScene() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/oop/moneymanager/view/User/ifAccount.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/oop/moneymanager/view/AccountInfo.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
         return scene;
     }
     public void btt_logout(ActionEvent event) throws IOException {
         SwitchSceneController controller = new SwitchSceneController();
-        controller.switchToScreenLogin(event);
+        controller.switchToLoginScreen(event);
     }
     public void btt_changepassword(ActionEvent event) throws IOException {
         showInputDialog();

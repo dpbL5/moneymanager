@@ -16,14 +16,12 @@ public class TestEntryController {
     @FXML
     protected void changeToLoginScene(ActionEvent event) throws IOException {
       SwitchSceneController controllerSwitch = new SwitchSceneController();
-      controllerSwitch.switchToScreenLogin(event);
+      controllerSwitch.switchToLoginScreen(event);
     }
 
     @FXML
     protected void changeToMainScene(ActionEvent event) throws IOException {
-//      SwitchSceneController controllerSwitch = new SwitchSceneController();
-//      controllerSwitch.switchToSceneMain(event);
-        SwitchSceneController controllerSwitch = new SwitchSceneController();
-        controllerSwitch.switchToScreenifAccount(event);
+     SwitchSceneController controllerSwitch = new SwitchSceneController();
+     controllerSwitch.switchToMainScreen(event);
     }
 }

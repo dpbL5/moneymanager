@@ -57,7 +57,7 @@ public class RegisterScreenController {
                     // neu thanh cong se ve man hinh login
                     SwitchSceneController switchController = new SwitchSceneController();
                     try {
-                        switchController.switchToScreenLogin(event);
+                        switchController.switchToLoginScreen(event);
                     } catch (IOException ex) {
                         throw new RuntimeException(ex);
                     }
@@ -78,6 +78,6 @@ public class RegisterScreenController {
 
     public void setCancel(ActionEvent event) throws IOException {
         SwitchSceneController switchController = new SwitchSceneController();
-        switchController.switchToScreenLogin(event);
+        switchController.switchToLoginScreen(event);
     }
 }

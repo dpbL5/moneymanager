@@ -13,14 +13,14 @@ public class SwitchSceneController {
     private Scene scene;
     private Parent root;
 
-    public void switchToSceneMain(ActionEvent event) throws IOException {
+    public void switchToMainScreen(ActionEvent event) throws IOException {
         MainScreenController controller = new MainScreenController();
         scene = controller.setScene();
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.setScene(scene);
         stage.show();
     }
-    public void switchToScreenLogin(ActionEvent event) throws IOException {
+    public void switchToLoginScreen(ActionEvent event) throws IOException {
         // set scene o controller
         LoginScreenController controller = new LoginScreenController();
         scene = controller.setScene();
@@ -28,14 +28,15 @@ public class SwitchSceneController {
         stage.setScene(scene);
         stage.show();
     }
-    public void switchToScreenRegister(ActionEvent event) throws IOException {
+    public void switchToRegisterScreen(ActionEvent event) throws IOException {
         RegisterScreenController controller = new RegisterScreenController();
         scene = controller.setScene();
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.setScene(scene);
         stage.show();
     }
-    public void switchToScreenifAccount(ActionEvent event) throws IOException {
+
+    public void switchToAccountInfo(ActionEvent event) throws IOException {
         AccountInfoController controller = new AccountInfoController();
         scene = controller.setScene();
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();

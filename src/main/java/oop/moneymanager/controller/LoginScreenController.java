@@ -48,7 +48,7 @@ public class LoginScreenController implements Initializable {
             alert.setContentText("Đăng nhập thành công. Chào mừng bạn!");
             
             SwitchSceneController switchController = new  SwitchSceneController();
-            switchController.switchToSceneMain(event);
+            switchController.switchToMainScreen(event);
         }
         else {
             alert.setContentText("Thông tin đăng nhập không chính xác. Vui lòng kiểm tra lại và thử đăng nhập lại.");
@@ -62,7 +62,7 @@ public class LoginScreenController implements Initializable {
     }
     public void bttregister(ActionEvent event) throws IOException {
         SwitchSceneController switchController = new  SwitchSceneController();
-        switchController.switchToScreenRegister(event);
+        switchController.switchToRegisterScreen(event);
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
