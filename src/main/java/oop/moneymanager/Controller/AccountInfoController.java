@@ -4,7 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 
-public class Controller_IfAccount {
+public class AccountInfoController {
 
     @FXML
     // Nút để thay đổi mật khẩu

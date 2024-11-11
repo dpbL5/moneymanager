@@ -8,13 +8,13 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class Controller_Switch {
+public class SwitchSceneController {
     private Stage stage;
     private Scene scene;
     private Parent root;
 
     public void switchToSceneMain(ActionEvent event) throws IOException {
-        Controller_MainScreen controller = new Controller_MainScreen();
+        MainScreenController controller = new MainScreenController();
         scene = controller.setScene();
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.setScene(scene);
@@ -22,14 +22,14 @@ public class Controller_Switch {
     }
     public void switchToScreenLogin(ActionEvent event) throws IOException {
         // set scene o controller
-        Controller_Login controller = new Controller_Login();
+        LoginScreenController controller = new LoginScreenController();
         scene = controller.setScene();
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.setScene(scene);
         stage.show();
     }
     public void switchToScreenRegister(ActionEvent event) throws IOException {
-        Controller_Register controller = new Controller_Register();
+        RegisterScreenController controller = new RegisterScreenController();
         scene = controller.setScene();
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.setScene(scene);

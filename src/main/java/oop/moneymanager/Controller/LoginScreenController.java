@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class Controller_Login implements Initializable {
+public class LoginScreenController implements Initializable {
     @FXML
     private TextField Username;
     @FXML
@@ -43,7 +43,7 @@ public class Controller_Login implements Initializable {
             System.out.println("heloo");
         if (loginHandle.isValidLogin(username, password)) {
             alert.setContentText("Đăng nhập thành công. Chào mừng bạn!");
-            Controller_Switch switchController = new  Controller_Switch();
+            SwitchSceneController switchController = new  SwitchSceneController();
             switchController.switchToSceneMain(event);
         }
         else {
@@ -57,7 +57,7 @@ public class Controller_Login implements Initializable {
         }
     }
     public void bttregister(ActionEvent event) throws IOException {
-        Controller_Switch switchController = new  Controller_Switch();
+        SwitchSceneController switchController = new  SwitchSceneController();
         switchController.switchToScreenRegister(event);
     }
     @Override
