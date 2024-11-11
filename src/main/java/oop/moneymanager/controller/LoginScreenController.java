@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class Controller_Login implements Initializable {
+public class LoginScreenController implements Initializable {
     @FXML
     private TextField Username;
     @FXML
@@ -46,8 +46,9 @@ public class Controller_Login implements Initializable {
         if (loginHandle.isValidLogin(username, password)) {
             PreferencesHelper.saveLoginInfo(username, password);
             alert.setContentText("Đăng nhập thành công. Chào mừng bạn!");
-            Controller_Switch switchController = new  Controller_Switch();
-            switchController.switchToScreenifAccount(event);
+            
+            SwitchSceneController switchController = new  SwitchSceneController();
+            switchController.switchToMainScreen(event);
         }
         else {
             alert.setContentText("Thông tin đăng nhập không chính xác. Vui lòng kiểm tra lại và thử đăng nhập lại.");
@@ -60,8 +61,8 @@ public class Controller_Login implements Initializable {
         }
     }
     public void bttregister(ActionEvent event) throws IOException {
-        Controller_Switch switchController = new  Controller_Switch();
-        switchController.switchToScreenRegister(event);
+        SwitchSceneController switchController = new  SwitchSceneController();
+        switchController.switchToRegisterScreen(event);
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

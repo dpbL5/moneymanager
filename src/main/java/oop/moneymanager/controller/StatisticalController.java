@@ -8,7 +8,7 @@ import javafx.scene.control.DatePicker;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class Statistical_Controller implements Initializable {
+public class StatisticalController implements Initializable {
 
     public PieChart sta_pie_chart;
     public ChoiceBox sta_choice_box;

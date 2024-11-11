@@ -24,9 +24,7 @@ import java.net.URL;
 import java.security.SecureRandom;
 import java.util.ResourceBundle;
 
-public class Controller_IfAccount implements Initializable {
-
-
+public class AccountInfoController implements Initializable {
     @FXML
     private Label username_field;
     @FXML
@@ -39,19 +37,19 @@ public class Controller_IfAccount implements Initializable {
 
     private UserModel user;
 
-    public Controller_IfAccount() {
+    public AccountInfoController() {
 
     }
 
     public Scene setScene() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/oop/moneymanager/view/User/ifAccount.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/oop/moneymanager/view/AccountInfo.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
         return scene;
     }
     public void btt_logout(ActionEvent event) throws IOException {
-        Controller_Switch controller = new Controller_Switch();
-        controller.switchToScreenLogin(event);
+        SwitchSceneController controller = new SwitchSceneController();
+        controller.switchToLoginScreen(event);
     }
     public void btt_changepassword(ActionEvent event) throws IOException {
         showInputDialog();

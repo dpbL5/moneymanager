@@ -7,7 +7,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="50.0" prefWidth="550.0" styleClass="l" stylesheets="@../Stylesheet/TotalCell.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="oop.moneymanager.User.Hang_ngay.Total">
+<AnchorPane prefHeight="50.0" prefWidth="550.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="oop.moneymanager.view.Total">
     <Label layoutX="10.0" layoutY="15.0" text="20-10-2024">
         <font>
             <Font size="12.0" />

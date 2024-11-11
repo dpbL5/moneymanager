@@ -6,13 +6,13 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane fx:id="client_parent" xmlns="http://javafx.com/javafx" fx:controller="oop.moneymanager.controller.Controller_MainScreen"
+<BorderPane fx:id="client_parent" xmlns="http://javafx.com/javafx" fx:controller="oop.moneymanager.controller.MainScreenController"
             xmlns:fx="http://javafx.com/fxml">
     <left>
         <fx:include source="MenuBar.fxml"/>
     </left>
     <center>
-        <fx:include source="Hang_ngay/DailyBoard.fxml"/>
+        <fx:include source="DailyBoard.fxml"/>
     </center>
 
 </BorderPane>

@@ -13,7 +13,7 @@ import javafx.scene.control.Button;
 import java.io.IOException;
 import java.sql.SQLException;
 
-public class Controller_Register {
+public class RegisterScreenController {
     @FXML
     public Button cancel_btn;
     @FXML
@@ -55,9 +55,9 @@ public class Controller_Register {
                 // set hanh dong sau khi an ok o alert
                 alert.setOnCloseRequest(e -> {
                     // neu thanh cong se ve man hinh login
-                    Controller_Switch switchController = new Controller_Switch();
+                    SwitchSceneController switchController = new SwitchSceneController();
                     try {
-                        switchController.switchToScreenLogin(event);
+                        switchController.switchToLoginScreen(event);
                     } catch (IOException ex) {
                         throw new RuntimeException(ex);
                     }
@@ -77,7 +77,7 @@ public class Controller_Register {
     }
 
     public void setCancel(ActionEvent event) throws IOException {
-        Controller_Switch switchController = new Controller_Switch();
-        switchController.switchToScreenLogin(event);
+        SwitchSceneController switchController = new SwitchSceneController();
+        switchController.switchToLoginScreen(event);
     }
 }
