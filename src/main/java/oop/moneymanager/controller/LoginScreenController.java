@@ -38,7 +38,7 @@ public class LoginScreenController implements Initializable {
 
 //            String username = "bao1";
 //            String password = "12345";
-            System.out.println(username + " " + password + " " + "taisao");
+            System.out.println(username + " " + password + " ");
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Đăng Nhập");
             alert.setHeaderText("Thông báo đăng nhập:");
