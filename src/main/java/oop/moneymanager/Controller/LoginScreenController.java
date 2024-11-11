@@ -7,6 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import oop.moneymanager.PreferencesHelper;
 import oop.moneymanager.service.LoginHandle;
 
 import java.io.IOException;
@@ -34,6 +35,7 @@ public class LoginScreenController implements Initializable {
         try{
             String username = Username.getText().toString();
             String password = Password.getText().toString();
+
 //            String username = "bao1";
 //            String password = "12345";
             System.out.println(username + " " + password + " " + "taisao");
@@ -42,7 +44,9 @@ public class LoginScreenController implements Initializable {
             alert.setHeaderText("Thông báo đăng nhập:");
             System.out.println("heloo");
         if (loginHandle.isValidLogin(username, password)) {
+            PreferencesHelper.saveLoginInfo(username, password);
             alert.setContentText("Đăng nhập thành công. Chào mừng bạn!");
+            
             SwitchSceneController switchController = new  SwitchSceneController();
             switchController.switchToSceneMain(event);
         }

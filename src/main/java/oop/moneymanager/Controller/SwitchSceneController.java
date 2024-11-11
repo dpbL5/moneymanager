@@ -35,4 +35,11 @@ public class SwitchSceneController {
         stage.setScene(scene);
         stage.show();
     }
+    public void switchToScreenifAccount(ActionEvent event) throws IOException {
+        Controller_IfAccount controller = new Controller_IfAccount();
+        scene = controller.setScene();
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+    }
 }

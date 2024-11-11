@@ -10,7 +10,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="800.0" style="-fx-border-color: FFA500;" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="oop.moneymanager.controller.AccountInfoController">
    <children>
-      <Text layoutX="132.0" layoutY="186.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Account" wrappingWidth="111.58307838439941">
+      <Text layoutX="132.0" layoutY="186.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username" wrappingWidth="111.58307838439941">
          <font>
             <Font size="23.0" />
          </font>
@@ -25,7 +25,7 @@
             <Font size="23.0" />
          </font>
       </Text>
-      <Text layoutX="133.0" layoutY="437.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Số tài khoản" wrappingWidth="149.20587158203125">
+      <Text layoutX="133.0" layoutY="437.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Số tiền" wrappingWidth="149.20587158203125">
          <font>
             <Font size="23.0" />
          </font>
@@ -35,25 +35,25 @@
             <Font size="31.0" />
          </font>
       </Text>
-      <Button fx:id="logout_Button" layoutX="139.0" layoutY="514.0" mnemonicParsing="false" onMouseClicked="#logOut" prefHeight="52.0" prefWidth="97.0" style="-fx-background-color: F2613F; -fx-border-color: #000000;" text="Đăng xuất" textFill="WHITE" />
-      <Button fx:id="change_PassWord" layoutX="368.0" layoutY="514.0" mnemonicParsing="false" onMouseClicked="#changePassword" prefHeight="52.0" prefWidth="98.0" style="-fx-background-color: F2613F; -fx-border-color: #000000;" text="Đổi mật khẩu" textFill="#ececec" />
-      <Button fx:id="danhgia" layoutX="598.0" layoutY="514.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="98.0" style="-fx-background-color: F2613F; -fx-border-color: #000000;" text="Đánh giá" textFill="WHITE" />
-      <Label layoutX="372.0" layoutY="168.0" text="VO HOANG AN" AnchorPane.leftAnchor="370.0">
+      <Button fx:id="logout_Button" layoutX="139.0" layoutY="514.0" mnemonicParsing="false" onAction="#btt_logout" prefHeight="52.0" prefWidth="97.0" style="-fx-background-color: F2613F; -fx-border-color: #000000;" text="Đăng xuất" textFill="WHITE" />
+      <Button fx:id="change_PassWord" layoutX="368.0" layoutY="514.0" mnemonicParsing="false" onAction="#btt_changepassword" prefHeight="52.0" prefWidth="98.0" style="-fx-background-color: F2613F; -fx-border-color: #000000;" text="Đổi mật khẩu" textFill="#ececec" />
+      <Button fx:id="danhgia" layoutX="598.0" layoutY="514.0" mnemonicParsing="false" onAction="#btt_adjust" prefHeight="52.0" prefWidth="98.0" style="-fx-background-color: F2613F; -fx-border-color: #000000;" text="Đánh giá" textFill="WHITE" />
+      <Label fx:id="username_field" layoutX="372.0" layoutY="168.0" AnchorPane.leftAnchor="370.0">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Label layoutX="372.0" layoutY="247.0" text="VoHoangAnPTIT@gmail.com" AnchorPane.leftAnchor="370.0">
+      <Label fx:id="email_field" layoutX="372.0" layoutY="247.0" AnchorPane.leftAnchor="370.0">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Label layoutX="372.0" layoutY="333.0" text="1234567890" AnchorPane.leftAnchor="370.0">
+      <Label fx:id="phone_field" layoutX="372.0" layoutY="333.0" AnchorPane.leftAnchor="370.0">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Label layoutX="372.0" layoutY="412.0" text="1234567890" AnchorPane.leftAnchor="370.0">
+      <Label fx:id="money_field" layoutX="372.0" layoutY="412.0" AnchorPane.leftAnchor="370.0">
          <font>
             <Font size="20.0" />
          </font>
