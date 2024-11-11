@@ -1,4 +1,4 @@
-package oop.moneymanager.controller;
+package oop.moneymanager.controllers;
 
 import javafx.fxml.Initializable;
 import javafx.scene.chart.PieChart;
