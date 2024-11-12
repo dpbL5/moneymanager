@@ -35,7 +35,7 @@ public class MainScreenNewController implements Initializable{
     
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
-        Pane pane = new MultiFxmlController().getPane("TestEntry");
+        Pane pane = new MultiFxmlController().getPane("DailyBoard");
         viewPane.getChildren().add(pane);
     }
 }
