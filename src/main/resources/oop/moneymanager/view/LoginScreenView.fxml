@@ -2,6 +2,7 @@
 
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
@@ -40,11 +41,7 @@
             <PasswordField fx:id="Password" layoutX="75.0" layoutY="187.0" promptText="Password" style="-fx-background-color: transparent; -fx-border-color: #FFA500;" />
             <FontAwesomeIconView fill="#e78300" glyphName="USER" layoutX="46.0" layoutY="144.0" size="20" text="" wrappingWidth="13.371477127075195" />
             <FontAwesomeIconView fill="#ea8503" glyphName="KEY" layoutX="43.0" layoutY="207.0" size="20" />
-            <Text fill="#e78300" layoutX="59.0" layoutY="319.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Forgot your Password ?" wrappingWidth="202.8397674560547">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Text>
+            <Hyperlink layoutX="59.0" layoutY="293.0" onAction="#setForgotPass" text="Forgot UserName/ Password?" textFill="#3339cc" />
             <Button fx:id="login" layoutX="160.0" layoutY="229.0" mnemonicParsing="false" onAction="#bttLogIn" prefHeight="35.0" prefWidth="107.0" style="-fx-background-color: #e78300;" text="Login" textFill="#f7f7f7" />
             <FontAwesomeIconView fill="#e78300" glyphName="USERS" layoutX="125.0" layoutY="52.0" size="35" wrappingWidth="13.657069206237793" />
             <Text fill="#e78300" layoutX="96.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User Login">

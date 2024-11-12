@@ -43,4 +43,11 @@ public class SwitchSceneController {
         stage.setScene(scene);
         stage.show();
     }
+    public void switchToForgotpassword(ActionEvent event) throws IOException {
+        ForgotPassController controller = new ForgotPassController();
+        scene = controller.setScene();
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+    }
 }

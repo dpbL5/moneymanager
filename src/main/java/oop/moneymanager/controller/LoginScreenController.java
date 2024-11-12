@@ -64,6 +64,10 @@ public class LoginScreenController implements Initializable {
         SwitchSceneController switchController = new  SwitchSceneController();
         switchController.switchToRegisterScreen(event);
     }
+    public void setForgotPass(ActionEvent event) throws IOException {
+        SwitchSceneController switchController = new  SwitchSceneController();
+        switchController.switchToForgotpassword(event);
+    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
        try {

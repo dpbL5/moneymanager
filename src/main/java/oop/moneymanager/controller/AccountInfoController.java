@@ -8,10 +8,7 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.Dialog;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -85,21 +82,32 @@ public class AccountInfoController implements Initializable {
         dialog.getDialogPane().getButtonTypes().addAll(confirmButtonType, ButtonType.CLOSE);
 
         // Nút "Xác nhận" xử lý sự kiện
-        dialog.getDialogPane().lookupButton(confirmButtonType).setOnMouseEntered(event -> {
+        dialog.getDialogPane().lookupButton(confirmButtonType).setOnMousePressed(event -> {
             String username = usernameField.getText();
             String email = emailField.getText();
             String password = passwordText.getText();
             if (!username.isEmpty() && username.equals(this.user.getUserName()) && !email.isEmpty() && email.equals(this.user.getEmail()) && !password.isEmpty()) {
-                newpasswordLabel.setText("mật khẩu mới đượn tạo là: " + password);
+                newpasswordLabel.setText( password);
                 user.setPassWord(password);
                 int row = UserDao.getInstance().update(this.user);
+                if(row > 0)
+                {
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setHeaderText("Đổi mật khẩu thành công");
+                    alert.setContentText("Mật khẩu mới của bạn là: " + newpasswordLabel.getText());
+                    alert.show();
+                }
             } else {
-                newpasswordLabel.setText("Vui lòng nhập đủ thông tin!");
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setHeaderText("Thông báo ");
+                alert.setContentText("Đổi mật khẩu thất bại, vui lòng xem lại thông tin");
+                alert.show();
+
             }
         });
 
         // Thêm các phần tử vào VBox
-        dialogContent.getChildren().addAll(usernameField, emailField, passwordText,newpasswordLabel);
+        dialogContent.getChildren().addAll(usernameField, emailField, passwordText);
 
         // Đặt VBox vào Dialog
         dialog.getDialogPane().setContent(dialogContent);
