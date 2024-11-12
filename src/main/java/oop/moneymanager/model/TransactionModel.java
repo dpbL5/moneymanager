@@ -1,37 +1,59 @@
 package oop.moneymanager.model;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 public class TransactionModel {
-    private String transactionID;
+
+    enum TransactionType {
+        INCOME, OUTCOME, TRANSFER
+    }
+
+    private String id;
+    private Integer accountId;
+    private LocalDateTime transactionDateTime;
+    private TransactionType type;
+    private Long amount;
     private String category;
-    private String income;
-    private String outcome;
     private String note;
-    private String username;
-    private Date date;
-
-    public String getUsername() {
-        return username;
+    
+    public String getId() {
+        return id;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public TransactionModel(String transactionID, String category, String income, String outcome, String note, String username, Date date) {
-        this.transactionID = transactionID;
-        this.category = category;
-        this.income = income;
-        this.outcome = outcome;
-        this.note = note;
-        this.username = username;
-        this.date = date;
+    public Integer getAccountId() {
+        return accountId;
     }
 
-    @Override
-    public String toString() {
-        return String.join(" ",transactionID,category,income,outcome,note,date.toString());
+    public void setAccountId(Integer accountId) {
+        this.accountId = accountId;
+    }
+
+    public LocalDateTime getTransactionDateTime() {
+        return transactionDateTime;
+    }
+
+    public void setTransactionDateTime(LocalDateTime transactionDateTime) {
+        this.transactionDateTime = transactionDateTime;
+    }
+
+    public TransactionType getType() {
+        return type;
+    }
+
+    public void setType(TransactionType type) {
+        this.type = type;
+    }
+
+    public Long getAmount() {
+        return amount;
+    }
+
+    public void setAmount(Long amount) {
+        this.amount = amount;
     }
 
     public String getCategory() {
@@ -42,30 +64,6 @@ public class TransactionModel {
         this.category = category;
     }
 
-    public String getTransactionID() {
-        return transactionID;
-    }
-
-    public void setTransactionID(String transactionID) {
-        this.transactionID = transactionID;
-    }
-
-    public String getIncome() {
-        return income;
-    }
-
-    public void setIncome(String income) {
-        this.income = income;
-    }
-
-    public String getOutcome() {
-        return outcome;
-    }
-
-    public void setOutcome(String outcome) {
-        this.outcome = outcome;
-    }
-
     public String getNote() {
         return note;
     }
@@ -74,12 +72,13 @@ public class TransactionModel {
         this.note = note;
     }
 
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
+    public TransactionModel(String id, Integer accountId, LocalDateTime transactionDateTime, TransactionType type, Long amount, String category, String note) {
+        this.id = id;
+        this.accountId = accountId;
+        this.transactionDateTime = transactionDateTime;
+        this.type = type;
+        this.amount = amount;
+        this.category = category;
+        this.note = note;
     }
 }
-

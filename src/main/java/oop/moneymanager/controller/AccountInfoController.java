@@ -58,7 +58,6 @@ public class AccountInfoController implements Initializable {
 
     }
 
-
     // Hàm hiển thị Dialog cho phép nhập username và email
     private void showInputDialog() {
         Dialog<Void> dialog = new Dialog<>();
