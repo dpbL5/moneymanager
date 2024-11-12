@@ -25,19 +25,14 @@
             <Font size="23.0" />
          </font>
       </Text>
-      <Text layoutX="133.0" layoutY="437.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Số tiền" wrappingWidth="149.20587158203125">
+      <Button fx:id="change_PassWord" layoutX="109.0" layoutY="514.0" mnemonicParsing="false" onAction="#btt_changepassword" prefHeight="52.0" prefWidth="251.0" style="-fx-background-color: #e78300; -fx-border-color: #000000;" text="Đổi mật khẩu" textFill="WHITE">
          <font>
-            <Font size="23.0" />
-         </font>
-      </Text>
-      <Text layoutX="86.0" layoutY="111.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Thông tin cá nhân" wrappingWidth="301.67340087890625">
+            <Font size="18.0" />
+         </font></Button>
+      <Button fx:id="danhgia" layoutX="439.0" layoutY="514.0" mnemonicParsing="false" onAction="#btt_adjust" prefHeight="52.0" prefWidth="251.0" style="-fx-background-color: #e78300; -fx-border-color: #000000;" text="Đánh giá" textFill="WHITE">
          <font>
-            <Font size="31.0" />
-         </font>
-      </Text>
-      <Button fx:id="logout_Button" layoutX="139.0" layoutY="514.0" mnemonicParsing="false" onAction="#btt_logout" prefHeight="52.0" prefWidth="97.0" style="-fx-background-color: F2613F; -fx-border-color: #000000;" text="Đăng xuất" textFill="WHITE" />
-      <Button fx:id="change_PassWord" layoutX="368.0" layoutY="514.0" mnemonicParsing="false" onAction="#btt_changepassword" prefHeight="52.0" prefWidth="98.0" style="-fx-background-color: F2613F; -fx-border-color: #000000;" text="Đổi mật khẩu" textFill="#ececec" />
-      <Button fx:id="danhgia" layoutX="598.0" layoutY="514.0" mnemonicParsing="false" onAction="#btt_adjust" prefHeight="52.0" prefWidth="98.0" style="-fx-background-color: F2613F; -fx-border-color: #000000;" text="Đánh giá" textFill="WHITE" />
+            <Font size="18.0" />
+         </font></Button>
       <Label fx:id="username_field" layoutX="372.0" layoutY="168.0" AnchorPane.leftAnchor="370.0">
          <font>
             <Font size="20.0" />
@@ -61,7 +56,21 @@
       <FontAwesomeIconView glyphName="USER" layoutX="91.0" layoutY="185.0" size="25" />
       <FontAwesomeIconView glyphName="ENVELOPE" layoutX="87.0" layoutY="264.0" size="25" />
       <FontAwesomeIconView glyphName="PHONE" layoutX="90.0" layoutY="351.0" size="25" text="" />
-      <FontAwesomeIconView glyphName="BANK" layoutX="85.0" layoutY="436.0" size="25" />
       <TextField />
+      <AnchorPane layoutX="1.0" prefHeight="118.0" prefWidth="800.0" style="-fx-background-color: #e78300;">
+         <children>
+            <Text fill="WHITE" layoutX="47.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Thông tin cá nhân" wrappingWidth="301.67340087890625">
+               <font>
+                  <Font size="31.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+      <FontAwesomeIconView glyphName="BANK" layoutX="86.0" layoutY="436.0" size="25" />
+      <Text layoutX="133.0" layoutY="436.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Số tài khoản">
+         <font>
+            <Font size="23.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>
