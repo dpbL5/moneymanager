@@ -3,6 +3,7 @@ package oop.moneymanager.dao;
 import oop.moneymanager.model.TransactionModel;
 
 import java.sql.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class TransactionDao implements DaoInterface<TransactionModel> {
@@ -18,8 +19,8 @@ public class TransactionDao implements DaoInterface<TransactionModel> {
         PreparedStatement stmt = con.prepareStatement(url)) {
             stmt.setString(1,transaction.getTransactionID());
             stmt.setString(2,transaction.getCategory());
-            stmt.setString(3,transaction.getIncome());
-            stmt.setString(4,transaction.getOutcome());
+            stmt.setDouble(3,transaction.getIncome());
+            stmt.setDouble(4,transaction.getOutcome());
             stmt.setString(5,transaction.getNote());
             stmt.setString(6,transaction.getUsername());
             stmt.setDate(6, (Date) transaction.getDate());
@@ -49,7 +50,7 @@ public class TransactionDao implements DaoInterface<TransactionModel> {
         PreparedStatement stmt = con.prepareStatement(url)){
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
-                TransactionModel x = new TransactionModel(rs.getString("tran_id"),rs.getString("category"),rs.getString("income"),rs.getString("outcome"),
+                TransactionModel x = new TransactionModel(rs.getString("tran_id"),rs.getString("category"),rs.getDouble("income"),rs.getDouble("outcome"),
                         rs.getString("note"),rs.getString("username"),rs.getDate("date")
                         );
                 transactions.add(x);
@@ -70,7 +71,7 @@ public class TransactionDao implements DaoInterface<TransactionModel> {
             stmt.setString(1,condition);
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
-                TransactionModel x = new TransactionModel(rs.getString("tran_id"),rs.getString("category"),rs.getString("income"),rs.getString("outcome"),
+                TransactionModel x = new TransactionModel(rs.getString("tran_id"),rs.getString("category"),rs.getDouble("income"),rs.getDouble("outcome"),
                         rs.getString("note"),rs.getString("username"),rs.getDate("date")
                 );
                 transactions.add(x);
@@ -89,4 +90,24 @@ public class TransactionDao implements DaoInterface<TransactionModel> {
     }
 
 
+    public ArrayList<TransactionModel> getTransactionsByUsernameAndDateRange(String username, LocalDate startDate, LocalDate endDate) {
+        ArrayList<TransactionModel> transactions = new ArrayList<>();
+        String query = "SELECT category, income, outcome FROM transaction WHERE username = ? AND transaction_date >= ? AND transaction_date <= ?";
+        try (   Connection con = JDBCUtil.getConnection();
+                PreparedStatement stmt = con.prepareStatement(query)) {
+            stmt.setString(1, username);
+            stmt.setDate(2, Date.valueOf(startDate));
+            stmt.setDate(3, Date.valueOf(endDate));
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                String category = rs.getString("category");
+                double income = rs.getDouble("income");
+                double outcome = rs.getDouble("outcome");
+                transactions.add(new TransactionModel(category, income, outcome));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return transactions;
+    }
 }

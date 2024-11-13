@@ -5,8 +5,8 @@ import java.util.Date;
 public class TransactionModel {
     private String transactionID;
     private String category;
-    private String income;
-    private String outcome;
+    private double income;
+    private double outcome;
     private String note;
     private String username;
     private Date date;
@@ -19,7 +19,7 @@ public class TransactionModel {
         this.username = username;
     }
 
-    public TransactionModel(String transactionID, String category, String income, String outcome, String note, String username, Date date) {
+    public TransactionModel(String transactionID, String category, double income, double outcome, String note, String username, Date date) {
         this.transactionID = transactionID;
         this.category = category;
         this.income = income;
@@ -28,10 +28,15 @@ public class TransactionModel {
         this.username = username;
         this.date = date;
     }
+    public TransactionModel(String category, double income, double outcome) {
+        this.category = category;
+        this.income = income;
+        this.outcome = outcome;
+    }
 
     @Override
     public String toString() {
-        return String.join(" ",transactionID,category,income,outcome,note,date.toString());
+        return transactionID + " " + category + " " + income + " " + outcome + " " + note + " " + date.toString();
     }
 
     public String getCategory() {
@@ -50,19 +55,19 @@ public class TransactionModel {
         this.transactionID = transactionID;
     }
 
-    public String getIncome() {
+    public double getIncome() {
         return income;
     }
 
-    public void setIncome(String income) {
+    public void setIncome(double income) {
         this.income = income;
     }
 
-    public String getOutcome() {
+    public double getOutcome() {
         return outcome;
     }
 
-    public void setOutcome(String outcome) {
+    public void setOutcome(double outcome) {
         this.outcome = outcome;
     }
 
