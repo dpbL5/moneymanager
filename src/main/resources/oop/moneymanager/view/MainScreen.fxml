@@ -12,7 +12,7 @@
         <fx:include source="MenuBar.fxml"/>
     </left>
     <center>
-        <fx:include source="DailyBoard.fxml"/>
+        <fx:include source="Statistical.fxml"/>
     </center>
 
 </BorderPane>
