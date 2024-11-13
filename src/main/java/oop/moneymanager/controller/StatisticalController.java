@@ -89,7 +89,7 @@ public class StatisticalController implements Initializable {
         } else {
             // Xóa thông báo và tải dữ liệu
             messageLabel.setText("");
-            String username = userModel.getUserName();
+            String username = "bao2";
             ArrayList<TransactionModel> transactions = transactionDao.getTransactionsByUsernameAndDateRange(username, startDate, endDate);
 
             // Xóa dữ liệu cũ trong PieChart
