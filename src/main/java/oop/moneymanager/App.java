@@ -18,7 +18,7 @@ public class App extends Application {
         try {
             // Directing Scene
             Parent testEntry = FXMLLoader.load(getClass().getResource("/oop/moneymanager/view/MainScreenNew.fxml"));
-            primaryStage.setResizable(false);
+            primaryStage.setTitle("test");
             primaryStage.setScene(new Scene(testEntry));
             primaryStage.show();
         } catch (Exception e) {
