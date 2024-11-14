@@ -6,14 +6,14 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="65.0" prefWidth="650.0" stylesheets="@../Stylesheet/TransactionCell.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="oop.moneymanager.view.TransactionCell">
+<AnchorPane prefHeight="65.0" prefWidth="750.0" stylesheets="@../css/TransactionCell.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="oop.moneymanager.view.TransactionCell">
    <children>
       <Label layoutX="29.0" layoutY="23.0" text="20-10-2024" />
       <Label layoutX="142.0" layoutY="23.0" text="Ăn uống">
          <graphic>
             <ImageView fitHeight="18.0" fitWidth="15.0">
                <image>
-                  <Image url="@../../../images/eat_icon.png" />
+                  <Image url="@../images/eat_icon.png" />
                </image>
             </ImageView>
          </graphic>

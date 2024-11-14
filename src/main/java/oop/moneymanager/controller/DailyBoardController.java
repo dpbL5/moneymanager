@@ -7,7 +7,7 @@ import oop.moneymanager.model.TransactionModel;
 public class DailyBoardController {
 
     @FXML
-    private ListView<?> transListView;
+    private ListView<TransactionCellController> transListView;
 
     
 

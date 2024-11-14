@@ -11,53 +11,53 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="oop.moneymanager.controller.MainScreenNewController">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="oop.moneymanager.controller.MainScreenNewController">
    <children>
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
-            <VBox prefHeight="200.0" prefWidth="300.0" spacing="67.0" style="-fx-background-color: FEF3E2;">
+            <VBox fillWidth="false" prefWidth="200.0" spacing="50.0" style="-fx-background-color: FEF3E2;">
                <children>
-                  <AnchorPane prefHeight="172.0" prefWidth="202.0">
+                  <AnchorPane prefHeight="180.0" prefWidth="180.0">
                      <children>
-                        <FontAwesomeIconView fill="#e78300" glyphName="USER" layoutX="83.0" layoutY="57.0" size="50" text="" />
-                        <Label layoutX="61.0" layoutY="82.0" text="Welcome">
+                        <FontAwesomeIconView fill="#e78300" glyphName="USER" layoutX="72.0" layoutY="57.0" size="50" text="" />
+                        <Label alignment="CENTER" layoutY="70.0" prefHeight="30.0" prefWidth="180.0" text="Welcome" textAlignment="CENTER">
                            <font>
                               <Font name="Franklin Gothic Heavy" size="20.0" />
                            </font>
                         </Label>
-                        <Label layoutX="53.0" layoutY="116.0" text="Võ Hoàng An">
+                        <Label alignment="CENTER" layoutY="100.0" prefWidth="180.0" text="Võ Hoàng An">
                            <font>
                               <Font size="16.0" />
                            </font>
                         </Label>
                      </children>
                   </AnchorPane>
-                  <Button mnemonicParsing="false" onAction="#onDailyBoardButtonClicked" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #e78300; -fx-border-color: black;" text="Hàng ngày" textFill="WHITE">
+                  <Button mnemonicParsing="false" onAction="#onDailyBoardButtonClicked" prefHeight="50.0" prefWidth="180.0" style="-fx-background-color: #e78300; -fx-border-color: black;" text="Hàng ngày" textFill="WHITE">
                      <font>
-                        <Font size="18.0" />
+                        <Font size="16.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" onAction="#onStatisticalButtonClicked" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #e78300; -fx-border-color: black;" text="Thống kê" textFill="WHITE">
+                  <Button mnemonicParsing="false" onAction="#onStatisticalButtonClicked" prefHeight="50.0" prefWidth="180.0" style="-fx-background-color: #e78300; -fx-border-color: black;" text="Thống kê" textFill="WHITE">
                      <font>
-                        <Font size="18.0" />
+                        <Font size="16.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" onAction="#onAccountInfoButtonClicked" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #e78300; -fx-border-color: black;" text="Thông tin tài khoản" textFill="WHITE">
+                  <Button mnemonicParsing="false" onAction="#onAccountInfoButtonClicked" prefHeight="50.0" prefWidth="180.0" style="-fx-background-color: #e78300; -fx-border-color: black;" text="Thông tin tài khoản" textFill="WHITE">
                      <font>
-                        <Font size="18.0" />
+                        <Font size="16.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" style="-fx-background-color: #e78300; -fx-border-color: black;" text="Đăng xuất" textFill="WHITE">
+                  <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="180.0" style="-fx-background-color: #e78300; -fx-border-color: black;" text="Đăng xuất" textFill="WHITE">
                      <font>
-                        <Font size="18.0" />
+                        <Font size="16.0" />
                      </font>
                   </Button>
                </children>
                <padding>
-                  <Insets left="50.0" right="50.0" top="60.0" />
+                  <Insets left="10.0" />
                </padding>
             </VBox>
-            <Pane fx:id="viewPane" prefHeight="800.0" prefWidth="900.0" style="-fx-background-color: DCE4C9;" />
+            <Pane fx:id="viewPane" prefHeight="700.0" prefWidth="800.0" style="-fx-background-color: DCE4C9;" />
          </children>
       </HBox>
    </children>
