@@ -11,13 +11,14 @@ oop\moneymanager\controller\MainScreenNewController.class
 oop\moneymanager\controller\MultiFxmlController.class
 oop\moneymanager\controller\AccountInfoController.class
 oop\moneymanager\controller\RegisterScreenController.class
+oop\moneymanager\controller\TransactionCellController.class
 oop\moneymanager\PreferencesHelper.class
 oop\moneymanager\dao\JDBCUtil.class
 oop\moneymanager\controller\LoginScreenController.class
 oop\moneymanager\App.class
 oop\moneymanager\controller\StatisticalController.class
 oop\moneymanager\controller\SwitchSceneController.class
+oop\moneymanager\controller\ForgotPassController.class
 oop\moneymanager\controller\DailyBoardController.class
 oop\moneymanager\service\LoginHandle.class
 oop\moneymanager\service\ExportFileHandle.class
-oop\moneymanager\controller\TestEntryController.class

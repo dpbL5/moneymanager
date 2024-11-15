@@ -22,6 +22,6 @@
          </ImageView>
       </graphic>
    </Button>
-   <ListView layoutX="25.0" layoutY="222.0" prefHeight="560.0" prefWidth="750.0" style="-fx-border-color: black; -fx-border-width: 1px;" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0" />
+   <ListView fx:id="transListView" layoutX="25.0" layoutY="222.0" prefHeight="560.0" prefWidth="750.0" style="-fx-border-color: black; -fx-border-width: 1px;" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0" />
    <ChoiceBox layoutX="25.0" layoutY="69.0" prefHeight="33.0" prefWidth="150.0" />
 </AnchorPane>

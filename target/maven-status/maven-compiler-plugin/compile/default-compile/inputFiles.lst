@@ -8,15 +8,16 @@ D:\moneymanager\src\main\java\oop\moneymanager\model\UserModel.java
 D:\moneymanager\src\main\java\oop\moneymanager\controller\AddTransactionScreenController.java
 D:\moneymanager\src\main\java\oop\moneymanager\PreferencesHelper.java
 D:\moneymanager\src\main\java\oop\moneymanager\service\LoginHandle.java
+D:\moneymanager\src\main\java\oop\moneymanager\controller\TransactionCellController.java
 D:\moneymanager\src\main\java\oop\moneymanager\controller\StatisticalController.java
 D:\moneymanager\src\main\java\oop\moneymanager\controller\AccountInfoController.java
 D:\moneymanager\src\main\java\oop\moneymanager\controller\RegisterScreenController.java
 D:\moneymanager\src\main\java\oop\moneymanager\service\RegisterHandle.java
 D:\moneymanager\src\main\java\oop\moneymanager\controller\MainScreenNewController.java
-D:\moneymanager\src\main\java\oop\moneymanager\controller\TestEntryController.java
 D:\moneymanager\src\main\java\oop\moneymanager\dao\JDBCUtil.java
 D:\moneymanager\src\main\java\oop\moneymanager\dao\UserDao.java
 D:\moneymanager\src\main\java\oop\moneymanager\model\TransactionModel.java
 D:\moneymanager\src\main\java\oop\moneymanager\controller\LoginScreenController.java
 D:\moneymanager\src\main\java\oop\moneymanager\controller\MultiFxmlController.java
+D:\moneymanager\src\main\java\oop\moneymanager\controller\ForgotPassController.java
 D:\moneymanager\src\main\java\module-info.java

@@ -4,17 +4,26 @@ import java.time.LocalDateTime;
 
 public class TransactionModel {
 
-    enum TransactionType {
+    public enum TransactionType {
         INCOME, OUTCOME, TRANSFER
     }
 
     private String id;
-    private Integer accountId;
+    private String username;
     private LocalDateTime transactionDateTime;
     private TransactionType type;
     private Long amount;
     private String category;
+    private String fromAccount;
     private String note;
+
+    public String getFromAccount() {
+        return fromAccount;
+    }
+
+    public void setFromAccount(String fromAccount) {
+        this.fromAccount = fromAccount;
+    }
     
     public String getId() {
         return id;
@@ -24,12 +33,8 @@ public class TransactionModel {
         this.id = id;
     }
 
-    public Integer getAccountId() {
-        return accountId;
-    }
-
-    public void setAccountId(Integer accountId) {
-        this.accountId = accountId;
+    public String getUsername() {
+        return username;
     }
 
     public LocalDateTime getTransactionDateTime() {
@@ -72,13 +77,25 @@ public class TransactionModel {
         this.note = note;
     }
 
-    public TransactionModel(String id, Integer accountId, LocalDateTime transactionDateTime, TransactionType type, Long amount, String category, String note) {
+    public TransactionModel(
+        String id, String username, LocalDateTime transactionDateTime, TransactionType type, Long amount, String category, String note, String fromAccount) {
         this.id = id;
-        this.accountId = accountId;
+        this.username = username;
         this.transactionDateTime = transactionDateTime;
         this.type = type;
         this.amount = amount;
         this.category = category;
         this.note = note;
+        this.fromAccount = fromAccount;
+    }
+
+    public TransactionModel() {
+        // blank constructor
+    }
+
+    @Override
+    public String toString() {
+        return String.join(" ",
+         id, username, transactionDateTime.toString(), type.toString(), amount.toString(), category, fromAccount , note);
     }
 }

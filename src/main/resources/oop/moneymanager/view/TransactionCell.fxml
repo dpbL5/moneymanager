@@ -2,27 +2,59 @@
 
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="65.0" prefWidth="750.0" stylesheets="@../css/TransactionCell.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="oop.moneymanager.view.TransactionCell">
+<GridPane fx:id="gridPane" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
+   <columnConstraints>
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+   </rowConstraints>
    <children>
-      <Label layoutX="29.0" layoutY="23.0" text="20-10-2024" />
-      <Label layoutX="142.0" layoutY="23.0" text="Ăn uống">
-         <graphic>
-            <ImageView fitHeight="18.0" fitWidth="15.0">
-               <image>
-                  <Image url="@../images/eat_icon.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Label>
-      <Label layoutX="325.0" layoutY="23.0" text="Tài khoản ngân hàng" />
-      <Label layoutX="542.0" layoutY="23.0" text="2000000">
-         <graphic>
-            <FontAwesomeIconView glyphName="DOLLAR" />
-         </graphic>
-      </Label>
+      <AnchorPane fx:id="anchorPane" prefHeight="65.0" prefWidth="700.0" stylesheets="@../css/TransactionCell.css">
+         <children>
+            <Label fx:id="timeLabel" layoutX="20.0" layoutY="23.0" text="time">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="dateLabel" layoutX="80.0" layoutY="23.0" text="date">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="categoryLabel" layoutX="220.0" layoutY="10.0" prefWidth="300.0" text="Category">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="noteLabel" layoutX="200.0" layoutY="33.0" prefWidth="320.0" text="note here">
+               <font>
+                  <Font name="System Italic" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="amountLabel" alignment="CENTER_RIGHT" layoutX="560.0" layoutY="10.0" prefHeight="20.0" prefWidth="120.0" text="10.000.000">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="680.0" layoutY="10.0" text="đ">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <FontAwesomeIconView glyphName="VENUS" layoutX="200.0" layoutY="25.0" text="" />
+            <Label fx:id="fromAccount" alignment="CENTER_RIGHT" layoutX="560.0" layoutY="33.0" prefWidth="120.0" text="fromAccount">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
    </children>
-</AnchorPane>
+</GridPane>
