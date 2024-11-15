@@ -121,7 +121,6 @@ public class AccountInfoController implements Initializable {
         username_field.setText(user.getUserName());
         email_field.setText(user.getEmail());
         phone_field.setText(user.getPhone());
-        money_field.setText(user.getMoney());
     }
 
 }

@@ -5,14 +5,12 @@ public class UserModel {
     private String email;
     private String passWord;
     private String phone;
-    private String money;
 
-    public UserModel( String userName, String email, String passWord, String phone, String budgets) {
+    public UserModel( String userName, String email, String passWord, String phone) {
         this.name = userName;
         this.email = email;
         this.passWord = passWord;
         this.phone = phone;
-        this.money = budgets;
 
     }
     public String getUserName() {
@@ -47,17 +45,8 @@ public class UserModel {
         this.phone = phone;
     }
 
-
-    public String getMoney() {
-        return money;
-    }
-
-    public void setMoney(String money) {
-        this.money = money;
-    }
-
     @Override
     public String toString() {
-        return String.join(" ",name,email, passWord, phone, String.valueOf(money));
+        return String.join(" ",name,email, passWord, phone);
     }
 }

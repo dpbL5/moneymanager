@@ -41,10 +41,6 @@ public class RegisterScreenController {
             String passwordText = re_password_fld.getText().toString();
             String confirmPasswordText = re_confirm_fld.getText().toString();
             System.out.println(usernameText + " " + emailText + " " + passwordText + " " + confirmPasswordText);
-//            String usernameText = "bao5";
-//            String emailText = "bao5@gmail.com";
-//            String passwordText = "123456";
-//            String confirmPasswordText = "123456";
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Register");
             alert.setHeight(250);
@@ -63,7 +59,8 @@ public class RegisterScreenController {
                     }
                 });
             } else if (isRegister == 0) {
-                alert.setContentText("Đăng kí thất bại, vui lòng kiểm tra lại thông tin\nLưu ý: User Name không có kí tự đặc biệt");
+                alert.setContentText("Đăng kí thất bại, vui lòng kiểm tra lại thông tin\nLưu ý: User Name không có kí tự đặc biệt\n" +
+                        "và viết liền không dấu");
             } else if (isRegister == 2) {
                 alert.setContentText("username hoặc email đã được sử dụng để tạo tài khoản vui lòng nhập username và email khác " +
                         "\nNếu bạn đã có tài khoản nhưng không nhớ mật khẩu hãy chuyển sang màn hình loing và chọn tính năng Forgot password");
