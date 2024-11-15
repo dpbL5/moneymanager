@@ -16,13 +16,12 @@ public class UserDao implements DaoInterface<UserModel> {
     }
     @Override
     public int insert(UserModel user) throws SQLException {
-        String url = "INSERT INTO user (name,email, password,phone,money)VALUES( ?, ?, ?,?,?)";
+        String url = "INSERT INTO user (name,email, password,phone)VALUES( ?, ?, ?,?)";
         try (Connection con = JDBCUtil.getConnection(); PreparedStatement stmt = con.prepareStatement(url)) {
             stmt.setString(1,user.getUserName());
             stmt.setString(2,user.getEmail());
             stmt.setString(3,user.getPassWord());
             stmt.setString(4,user.getPhone());
-            stmt.setString(5,user.getMoney());
             int row = stmt.executeUpdate();
             System.out.println("Số dữ liệu được cập nhật là: " + row);
             return row;
@@ -72,7 +71,7 @@ public class UserDao implements DaoInterface<UserModel> {
             ResultSet rs = stmt.executeQuery();
             while(rs.next()){
                 UserModel x = new UserModel(rs.getString("name"),rs.getString("email"),
-                        rs.getString("password"),rs.getString("phone"),rs.getString("money"));
+                        rs.getString("password"),rs.getString("phone"));
                 users.add(x);
             }
         } catch (SQLException e) {
@@ -100,7 +99,7 @@ public class UserDao implements DaoInterface<UserModel> {
             ResultSet rs = stmt.executeQuery();
             while(rs.next()){
                 user = new UserModel(rs.getString("name"),rs.getString("email"),
-                        rs.getString("password"),rs.getString("phone"),rs.getString("money"));
+                        rs.getString("password"),rs.getString("phone"));
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -120,7 +119,7 @@ public class UserDao implements DaoInterface<UserModel> {
 
             while(rs.next()){
             user = new UserModel(rs.getString("name"),rs.getString("email"),
-            rs.getString("password"),rs.getString("phone"),rs.getString("money"));
+            rs.getString("password"),rs.getString("phone"));
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
