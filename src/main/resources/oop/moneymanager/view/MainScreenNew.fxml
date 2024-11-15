@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="oop.moneymanager.controller.MainScreenNewController">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="oop.moneymanager.controller.MainScreenNewController">
    <children>
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
@@ -32,22 +32,22 @@
                         </Label>
                      </children>
                   </AnchorPane>
-                  <Button mnemonicParsing="false" onAction="#onDailyBoardButtonClicked" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #e78300; -fx-border-color: black;" text="Hàng ngày" textFill="WHITE">
+                  <Button mnemonicParsing="false" onAction="#onDailyBoardButtonClicked" prefHeight="38.0" prefWidth="219.0" style="-fx-background-color: #e78300; -fx-border-color: black;" text="Hàng ngày" textFill="WHITE">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" onAction="#onStatisticalButtonClicked" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #e78300; -fx-border-color: black;" text="Thống kê" textFill="WHITE">
+                  <Button mnemonicParsing="false" onAction="#onStatisticalButtonClicked" prefHeight="8.0" prefWidth="202.0" style="-fx-background-color: #e78300; -fx-border-color: black;" text="Thống kê" textFill="WHITE">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" onAction="#onAccountInfoButtonClicked" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #e78300; -fx-border-color: black;" text="Thông tin tài khoản" textFill="WHITE">
+                  <Button mnemonicParsing="false" onAction="#onAccountInfoButtonClicked" prefHeight="7.0" prefWidth="210.0" style="-fx-background-color: #e78300; -fx-border-color: black;" text="Thông tin tài khoản" textFill="WHITE">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" style="-fx-background-color: #e78300; -fx-border-color: black;" text="Đăng xuất" textFill="WHITE">
+                  <Button mnemonicParsing="false" prefHeight="24.0" prefWidth="200.0" style="-fx-background-color: #e78300; -fx-border-color: black;" text="Đăng xuất" textFill="WHITE">
                      <font>
                         <Font size="18.0" />
                      </font>
