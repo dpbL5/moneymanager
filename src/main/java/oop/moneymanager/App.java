@@ -17,9 +17,10 @@ public class App extends Application {
     public void start(Stage primaryStage) throws IOException {
         try {
             // Directing Scene
-            Parent testEntry = FXMLLoader.load(getClass().getResource("/oop/moneymanager/view/MainScreenNew.fxml"));
-            primaryStage.setTitle("test");
-            primaryStage.setScene(new Scene(testEntry));
+            Parent root = FXMLLoader.load(getClass().getResource("/oop/moneymanager/view/MainScreenNew.fxml"));
+            primaryStage.setResizable(false);
+            primaryStage.setTitle("Money Manager");
+            primaryStage.setScene(new Scene(root));
             primaryStage.show();
         } catch (Exception e) {
             System.out.println(e.getMessage());

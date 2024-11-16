@@ -1,43 +1,64 @@
 package oop.moneymanager.model;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 public class TransactionModel {
-    private String transactionID;
-    private String category;
-    private double income;
-    private double outcome;
-    private String note;
+
+    public enum TransactionType {
+        INCOME, OUTCOME, TRANSFER
+    }
+
+    private String id;
     private String username;
-    private Date date;
+    private LocalDateTime transactionDateTime;
+    private TransactionType type;
+    private Long amount;
+    private String category;
+    private String fromAccount;
+    private String note;
+
+    public String getFromAccount() {
+        return fromAccount;
+    }
+
+    public void setFromAccount(String fromAccount) {
+        this.fromAccount = fromAccount;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getUsername() {
         return username;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public LocalDateTime getTransactionDateTime() {
+        return transactionDateTime;
     }
 
-    public TransactionModel(String transactionID, String category, double income, double outcome, String note, String username, Date date) {
-        this.transactionID = transactionID;
-        this.category = category;
-        this.income = income;
-        this.outcome = outcome;
-        this.note = note;
-        this.username = username;
-        this.date = date;
+    public void setTransactionDateTime(LocalDateTime transactionDateTime) {
+        this.transactionDateTime = transactionDateTime;
     }
 
-    public TransactionModel(String category, double income,double outcome) {
-        this.category = category;
-        this.income = income;
-        this.outcome = outcome;
+    public TransactionType getType() {
+        return type;
     }
 
-    @Override
-    public String toString() {
-        return transactionID + " " + category + " " + income + " " + outcome + " " + note + " " + date.toString();
+    public void setType(TransactionType type) {
+        this.type = type;
+    }
+
+    public Long getAmount() {
+        return amount;
+    }
+
+    public void setAmount(Long amount) {
+        this.amount = amount;
     }
 
     public String getCategory() {
@@ -48,30 +69,6 @@ public class TransactionModel {
         this.category = category;
     }
 
-    public String getTransactionID() {
-        return transactionID;
-    }
-
-    public void setTransactionID(String transactionID) {
-        this.transactionID = transactionID;
-    }
-
-    public double getIncome() {
-        return income;
-    }
-
-    public void setIncome(double income) {
-        this.income = income;
-    }
-
-    public double getOutcome() {
-        return outcome;
-    }
-
-    public void setOutcome(double outcome) {
-        this.outcome = outcome;
-    }
-
     public String getNote() {
         return note;
     }
@@ -80,12 +77,25 @@ public class TransactionModel {
         this.note = note;
     }
 
-    public Date getDate() {
-        return date;
+    public TransactionModel(
+        String id, String username, LocalDateTime transactionDateTime, TransactionType type, Long amount, String category, String note, String fromAccount) {
+        this.id = id;
+        this.username = username;
+        this.transactionDateTime = transactionDateTime;
+        this.type = type;
+        this.amount = amount;
+        this.category = category;
+        this.note = note;
+        this.fromAccount = fromAccount;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public TransactionModel() {
+        // blank constructor
+    }
+
+    @Override
+    public String toString() {
+        return String.join(" ",
+         id, username, transactionDateTime.toString(), type.toString(), amount.toString(), category, fromAccount , note);
     }
 }
-
