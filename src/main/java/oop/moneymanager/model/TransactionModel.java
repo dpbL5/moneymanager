@@ -5,12 +5,20 @@ import java.time.LocalDateTime;
 public class TransactionModel {
 
     public enum TransactionType {
-        INCOME, OUTCOME, TRANSFER
+        INCOME("INCOME"),
+        EXPENSE("EXPENSE"),
+        TRANSFER("TRANSFER");
+
+        private String type;
+
+        TransactionType(String type) {
+            this.type = type;
+        }
     }
 
     private String id;
     private String username;
-    private LocalDateTime transactionDateTime;
+    private LocalDateTime transactionDateTime; // date and time
     private TransactionType type;
     private Long amount;
     private String category;
