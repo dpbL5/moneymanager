@@ -4,8 +4,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 import oop.moneymanager.model.TransactionModel;
 
@@ -24,7 +27,7 @@ public class TransactionDao implements DaoInterface<TransactionModel>{
     @Override
     public int insert(TransactionModel t) throws SQLException {
         String url = "INSERT INTO transactions (category, type, amount, note," + 
-            " username, transaction_kind, transaction_date) VALUES (?, ?, ?, ?, ?, ?)";
+            " username, transaction_kind, transaction_date) VALUES (?, ?, ?, ?, ?, ?, ?)";
         try (var connection = JDBCUtil.getConnection()) {
             PreparedStatement statement = connection.prepareStatement(url);
             statement.setString(1, t.getCategory());
@@ -174,6 +177,33 @@ public class TransactionDao implements DaoInterface<TransactionModel>{
             return null;
         }
     }
+
+    public List<TransactionModel> selectByRangedateAndUsername(String username, LocalDate dateStart, LocalDate dateEnd) {
+        List<TransactionModel> transactions = new ArrayList<>();
+        String query = "SELECT category, type, amount FROM transaction WHERE username = ? AND transaction_date >= ? AND transaction_date <= ?";
+
+        try (var connection = JDBCUtil.getConnection()) {
+            PreparedStatement statement = connection.prepareStatement(query);
+
+            // Thiết lập các tham số cho truy vấn
+            statement.setString(1, username);
+            statement.setDate(2, java.sql.Date.valueOf(dateStart));
+            statement.setDate(3, java.sql.Date.valueOf(dateEnd));
+            var resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                String category = resultSet.getString("category");
+                String type = resultSet.getString("type");
+                double amount = resultSet.getDouble("amount");
+                transactions.add(new TransactionModel(category, type, amount));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return transactions;
+    }
+
 
     
 }

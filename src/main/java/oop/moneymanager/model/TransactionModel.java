@@ -37,7 +37,7 @@ public class TransactionModel {
     }
 
     public enum TransactionKind {
-        CASH("CASH"), BANK_ACCOUNT("BANK_ACCOUNT"), CREDIT_CARD("CREDIT_CARD");
+        CASH("CASH"), BANK_ACCOUNT("BANK"), CREDIT_CARD("CREDIT");
 
         private String value;
         
@@ -45,7 +45,11 @@ public class TransactionModel {
             this.value = value;
         }
     }
-
+    public TransactionModel( String category, String type, Double amount){
+        this.category = category;
+        this.amount = amount;
+        this.type = TransactionType.valueOf(type.toUpperCase());
+    }
     public void setUsername(String username) {
         this.username = username;
     }

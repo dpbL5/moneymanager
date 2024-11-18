@@ -3,16 +3,14 @@ package oop.moneymanager.controller;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Side;
+import javafx.scene.chart.LineChart;
 import javafx.scene.chart.PieChart;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import oop.moneymanager.dao.TransactionDao;
 import oop.moneymanager.model.TransactionModel;
 import oop.moneymanager.model.UserModel;
-
-import java.lang.reflect.Array;
 import java.net.URL;
 import java.time.Duration;
 import java.time.LocalDate;
@@ -24,15 +22,14 @@ public class StatisticalController implements Initializable {
     public Label messageLabel;
     public AnchorPane stat_income_pane;
     public AnchorPane stat_outcome_pane;
-    public AnchorPane stat_transfer_pane;
-    public PieChart stat_transfer_pie_chart;
     public AnchorPane stat_total_pane;
     public AnchorPane total_header;
-    public Label stat_home_lbl;
-    public Label stat_transport_lbl;
-    public Label stat_utilities_lbl;
-    public Label stat_enter_lbl;
-    public Label stat_food_lbl;
+    @FXML
+    public Label stat_income_lbl;
+    @FXML
+    public Label stat_out_lbl;
+    @FXML
+    public Label stat_total_lbl;
     @FXML
     private DatePicker sta_date_start;
     @FXML
@@ -44,6 +41,13 @@ public class StatisticalController implements Initializable {
 
     private TransactionDao transactionDao;
     private UserModel userModel;
+    public void settingPiechart(PieChart pieChart){
+        pieChart.setLegendSide(Side.BOTTOM);
+        pieChart.setLabelsVisible(false);
+        pieChart.setStartAngle(90);
+        pieChart.setAnimated(true);
+        pieChart.setClockwise(false);
+    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         transactionDao = new TransactionDao();
@@ -52,23 +56,9 @@ public class StatisticalController implements Initializable {
         sta_date_end.setValue(LocalDate.now()); // Ngày kết thúc là ngày hiện tại
         sta_date_start.setValue(LocalDate.now().minusDays(30)); // Ngày bắt đầu là 30 ngày trước ngày hiện tại
 
-        // Cấu hình kích thước cố định cho PieChart
-        stat_in_pie_chart.setPrefSize(330, 330);
-        stat_in_pie_chart.setMinSize(330, 330);
-        stat_in_pie_chart.setMaxSize(330, 330);
 
-        stat_out_pie_chart.setPrefSize(330, 330);
-        stat_out_pie_chart.setMinSize(330, 330);
-        stat_out_pie_chart.setMaxSize(330, 330);
-
-        // Ẩn nhãn của PieChart
-        stat_in_pie_chart.setLabelsVisible(false);
-        stat_out_pie_chart.setLabelsVisible(false);
-
-        // Đặt vị trí Legend ở dưới để không làm thu nhỏ biểu đồ
-        stat_in_pie_chart.setLegendSide(Side.BOTTOM);
-        stat_out_pie_chart.setLegendSide(Side.BOTTOM);
-
+        settingPiechart(stat_in_pie_chart);
+        settingPiechart(stat_out_pie_chart);
         // Gọi hàm để load dữ liệu khi chọn ngày bắt đầu và kết thúc
         sta_date_start.setOnAction(event -> loadData());
         sta_date_end.setOnAction(event -> loadData());
@@ -102,7 +92,7 @@ public class StatisticalController implements Initializable {
             // Xóa thông báo và tải dữ liệu
             messageLabel.setText("");
             String username = "bao2";
-            ArrayList<TransactionModel> transactions = transactionDao.getTransactionsByUsernameAndDateRange(username, startDate, endDate);
+            List<TransactionModel> transactions = transactionDao.selectByRangedateAndUsername(username, startDate, endDate);
 
             // Xóa dữ liệu cũ trong PieChart
             stat_in_pie_chart.getData().clear();
@@ -112,14 +102,14 @@ public class StatisticalController implements Initializable {
             Map<String, Double> incomeData = new HashMap<>();
             Map<String, Double> outcomeData = new HashMap<>();
 
-//            for (TransactionModel transaction : transactions) {
-//                if (transaction.getIncome() > 0) {
-//                    incomeData.merge(transaction.getCategory(), transaction.getIncome(), Double::sum);
-//                }
-//                if (transaction.getOutcome() > 0) {
-//                    outcomeData.merge(transaction.getCategory(), transaction.getOutcome(), Double::sum);
-//                }
-//            }
+            // Duyệt qua danh sách giao dịch và phân loại theo loại thu nhập và chi phí
+            for (TransactionModel transaction : transactions) {
+                if ("INCOME".equalsIgnoreCase(String.valueOf(transaction.getType()))) {
+                    incomeData.merge(transaction.getCategory(), transaction.getAmount(), Double::sum);
+                } else if ("EXPENSE".equalsIgnoreCase(String.valueOf(transaction.getType()))) {
+                    outcomeData.merge(transaction.getCategory(), transaction.getAmount(), Double::sum);
+                }
+            }
 
             // Giới hạn hiển thị các danh mục lớn và gom các danh mục nhỏ vào "Khác"
             addDataToPieChart(stat_in_pie_chart, incomeData);

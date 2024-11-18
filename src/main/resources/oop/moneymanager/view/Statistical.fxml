@@ -3,7 +3,12 @@
 <?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.Glow?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
@@ -17,24 +22,43 @@
          <Font size="20.0" />
       </font>
    </Text>
-   <AnchorPane fx:id="stat_income_pane" layoutX="42.0" layoutY="143.0" prefHeight="258.0" prefWidth="361.0" styleClass="anchor-pane">
-      <PieChart fx:id="stat_in_pie_chart" layoutX="11.0" layoutY="4.0" prefHeight="249.0" prefWidth="339.0" styleClass="pie-chart" title="INCOME" />
+   <AnchorPane fx:id="stat_income_pane" layoutX="38.0" layoutY="143.0" prefHeight="258.0" prefWidth="361.0" styleClass="anchor-pane">
+      <PieChart fx:id="stat_in_pie_chart" layoutX="11.0" layoutY="4.0" prefHeight="270.0" prefWidth="339.0" styleClass="pie-chart" title="INCOME" />
    </AnchorPane>
-   <AnchorPane fx:id="stat_outcome_pane" layoutX="40.0" layoutY="409.0" prefHeight="280.0" prefWidth="362.0" styleClass="anchor-pane">
-      <PieChart fx:id="stat_out_pie_chart" animated="false" layoutX="8.0" layoutY="4.0" prefHeight="270.0" prefWidth="346.0" styleClass="pie-chart" title="OUTCOME" />
+   <AnchorPane fx:id="stat_outcome_pane" layoutX="413.0" layoutY="143.0" prefHeight="280.0" prefWidth="362.0" styleClass="anchor-pane">
+      <PieChart fx:id="stat_out_pie_chart" animated="false" layoutX="8.0" layoutY="4.0" prefHeight="270.0" prefWidth="346.0" styleClass="pie-chart" title="EXPENSE" />
    </AnchorPane>
    <Label fx:id="messageLabel" contentDisplay="CENTER" layoutX="223.0" layoutY="113.0" text="Khoảng thời gian vượt quá 30 ngày , vui lòng chọn lại" textFill="#f40000">
       <font>
          <Font size="15.0" />
       </font></Label>
-   <AnchorPane fx:id="stat_transfer_pane" layoutX="415.0" layoutY="142.0" prefHeight="258.0" prefWidth="358.0" styleClass="anchor-pane">
-      <PieChart fx:id="stat_transfer_pie_chart" layoutX="11.0" layoutY="4.0" prefHeight="250.0" prefWidth="339.0" styleClass="pie-chart" title="TRANSFER" />
-   </AnchorPane>
    <Text layoutX="209.0" layoutY="92.0" strokeType="OUTSIDE" strokeWidth="0.0" text="From" />
-   <AnchorPane fx:id="stat_total_pane" layoutX="415.0" layoutY="412.0" prefHeight="276.0" prefWidth="358.0">
+   <AnchorPane fx:id="stat_total_pane" layoutX="37.0" layoutY="438.0" prefHeight="244.0" prefWidth="244.0">
       <AnchorPane fx:id="total_header" layoutX="0.8" layoutY="8.0" prefHeight="53.0" prefWidth="355.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <Text layoutX="14.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Category" wrappingWidth="55.6640625" />
-         <Text layoutX="178.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Amount" />
+         <Text layoutX="14.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Type" wrappingWidth="55.6640625" />
+         <Text layoutX="121.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Amount" />
       </AnchorPane>
+      <GridPane alignment="CENTER" focusTraversable="true" layoutX="6.0" layoutY="66.0" prefHeight="115.0" prefWidth="232.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="108.79999999999998" minHeight="10.0" prefHeight="36.8000244140625" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Text fill="#1141d1" strokeType="OUTSIDE" strokeWidth="0.0" text="Income" />
+            <Text fill="#df1f1f" strokeType="OUTSIDE" strokeWidth="0.0" text="Expense" GridPane.rowIndex="1" />
+            <Label fx:id="stat_income_lbl" text="20000" textFill="#3149e1" GridPane.columnIndex="1" />
+            <Label fx:id="stat_out_lbl" alignment="CENTER" layoutX="126.0" layoutY="28.0" text="20000" textFill="#d11c1c" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+         </children>
+         <effect>
+            <Glow />
+         </effect>
+      </GridPane>
+      <Text layoutX="10.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total" />
+      <Line endX="43.5999755859375" layoutX="111.0" layoutY="188.0" startX="-100.0" />
+      <Label fx:id="stat_total_lbl" layoutX="122.0" layoutY="211.0" text="20000" />
    </AnchorPane>
 </AnchorPane>
