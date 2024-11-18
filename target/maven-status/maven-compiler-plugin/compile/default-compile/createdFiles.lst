@@ -12,10 +12,12 @@ oop\moneymanager\controller\MultiFxmlController.class
 oop\moneymanager\controller\AccountInfoController.class
 oop\moneymanager\controller\RegisterScreenController.class
 oop\moneymanager\controller\TransactionCellController.class
+oop\moneymanager\dao\TransactionDao.class
 oop\moneymanager\PreferencesHelper.class
 oop\moneymanager\dao\JDBCUtil.class
 oop\moneymanager\controller\LoginScreenController.class
 oop\moneymanager\App.class
+oop\moneymanager\model\TransactionModel$TransactionKind.class
 oop\moneymanager\controller\StatisticalController.class
 oop\moneymanager\controller\SwitchSceneController.class
 oop\moneymanager\controller\ForgotPassController.class
