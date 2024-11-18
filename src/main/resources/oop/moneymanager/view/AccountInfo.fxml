@@ -25,35 +25,31 @@
             <Font size="23.0" />
          </font>
       </Text>
-      <Text layoutX="133.0" layoutY="437.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Số tiền" wrappingWidth="149.20587158203125">
+      <Text layoutX="133.0" layoutY="437.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Số tài khoản" wrappingWidth="149.20587158203125">
          <font>
             <Font size="23.0" />
          </font>
       </Text>
-      <Button fx:id="logout_Button" layoutX="127.0" layoutY="514.0" mnemonicParsing="false" onAction="#btt_logout" prefHeight="63.0" prefWidth="246.0" style="-fx-background-color: #e78300; -fx-border-color: #000000;" text="Đăng xuất" textFill="WHITE">
+      <Button fx:id="logout_Button" layoutX="127.0" layoutY="514.0" mnemonicParsing="false" onAction="#btt_logout" prefHeight="63.0" prefWidth="246.0" style="-fx-background-color: #e78300; -fx-border-color: #000000;" text="Sửa đổi thông tin" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font></Button>
-      <Button fx:id="change_PassWord" layoutX="440.0" layoutY="514.0" mnemonicParsing="false" onAction="#btt_changepassword" prefHeight="63.0" prefWidth="245.0" style="-fx-background-color: #e78300; -fx-border-color: #000000;" text="Đổi mật khẩu" textFill="WHITE">
-         <font>
-            <Font size="18.0" />
-         </font></Button>
-      <Label fx:id="username_field" layoutX="372.0" layoutY="168.0" AnchorPane.leftAnchor="370.0">
+      <Label fx:id="username_field" layoutX="372.0" layoutY="168.0" text="andeptrai18cent" AnchorPane.leftAnchor="370.0">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Label fx:id="email_field" layoutX="372.0" layoutY="247.0" AnchorPane.leftAnchor="370.0">
+      <Label fx:id="email_field" layoutX="372.0" layoutY="247.0" text="voan07082004@gmail.com" AnchorPane.leftAnchor="370.0">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Label fx:id="phone_field" layoutX="372.0" layoutY="333.0" AnchorPane.leftAnchor="370.0">
+      <Label fx:id="phone_field" layoutX="372.0" layoutY="333.0" text="0982327225" AnchorPane.leftAnchor="370.0">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Label fx:id="money_field" layoutX="372.0" layoutY="412.0" AnchorPane.leftAnchor="370.0">
+      <Label fx:id="money_field" layoutX="372.0" layoutY="412.0" text="056458456" AnchorPane.leftAnchor="370.0">
          <font>
             <Font size="20.0" />
          </font>
@@ -61,6 +57,10 @@
       <FontAwesomeIconView glyphName="USER" layoutX="91.0" layoutY="185.0" size="25" />
       <FontAwesomeIconView glyphName="ENVELOPE" layoutX="87.0" layoutY="264.0" size="25" />
       <FontAwesomeIconView glyphName="PHONE" layoutX="90.0" layoutY="351.0" size="25" text="" />
+      <Button fx:id="change_PassWord" layoutX="440.0" layoutY="514.0" mnemonicParsing="false" onAction="#btt_changepassword" prefHeight="63.0" prefWidth="245.0" style="-fx-background-color: #e78300; -fx-border-color: #000000;" text="Đổi mật khẩu" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font></Button>
       <FontAwesomeIconView glyphName="BANK" layoutX="85.0" layoutY="436.0" size="25" />
       <TextField />
       <AnchorPane prefHeight="133.0" prefWidth="800.0" style="-fx-background-color: #e78300;">
