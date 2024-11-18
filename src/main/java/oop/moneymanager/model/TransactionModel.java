@@ -1,5 +1,6 @@
 package oop.moneymanager.model;
 
+import java.security.PrivateKey;
 import java.time.LocalDateTime;
 
 public class TransactionModel {
@@ -16,10 +17,23 @@ public class TransactionModel {
         }
     }
 
+    public enum TransactionSource {
+        CASH("CASH"),
+        CREDIT_CARD("CREDIT_CARD"),
+        BANK_ACCOUNT("BANK_ACCOUNT");
+
+
+        private String source;
+        TransactionSource(String source) {
+            this.source = source;
+        }
+    }
+
     private String id;
     private String username;
     private LocalDateTime transactionDateTime; // date and time
     private TransactionType type;
+    private TransactionSource source;
     private Long amount;
     private String category;
     private String fromAccount;
@@ -86,15 +100,17 @@ public class TransactionModel {
     }
 
     public TransactionModel(
-        String id, String username, LocalDateTime transactionDateTime, TransactionType type, Long amount, String category, String note, String fromAccount) {
-        this.id = id;
-        this.username = username;
-        this.transactionDateTime = transactionDateTime;
-        this.type = type;
-        this.amount = amount;
-        this.category = category;
-        this.note = note;
-        this.fromAccount = fromAccount;
+        String id, String username, LocalDateTime transactionDateTime, TransactionType type,
+        Long amount, String category, String note, String fromAccount
+        ) {
+            this.id = id;
+            this.username = username;
+            this.transactionDateTime = transactionDateTime;
+            this.type = type;
+            this.amount = amount;
+            this.category = category;
+            this.note = note;
+            this.fromAccount = fromAccount;
     }
 
     public TransactionModel() {
