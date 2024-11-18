@@ -1,113 +1,179 @@
 package oop.moneymanager.dao;
 
-import oop.moneymanager.model.TransactionModel;
-
-import java.sql.*;
-import java.time.LocalDate;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
-public class TransactionDao implements DaoInterface<TransactionModel> {
-    public static TransactionDao instance()
-    {
-        return new TransactionDao();
-    };
+import oop.moneymanager.model.TransactionModel;
+
+//     1 `tran_id` INT NOT NULL AUTO_INCREMENT,
+///     2 `category` VARCHAR(255) NOT NULL,  
+//     3 `type` VARCHAR(255) NOT NULL, 	
+//     4 `amount` DECIMAL(10, 2) NOT NULL,
+//     5`note` VARCHAR(255) NOT NULL,
+//     6`username` VARCHAR(255) NOT NULL,
+//     7 `transaction_kind` VARCHAR(255) NOT NULL,
+//     8 `transaction_date` DATE NOT NULL,
+//      PRIMARY KEY (`tran_id`),
+
+public class TransactionDao implements DaoInterface<TransactionModel>{
 
     @Override
-    public int insert(TransactionModel transaction) {
-        String url = "INSERT INTO transaction VALUES(?,?,?,?,?,?,?)";
-        try (Connection con = JDBCUtil.getConnection();
-        PreparedStatement stmt = con.prepareStatement(url)) {
-            stmt.setString(1,transaction.getTransactionID());
-            stmt.setString(2,transaction.getCategory());
-            stmt.setDouble(3,transaction.getIncome());
-            stmt.setDouble(4,transaction.getOutcome());
-            stmt.setString(5,transaction.getNote());
-            stmt.setString(6,transaction.getUsername());
-            stmt.setDate(6, (Date) transaction.getDate());
-            int row = stmt.executeUpdate();
+    public int insert(TransactionModel t) throws SQLException {
+        String url = "INSERT INTO transactions (category, type, amount, note," + 
+            " username, transaction_kind, transaction_date) VALUES (?, ?, ?, ?, ?, ?)";
+        try (var connection = JDBCUtil.getConnection()) {
+            PreparedStatement statement = connection.prepareStatement(url);
+            statement.setString(1, t.getCategory());
+            statement.setString(2, t.getType().toString());
+            statement.setDouble(3, t.getAmount());
+            statement.setString(4, t.getNote());
+            statement.setString(5, t.getUsername());
+            statement.setString(6, t.getKind().toString());
+            statement.setString(7, t.getDate().toString());
+            int row = statement.executeUpdate(url);
+            
+            if (row > 0) {
+                try (ResultSet generatedKeys = statement.getGeneratedKeys()) {
+                    if (generatedKeys.next()) {
+                        long id = generatedKeys.getLong(1); // Get the generated key
+                        System.out.println("Inserted record ID: " + id);
+                    } else {
+                        System.out.println("No ID was generated.");
+                    }
+                }
+            }
             return row;
-        }
-        catch (SQLException e) {
-            throw new RuntimeException();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return 0;
         }
     }
 
     @Override
-    public int update(TransactionModel transactionModel) {
-        return 0;
+    public int update(TransactionModel t) {
+        String url = "UPDATE transactions " +
+            "SET category = ?, type = ?, amount = ?, note = ?, username = ?, transaction_kind = ?, transaction_date = ?" + 
+            "WHERE tran_id = ?";
+        try (var connection = JDBCUtil.getConnection()) {
+            PreparedStatement statement = connection.prepareStatement(url);
+            statement.setString(1, t.getCategory());
+            statement.setString(2, t.getType().toString());
+            statement.setDouble(3, t.getAmount());
+            statement.setString(4, t.getNote());
+            statement.setString(5, t.getUsername());
+            statement.setString(6, t.getKind().toString());
+            statement.setString(7, t.getDate().toString());
+            statement.setInt(8, t.getId());
+            int row = statement.executeUpdate(url);
+            return row;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return 0;
+        }
     }
 
     @Override
-    public int delete(TransactionModel transactionModel) {
-        return 0;
+    public int delete(TransactionModel t) {
+        String url = "DELETE FROM transactions WHERE tran_id = ?";
+        try (var connection = JDBCUtil.getConnection()) {
+            PreparedStatement statement = connection.prepareStatement(url);
+            statement.setInt(1, t.getId());
+            int row = statement.executeUpdate(url);
+            return row;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return 0;
+        }
     }
 
     @Override
     public ArrayList<TransactionModel> selectAll() {
-        String url = "SELECT * FROM transaction";
-        ArrayList<TransactionModel> transactions = new ArrayList<>();
-        try (Connection con = JDBCUtil.getConnection();
-        PreparedStatement stmt = con.prepareStatement(url)){
-            ResultSet rs = stmt.executeQuery();
-            while (rs.next()) {
-                TransactionModel x = new TransactionModel(rs.getString("tran_id"),rs.getString("category"),rs.getDouble("income"),rs.getDouble("outcome"),
-                        rs.getString("note"),rs.getString("username"),rs.getDate("date")
-                        );
-                transactions.add(x);
+        String url = "SELECT * FROM transactions";
+        try (var connection = JDBCUtil.getConnection()) {
+            PreparedStatement statement = connection.prepareStatement(url);
+            var result = statement.executeQuery(url);
+            ArrayList<TransactionModel> list = new ArrayList<>();
+            while (result.next()) {
+                list.add(new TransactionModel(
+                    result.getInt(0), 
+                    result.getString(6), 
+                    result.getString(2), 
+                    result.getDouble(4), 
+                    result.getString(5), 
+                    LocalDateTime.parse(result.getString(8)), 
+                    TransactionModel.TransactionType.valueOf(result.getString(3)),
+                    TransactionModel.TransactionKind.valueOf(result.getString(7))
+                ));
             }
+            return list;
+        } catch (SQLException e) {
+            // e.printStackTrace();
+            System.out.println("Error: " + e.getMessage());
+            return null;
         }
-        catch (SQLException e) {
-            throw new RuntimeException();
-        }
-        return transactions;
     }
 
     @Override
     public ArrayList<TransactionModel> selectByCondition(String condition) {
-        String url = "SELECT * FROM transaction WHERE date = ? ";
-        ArrayList<TransactionModel> transactions = new ArrayList<>();
+        String url = "SELECT * FROM transactions WHERE " + condition;
         try (Connection con = JDBCUtil.getConnection();
-             PreparedStatement stmt = con.prepareStatement(url)){
-            stmt.setString(1,condition);
-            ResultSet rs = stmt.executeQuery();
-            while (rs.next()) {
-                TransactionModel x = new TransactionModel(rs.getString("tran_id"),rs.getString("category"),rs.getDouble("income"),rs.getDouble("outcome"),
-                        rs.getString("note"),rs.getString("username"),rs.getDate("date")
-                );
-                transactions.add(x);
+            PreparedStatement statement = con.prepareStatement(url);
+            var result = statement.executeQuery(url)) {
+            ArrayList<TransactionModel> list = new ArrayList<>();
+            while (result.next()) {
+                list.add(new TransactionModel(
+                    result.getInt(0), 
+                    result.getString(6), 
+                    result.getString(2), 
+                    result.getDouble(4), 
+                    result.getString(5), 
+                    LocalDateTime.parse(result.getString(8)), 
+                    TransactionModel.TransactionType.valueOf(result.getString(3)),
+                    TransactionModel.TransactionKind.valueOf(result.getString(7))
+                ));
             }
+            return list;
+        } catch (SQLException e) {
+            // e.printStackTrace();
+            System.out.println("Error: " + e.getMessage());
+            return null;
+            
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+            return null;
         }
-        catch (SQLException e) {
-            throw new RuntimeException();
-        }
-        return transactions;
     }
-
 
     @Override
     public TransactionModel selectByID(String ID) {
-        return null;
-    }
-
-
-    public ArrayList<TransactionModel> getTransactionsByUsernameAndDateRange(String username, LocalDate startDate, LocalDate endDate) {
-        ArrayList<TransactionModel> transactions = new ArrayList<>();
-        String query = "SELECT category, income, outcome FROM transaction WHERE username = ? AND transaction_date >= ? AND transaction_date <= ?";
-        try (   Connection con = JDBCUtil.getConnection();
-                PreparedStatement stmt = con.prepareStatement(query)) {
-            stmt.setString(1, username);
-            stmt.setDate(2, Date.valueOf(startDate));
-            stmt.setDate(3, Date.valueOf(endDate));
-            ResultSet rs = stmt.executeQuery();
-            while (rs.next()) {
-                String category = rs.getString("category");
-                double income = rs.getDouble("income");
-                double outcome = rs.getDouble("outcome");
-                transactions.add(new TransactionModel(category, income, outcome));
+        String url = "SELECT * FROM transactions WHERE trans_id = " + ID;
+        try (var connection = JDBCUtil.getConnection()) {
+            PreparedStatement statement = connection.prepareStatement(url);
+            var result = statement.executeQuery(url);
+            if (result.next()) {
+                return new TransactionModel(
+                    result.getInt(0), 
+                    result.getString(6), 
+                    result.getString(2), 
+                    result.getDouble(4), 
+                    result.getString(5), 
+                    LocalDateTime.parse(result.getString(8)), 
+                    TransactionModel.TransactionType.valueOf(result.getString(3)),
+                    TransactionModel.TransactionKind.valueOf(result.getString(7))
+                );
             }
+            return null;
         } catch (SQLException e) {
-            e.printStackTrace();
+            // e.printStackTrace();
+            System.out.println("Error: " + e.getMessage());
+            return null;
         }
-        return transactions;
     }
+
+    
 }

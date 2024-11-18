@@ -3,99 +3,109 @@ package oop.moneymanager.model;
 import java.time.LocalDateTime;
 
 public class TransactionModel {
+    private static Integer idCounter = 0;
+
+    private Integer id;
+    private String username;
+    private String category;
+    private Double amount; 
+    private String note;
+    private LocalDateTime date;
+    private TransactionType type;
+    private TransactionKind kind;
+
+    public TransactionModel(Integer id, String username, String category, Double amount, String note, LocalDateTime date,
+            TransactionType type, TransactionKind kind) {
+        this.id = id;
+        this.username = username;
+        this.category = category;
+        this.amount = amount;
+        this.note = note;
+        this.date = date;
+        this.type = type;
+        this.kind = kind;
+    }
 
     public enum TransactionType {
-        INCOME, OUTCOME, TRANSFER
+        INCOME("INCOME"), EXPENSE("EXPENSE");
+
+        private String value;
+        
+        TransactionType(String value) {
+            this.value = value;
+        }
     }
 
-    private String id;
-    private String username;
-    private LocalDateTime transactionDateTime;
-    private TransactionType type;
-    private Long amount;
-    private String category;
-    private String fromAccount;
-    private String note;
+    public enum TransactionKind {
+        CASH("CASH"), BANK_ACCOUNT("BANK_ACCOUNT"), CREDIT_CARD("CREDIT_CARD");
 
-    public String getFromAccount() {
-        return fromAccount;
+        private String value;
+        
+        TransactionKind(String value) {
+            this.value = value;
+        }
     }
 
-    public void setFromAccount(String fromAccount) {
-        this.fromAccount = fromAccount;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public LocalDateTime getTransactionDateTime() {
-        return transactionDateTime;
-    }
-
-    public void setTransactionDateTime(LocalDateTime transactionDateTime) {
-        this.transactionDateTime = transactionDateTime;
-    }
-
-    public TransactionType getType() {
-        return type;
-    }
-
-    public void setType(TransactionType type) {
-        this.type = type;
-    }
-
-    public Long getAmount() {
-        return amount;
-    }
-
-    public void setAmount(Long amount) {
-        this.amount = amount;
-    }
-
-    public String getCategory() {
-        return category;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public void setCategory(String category) {
         this.category = category;
     }
 
-    public String getNote() {
-        return note;
+    public void setAmount(Double amount) {
+        this.amount = amount;
     }
 
     public void setNote(String note) {
         this.note = note;
     }
 
-    public TransactionModel(
-        String id, String username, LocalDateTime transactionDateTime, TransactionType type, Long amount, String category, String note, String fromAccount) {
-        this.id = id;
-        this.username = username;
-        this.transactionDateTime = transactionDateTime;
+    public void setDate(LocalDateTime date) {
+        this.date = date;
+    }
+
+    public void setType(TransactionType type) {
         this.type = type;
-        this.amount = amount;
-        this.category = category;
-        this.note = note;
-        this.fromAccount = fromAccount;
     }
 
-    public TransactionModel() {
-        // blank constructor
+    public void setKind(TransactionKind kind) {
+        this.kind = kind;
     }
 
-    @Override
-    public String toString() {
-        return String.join(" ",
-         id, username, transactionDateTime.toString(), type.toString(), amount.toString(), category, fromAccount , note);
+    public Integer getId() {
+        return id;
     }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public Double getAmount() {
+        return amount;
+    }
+
+    public String getNote() {
+        return note;
+    }
+
+    public LocalDateTime getDate() {
+        return date;
+    }
+
+    public TransactionType getType() {
+        return type;
+    }
+
+    public TransactionKind getKind() {
+        return kind;
+    }
+
+    
+
 }

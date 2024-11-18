@@ -26,21 +26,21 @@ public class DailyBoardController implements Initializable{
     public DailyBoardController() {
         transObsList = FXCollections.observableArrayList();
         
-        Random random = new Random();
-        for (int i = 0; i < 5; i++) {
-            transObsList.add(
-                new TransactionModel(
-                    Integer.toString(i),
-                    "user1",
-                    LocalDateTime.now(),
-                    TransactionModel.TransactionType.INCOME,
-                    1000L+i*random.nextInt(100_000_000),
-                    "Salary",
-                    "Salary for this month - Salary for this month - Salary for this month - Salary for this month ",
-                    "Ngân hàng MBBANK"
-                )
-            );
+        // Fake data for testing
+        Random rand = new Random();
+        for (int i = 0; i < 10; i++) {
+            transObsList.add(new TransactionModel(
+                i,
+                "User " + i,
+                "Category " + i,
+                rand.nextDouble() * 1000,
+                "Note " + i,
+                LocalDateTime.now(),
+                TransactionModel.TransactionType.EXPENSE,
+                TransactionModel.TransactionKind.CASH
+            ));
         }
+        
     }
 
     @Override

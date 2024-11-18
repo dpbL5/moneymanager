@@ -4,10 +4,8 @@ import oop.moneymanager.dao.UserDao;
 import oop.moneymanager.model.UserModel;
 
 import java.sql.SQLException;
-import java.util.Random;
 
 public class RegisterHandle {
-    private static UserModel user;
     public static RegisterHandle getInstance(){
         return new RegisterHandle();
     }
