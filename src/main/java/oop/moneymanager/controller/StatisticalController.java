@@ -7,6 +7,7 @@ import javafx.scene.chart.PieChart;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
 import oop.moneymanager.dao.TransactionDao;
 import oop.moneymanager.model.TransactionModel;
 import oop.moneymanager.model.UserModel;
@@ -21,6 +22,17 @@ public class StatisticalController implements Initializable {
 
     @FXML
     public Label messageLabel;
+    public AnchorPane stat_income_pane;
+    public AnchorPane stat_outcome_pane;
+    public AnchorPane stat_transfer_pane;
+    public PieChart stat_transfer_pie_chart;
+    public AnchorPane stat_total_pane;
+    public AnchorPane total_header;
+    public Label stat_home_lbl;
+    public Label stat_transport_lbl;
+    public Label stat_utilities_lbl;
+    public Label stat_enter_lbl;
+    public Label stat_food_lbl;
     @FXML
     private DatePicker sta_date_start;
     @FXML
@@ -100,14 +112,14 @@ public class StatisticalController implements Initializable {
             Map<String, Double> incomeData = new HashMap<>();
             Map<String, Double> outcomeData = new HashMap<>();
 
-            for (TransactionModel transaction : transactions) {
-                if (transaction.getIncome() > 0) {
-                    incomeData.merge(transaction.getCategory(), transaction.getIncome(), Double::sum);
-                }
-                if (transaction.getOutcome() > 0) {
-                    outcomeData.merge(transaction.getCategory(), transaction.getOutcome(), Double::sum);
-                }
-            }
+//            for (TransactionModel transaction : transactions) {
+//                if (transaction.getIncome() > 0) {
+//                    incomeData.merge(transaction.getCategory(), transaction.getIncome(), Double::sum);
+//                }
+//                if (transaction.getOutcome() > 0) {
+//                    outcomeData.merge(transaction.getCategory(), transaction.getOutcome(), Double::sum);
+//                }
+//            }
 
             // Giới hạn hiển thị các danh mục lớn và gom các danh mục nhỏ vào "Khác"
             addDataToPieChart(stat_in_pie_chart, incomeData);

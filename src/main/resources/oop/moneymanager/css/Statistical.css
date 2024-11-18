@@ -1,0 +1,23 @@
+.anchor-pane {
+    -fx-background-color: #ffffff; /* Background color */
+    -fx-background-radius: 15; /* Rounded corners */
+    -fx-border-radius: 15; /* Rounded border */
+    -fx-border-color: #cccccc; /* Light border color */
+    -fx-border-width: 1; /* Border width */
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.3), 10, 0, 0, 5); /* Drop shadow */
+    -fx-padding: 1; /* Internal padding for spacing */
+}
+#stat_total_pane {
+    -fx-background-color: #f7f7f7; /* Slightly darker than white for subtle contrast */
+    -fx-border-color: #cccccc; /* Light gray border */
+    -fx-border-width: 1; /* Thin border */
+    -fx-border-radius: 10; /* Optional rounded corners */
+    -fx-background-radius: 10; /* Match border radius */
+}
+
+/* Style for total_header */
+#total_header {
+    -fx-background-color: #ffebcc; /* Light orange background */
+    -fx-background-radius: 10 10 0 0; /* Rounded top corners */
+    -fx-padding: 10; /* Space inside the header */
+}

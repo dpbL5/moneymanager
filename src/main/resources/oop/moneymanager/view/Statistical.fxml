@@ -1,30 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.chart.PieChart?>
-<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<?import javafx.scene.shape.Line?>
-<?import javafx.scene.control.Label?>
-<AnchorPane prefHeight="700.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="oop.moneymanager.controller.StatisticalController">
-   <DatePicker fx:id="sta_date_start" layoutX="247.0" layoutY="75.0" />
+<AnchorPane prefHeight="700.0" prefWidth="800.0" stylesheets="@../css/Statistical.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="oop.moneymanager.controller.StatisticalController">
+   <DatePicker fx:id="sta_date_start" layoutX="253.0" layoutY="75.0" />
    <DatePicker fx:id="sta_date_end" layoutX="474.0" layoutY="75.0" />
-   <Text layoutX="445.0" layoutY="92.0" strokeType="OUTSIDE" strokeWidth="0.0" text=":" />
-   <Text layoutX="136.0" layoutY="92.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Range Date :" />
-   <Text layoutX="356.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="STATISTIC">
+   <Text layoutX="445.0" layoutY="92.0" strokeType="OUTSIDE" strokeWidth="0.0" text="to" />
+   <Text layoutX="110.0" layoutY="92.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Range Date :" />
+   <Text layoutX="384.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="STATISTIC">
       <font>
          <Font size="20.0" />
       </font>
    </Text>
-   <AnchorPane layoutX="33.0" layoutY="348.0" prefHeight="334.0" prefWidth="340.0">
-      <PieChart fx:id="stat_in_pie_chart" layoutY="5.0" prefHeight="319.0" prefWidth="340.0" title="THU" />
+   <AnchorPane fx:id="stat_income_pane" layoutX="42.0" layoutY="143.0" prefHeight="258.0" prefWidth="361.0" styleClass="anchor-pane">
+      <PieChart fx:id="stat_in_pie_chart" layoutX="11.0" layoutY="4.0" prefHeight="249.0" prefWidth="339.0" styleClass="pie-chart" title="INCOME" />
    </AnchorPane>
-   <AnchorPane layoutX="429.0" layoutY="354.0" prefHeight="334.0" prefWidth="356.0">
-      <PieChart fx:id="stat_out_pie_chart" animated="false" layoutX="3.0" layoutY="5.0" prefHeight="319.0" prefWidth="350.0" title="CHI" />
+   <AnchorPane fx:id="stat_outcome_pane" layoutX="40.0" layoutY="409.0" prefHeight="280.0" prefWidth="362.0" styleClass="anchor-pane">
+      <PieChart fx:id="stat_out_pie_chart" animated="false" layoutX="8.0" layoutY="4.0" prefHeight="270.0" prefWidth="346.0" styleClass="pie-chart" title="OUTCOME" />
    </AnchorPane>
-   <Line endX="-2.0" endY="215.20001220703125" layoutX="422.0" layoutY="144.0" startX="-2.0" startY="532.800048828125" />
-   <Label fx:id="messageLabel" layoutX="408.0" layoutY="115.0" text="Label" />
+   <Label fx:id="messageLabel" contentDisplay="CENTER" layoutX="223.0" layoutY="113.0" text="Khoảng thời gian vượt quá 30 ngày , vui lòng chọn lại" textFill="#f40000">
+      <font>
+         <Font size="15.0" />
+      </font></Label>
+   <AnchorPane fx:id="stat_transfer_pane" layoutX="415.0" layoutY="142.0" prefHeight="258.0" prefWidth="358.0" styleClass="anchor-pane">
+      <PieChart fx:id="stat_transfer_pie_chart" layoutX="11.0" layoutY="4.0" prefHeight="250.0" prefWidth="339.0" styleClass="pie-chart" title="TRANSFER" />
+   </AnchorPane>
+   <Text layoutX="209.0" layoutY="92.0" strokeType="OUTSIDE" strokeWidth="0.0" text="From" />
+   <AnchorPane fx:id="stat_total_pane" layoutX="415.0" layoutY="412.0" prefHeight="276.0" prefWidth="358.0">
+      <AnchorPane fx:id="total_header" layoutX="0.8" layoutY="8.0" prefHeight="53.0" prefWidth="355.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <Text layoutX="14.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Category" wrappingWidth="55.6640625" />
+         <Text layoutX="178.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Amount" />
+      </AnchorPane>
+      <GridPane layoutX="9.0" layoutY="65.0" prefHeight="194.0" prefWidth="339.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="60.8" minHeight="10.0" prefHeight="22.4" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="68.79999999999998" minHeight="0.0" prefHeight="37.599951171875" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="38.39999999999999" minHeight="0.0" prefHeight="31.20004882812499" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="38.39999999999999" minHeight="10.0" prefHeight="31.20004882812499" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="38.39999999999999" minHeight="10.0" prefHeight="31.20004882812499" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label fx:id="stat_home_lbl" text="20000" GridPane.columnIndex="1" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Home" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Transport" GridPane.rowIndex="1" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Entertainment" GridPane.rowIndex="2" />
+            <Label fx:id="stat_transport_lbl" text="20000" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label fx:id="stat_enter_lbl" text="20000" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Label fx:id="stat_utilities_lbl" text="20000" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Text layoutX="10.0" layoutY="91.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Utilities" GridPane.rowIndex="3" />
+            <Text layoutX="10.0" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Food" GridPane.rowIndex="4" />
+            <Label fx:id="stat_food_lbl" layoutX="126.0" layoutY="88.0" text="20000" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+         </children>
+      </GridPane>
+   </AnchorPane>
 </AnchorPane>
