@@ -1,0 +1,28 @@
+/* Style cho các nút Save và Continue */
+.button {
+    -fx-background-color: #ea752c; /* Màu cam rất nhạt */
+    -fx-text-fill: white; /* Màu chữ trắng */
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 5px; /* Bo tròn góc nút */
+    -fx-border-color: #CCCCCC; /* Viền xám */
+    -fx-border-width: 2px;
+}
+
+/* Style cho AnchorPane chứa GridPane */
+.anchor-pane {
+    -fx-background-radius: 10px; /* Bo góc AnchorPane */
+    -fx-background-color: #ffffff;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.3), 10, 0, 0, 5); /* Đổ bóng nổi khối */
+    -fx-padding: 10px;
+}
+
+/* Style cho GridPane bên trong AnchorPane */
+.grid-pane {
+    -fx-background-radius: 10px;
+}
+
+.grid-pane .text {
+    -fx-font-size: 14px;
+    -fx-padding: 5px;
+}
