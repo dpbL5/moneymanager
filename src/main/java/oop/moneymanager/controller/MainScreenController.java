@@ -8,7 +8,7 @@ import java.io.IOException;
 
 public class MainScreenController{
     public Scene setScene() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/oop/moneymanager/view/MainScreen.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/oop/moneymanager/view/MainScreenNew.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
         return scene;
