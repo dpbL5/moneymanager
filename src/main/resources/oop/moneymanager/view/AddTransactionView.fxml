@@ -32,12 +32,12 @@
             <Text layoutX="10.0" layoutY="223.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Note" GridPane.rowIndex="3" />
             <Text layoutX="10.0" layoutY="306.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Kind" GridPane.rowIndex="4" />
             <Text layoutX="10.0" layoutY="390.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date" GridPane.rowIndex="5" />
-            <TextField GridPane.columnIndex="1" />
             <TextField layoutX="315.0" layoutY="122.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <TextField layoutX="315.0" layoutY="206.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <DatePicker prefHeight="26.0" prefWidth="307.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
             <ChoiceBox prefHeight="26.0" prefWidth="312.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             <ChoiceBox prefHeight="26.0" prefWidth="309.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+         <ChoiceBox prefHeight="28.0" prefWidth="322.0" GridPane.columnIndex="1" />
         </GridPane>
     </AnchorPane>
     <Button layoutX="120.0" layoutY="550.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="225.0" text="Save" />
