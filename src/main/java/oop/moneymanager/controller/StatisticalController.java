@@ -23,7 +23,7 @@ public class StatisticalController implements Initializable {
     @FXML
     public Label messageLabel;
     public AnchorPane stat_income_pane;
-    public AnchorPane stat_outcome_pane;
+    public AnchorPane stat_expense_pane;
     public AnchorPane stat_total_pane;
     public AnchorPane total_header;
     @FXML
@@ -147,18 +147,18 @@ public class StatisticalController implements Initializable {
             stat_out_pie_chart.getData().clear();
 
             Map<String, Double> incomeData = new HashMap<>();
-            Map<String, Double> outcomeData = new HashMap<>();
+            Map<String, Double> expenseData = new HashMap<>();
 
             for (TransactionModel transaction : transactions) {
                 if ("INCOME".equalsIgnoreCase(String.valueOf(transaction.getType()))) {
                     incomeData.merge(transaction.getCategory(), transaction.getAmount(), Double::sum);
                 } else if ("EXPENSE".equalsIgnoreCase(String.valueOf(transaction.getType()))) {
-                    outcomeData.merge(transaction.getCategory(), transaction.getAmount(), Double::sum);
+                    expenseData.merge(transaction.getCategory(), transaction.getAmount(), Double::sum);
                 }
             }
 
             totalIncome = addDataToPieChart(stat_in_pie_chart, incomeData, "Income");
-            totalExpense = addDataToPieChart(stat_out_pie_chart, outcomeData, "Expense");
+            totalExpense = addDataToPieChart(stat_out_pie_chart, expenseData, "Expense");
 
             stat_income_lbl.setText(String.valueOf(totalIncome));
             stat_out_lbl.setText(String.valueOf(totalExpense * -1.0));

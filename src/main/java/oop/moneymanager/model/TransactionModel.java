@@ -37,7 +37,7 @@ public class TransactionModel {
     }
 
     public enum TransactionKind {
-        CASH("CASH"), BANK_ACCOUNT("BANK"), CREDIT_CARD("CREDIT");
+        CASH("CASH"), BANK_ACCOUNT("BANK_ACCOUNT"), CREDIT_CARD("CREDIT_CARD");
 
         private String value;
         
