@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -8,7 +7,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<GridPane fx:id="gridPane" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
+<GridPane fx:id="gridPane" stylesheets="@../css/AddTransactionView.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
    <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
    </columnConstraints>
@@ -16,19 +15,14 @@
       <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
    </rowConstraints>
    <children>
-      <AnchorPane fx:id="anchorPane" prefHeight="65.0" prefWidth="700.0" stylesheets="@../css/TransactionCell.css">
+      <AnchorPane fx:id="anchorPane" prefHeight="65.0" prefWidth="700.0" stylesheets="@../css/AddTransactionView.css">
          <children>
-            <Label fx:id="timeLabel" layoutX="20.0" layoutY="23.0" text="time">
+            <Label fx:id="dateLabel" layoutX="20.0" layoutY="23.0" prefHeight="20.0" prefWidth="90.0" text="date">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <Label fx:id="dateLabel" layoutX="80.0" layoutY="23.0" text="date">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <Label fx:id="categoryLabel" layoutX="220.0" layoutY="10.0" prefWidth="300.0" text="Category">
+            <Label fx:id="categoryLabel" layoutX="200.0" layoutY="10.0" prefHeight="20.0" prefWidth="320.0" text="Category">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -48,7 +42,6 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <FontAwesomeIconView glyphName="VENUS" layoutX="200.0" layoutY="25.0" text="" />
             <Label fx:id="fromAccount" alignment="CENTER_RIGHT" layoutX="560.0" layoutY="33.0" prefWidth="120.0" text="fromAccount">
                <font>
                   <Font size="14.0" />

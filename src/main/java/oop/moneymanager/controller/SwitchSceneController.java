@@ -2,7 +2,6 @@ package oop.moneymanager.controller;
 
 import javafx.event.ActionEvent;
 import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
@@ -11,13 +10,13 @@ import java.io.IOException;
 public class SwitchSceneController {
     private Stage stage;
     private Scene scene;
-    private Parent root;
 
     public void switchToMainScreen(ActionEvent event) throws IOException {
         MainScreenController controller = new MainScreenController();
         scene = controller.setScene();
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.setScene(scene);
+        stage.centerOnScreen(); // Center the stage on the screen
         stage.show();
     }
     public void switchToLoginScreen(ActionEvent event) throws IOException {
@@ -26,6 +25,7 @@ public class SwitchSceneController {
         scene = controller.setScene();
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.setScene(scene);
+        stage.centerOnScreen();
         stage.show();
     }
     public void switchToRegisterScreen(ActionEvent event) throws IOException {
@@ -33,6 +33,7 @@ public class SwitchSceneController {
         scene = controller.setScene();
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.setScene(scene);
+        stage.centerOnScreen();
         stage.show();
     }
 
@@ -41,6 +42,7 @@ public class SwitchSceneController {
         scene = controller.setScene();
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.setScene(scene);
+        stage.centerOnScreen();
         stage.show();
     }
     public void switchToForgotpassword(ActionEvent event) throws IOException {
@@ -48,6 +50,7 @@ public class SwitchSceneController {
         scene = controller.setScene();
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.setScene(scene);
+        stage.centerOnScreen();
         stage.show();
     }
 }

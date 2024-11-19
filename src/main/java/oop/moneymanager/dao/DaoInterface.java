@@ -1,11 +1,7 @@
 package oop.moneymanager.dao;
 
-import oop.moneymanager.model.TransactionModel;
-
 import java.sql.SQLException;
-import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.List;
 
 public interface DaoInterface <T> {
     int insert(T t) throws SQLException;

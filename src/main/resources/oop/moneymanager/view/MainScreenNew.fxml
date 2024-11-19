@@ -11,21 +11,21 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" stylesheets="@../css/MenuBar.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="oop.moneymanager.controller.MainScreenNewController">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" stylesheets="@../css/MenuBar.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="oop.moneymanager.controller.MainScreenNewController">
    <children>
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
-            <VBox fillWidth="false" prefHeight="700.0" prefWidth="173.0" spacing="50.0" style="-fx-background-color: gainsboro;">
+            <VBox fillWidth="false" prefHeight="700.0" prefWidth="200.0" spacing="50.0" style="-fx-background-color: gainsboro;">
                <children>
-                  <AnchorPane prefHeight="152.0" prefWidth="174.0">
+                  <AnchorPane prefHeight="150.0" prefWidth="110.0">
                      <children>
-                        <FontAwesomeIconView fill="#e78300" glyphName="USER" layoutX="59.0" layoutY="57.0" size="50" text="" wrappingWidth="42.91429901123047" />
-                        <Label alignment="CENTER" layoutX="-21.0" layoutY="64.0" prefHeight="39.0" prefWidth="205.0" text="Welcome" textAlignment="CENTER">
+                        <FontAwesomeIconView fill="#e78300" glyphName="USER" layoutX="64.0" layoutY="57.0" size="50" text="" wrappingWidth="42.91429901123047" />
+                        <Label alignment="CENTER" layoutX="10.0" layoutY="64.0" prefHeight="40.0" prefWidth="150.0" text="Welcome" textAlignment="CENTER">
                            <font>
                               <Font name="Franklin Gothic Heavy" size="20.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER" layoutX="-15.0" layoutY="96.0" prefHeight="26.0" prefWidth="202.0" text="Võ Hoàng An">
+                        <Label fx:id="usernameLabel" alignment="CENTER" layoutY="96.0" prefHeight="26.0" prefWidth="170.0" text="Username">
                            <font>
                               <Font size="16.0" />
                            </font>

@@ -5,9 +5,5 @@ import javafx.scene.input.MouseEvent;
 
 public class EditTransactionScreenController {
 
-    @FXML
-    void onMouseClicked(MouseEvent event) {
-        System.out.println("Button clicked!");
-    }
-
+    
 }

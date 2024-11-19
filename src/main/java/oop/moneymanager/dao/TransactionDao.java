@@ -2,7 +2,6 @@ package oop.moneymanager.dao;
 
 import java.sql.*;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -48,7 +47,7 @@ public class TransactionDao implements DaoInterface<TransactionModel>{
 
     @Override
     public int update(TransactionModel t) {
-        String url = "UPDATE transactions " +
+        String url = "UPDATE transaction " +
             "SET category = ?, type = ?, amount = ?, note = ?, username = ?, transaction_kind = ?, transaction_date = ?" + 
             "WHERE tran_id = ?";
         try (var connection = JDBCUtil.getConnection()) {
@@ -71,7 +70,7 @@ public class TransactionDao implements DaoInterface<TransactionModel>{
 
     @Override
     public int delete(TransactionModel t) {
-        String url = "DELETE FROM transactions WHERE tran_id = ?";
+        String url = "DELETE FROM transaction WHERE tran_id = ?";
         try (var connection = JDBCUtil.getConnection()) {
             PreparedStatement statement = connection.prepareStatement(url);
             statement.setInt(1, t.getId());
@@ -112,14 +111,14 @@ public class TransactionDao implements DaoInterface<TransactionModel>{
 
     @Override
     public ArrayList<TransactionModel> selectByCondition(String condition) {
-        String url = "SELECT * FROM transactions WHERE " + condition;
+        String url = "SELECT * FROM transaction WHERE " + condition;
         try (Connection con = JDBCUtil.getConnection();
             PreparedStatement statement = con.prepareStatement(url);
             var result = statement.executeQuery(url)) {
             ArrayList<TransactionModel> list = new ArrayList<>();
             while (result.next()) {
                 list.add(new TransactionModel(
-                    result.getInt(0), 
+                    result.getInt(1), 
                     result.getString(6), 
                     result.getString(2), 
                     result.getDouble(4), 
