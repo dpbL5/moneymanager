@@ -76,8 +76,8 @@ public class TransactionCellController extends ListCell<TransactionModel> {
             
             System.out.println(transaction.toString());
 
-            timeLabel.setText(transaction.getDate().toLocalTime().format(timeFormatter).toString());
-            dateLabel.setText(transaction.getDate().toLocalDate().format(formatter).toString());
+//            timeLabel.setText(transaction.getDate().toLocalTime().format(timeFormatter).toString());
+            dateLabel.setText(transaction.getDate().format(formatter).toString());
             categoryLabel.setText(transaction.getCategory().toString());
             noteLabel.setText(transaction.getNote().toString());
 

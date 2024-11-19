@@ -1,13 +1,9 @@
 package oop.moneymanager.dao;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import oop.moneymanager.model.TransactionModel;
@@ -23,11 +19,14 @@ import oop.moneymanager.model.TransactionModel;
 //      PRIMARY KEY (`tran_id`),
 
 public class TransactionDao implements DaoInterface<TransactionModel>{
+    public static TransactionDao getInstance() {
+        return new TransactionDao();
+    }
 
     @Override
     public int insert(TransactionModel t) throws SQLException {
-        String url = "INSERT INTO transactions (category, type, amount, note," + 
-            " username, transaction_kind, transaction_date) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        String url = "INSERT INTO transaction (category, type, amount, note, username, transaction_kind, transaction_date) VALUES (?, ?, ?, ?, ?, ?, ?)";
+
         try (var connection = JDBCUtil.getConnection()) {
             PreparedStatement statement = connection.prepareStatement(url);
             statement.setString(1, t.getCategory());
@@ -37,24 +36,14 @@ public class TransactionDao implements DaoInterface<TransactionModel>{
             statement.setString(5, t.getUsername());
             statement.setString(6, t.getKind().toString());
             statement.setString(7, t.getDate().toString());
-            int row = statement.executeUpdate(url);
-            
-            if (row > 0) {
-                try (ResultSet generatedKeys = statement.getGeneratedKeys()) {
-                    if (generatedKeys.next()) {
-                        long id = generatedKeys.getLong(1); // Get the generated key
-                        System.out.println("Inserted record ID: " + id);
-                    } else {
-                        System.out.println("No ID was generated.");
-                    }
-                }
-            }
-            return row;
 
+            int row = statement.executeUpdate();
+            return row;
         } catch (SQLException e) {
             e.printStackTrace();
-            return 0;
+
         }
+        return 0;
     }
 
     @Override
@@ -70,7 +59,7 @@ public class TransactionDao implements DaoInterface<TransactionModel>{
             statement.setString(4, t.getNote());
             statement.setString(5, t.getUsername());
             statement.setString(6, t.getKind().toString());
-            statement.setString(7, t.getDate().toString());
+            statement.setDate(7, Date.valueOf(t.getDate()));
             statement.setInt(8, t.getId());
             int row = statement.executeUpdate(url);
             return row;
@@ -96,7 +85,7 @@ public class TransactionDao implements DaoInterface<TransactionModel>{
 
     @Override
     public ArrayList<TransactionModel> selectAll() {
-        String url = "SELECT * FROM transactions";
+        String url = "SELECT * FROM transaction";
         try (var connection = JDBCUtil.getConnection()) {
             PreparedStatement statement = connection.prepareStatement(url);
             var result = statement.executeQuery(url);
@@ -108,7 +97,7 @@ public class TransactionDao implements DaoInterface<TransactionModel>{
                     result.getString(2), 
                     result.getDouble(4), 
                     result.getString(5), 
-                    LocalDateTime.parse(result.getString(8)), 
+                    LocalDate.parse(result.getString(8)),
                     TransactionModel.TransactionType.valueOf(result.getString(3)),
                     TransactionModel.TransactionKind.valueOf(result.getString(7))
                 ));
@@ -135,7 +124,7 @@ public class TransactionDao implements DaoInterface<TransactionModel>{
                     result.getString(2), 
                     result.getDouble(4), 
                     result.getString(5), 
-                    LocalDateTime.parse(result.getString(8)), 
+                    LocalDate.parse(result.getString(8)),
                     TransactionModel.TransactionType.valueOf(result.getString(3)),
                     TransactionModel.TransactionKind.valueOf(result.getString(7))
                 ));
@@ -165,7 +154,7 @@ public class TransactionDao implements DaoInterface<TransactionModel>{
                     result.getString(2), 
                     result.getDouble(4), 
                     result.getString(5), 
-                    LocalDateTime.parse(result.getString(8)), 
+                    LocalDate.parse(result.getString(8)),
                     TransactionModel.TransactionType.valueOf(result.getString(3)),
                     TransactionModel.TransactionKind.valueOf(result.getString(7))
                 );
