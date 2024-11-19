@@ -1,28 +1,27 @@
-/* Nền tổng thể */
-.anchor-pane {
-    -fx-background-color: #f2f2f2; /* Màu nền xám nhạt */
+/* Style chính cho nút */
+.button {
+    -fx-background-color: #e78300; /* Màu cam nhạt */
+    -fx-text-fill: white; /* Màu chữ trắng */
+    -fx-font-size: 10px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 5px; /* Bo góc */
+    -fx-border-color: #CCCCCC; /* Viền xám nhạt */
+    -fx-border-width: 2px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.3), 5, 0, 0, 2); /* Đổ bóng nhẹ */
+    -fx-padding: 10px 15px; /* Khoảng cách bên trong nút */
+    -fx-cursor: hand; /* Hiển thị con trỏ dạng tay khi hover */
 }
 
-/* Nút có viền và chữ màu cam */
-.menu-button {
-    -fx-background-color: white; /* Nền trắng cho nút */
-    -fx-border-color: #ff9800; /* Viền cam */
-    -fx-border-width: 2px; /* Độ dày viền */
-    -fx-text-fill: #ff9800; /* Chữ màu cam */
-    -fx-font-size: 16px; /* Kích thước chữ */
-    -fx-font-weight: bold; /* Độ đậm của chữ */
-    -fx-background-radius: 8; /* Bo tròn góc */
-    -fx-border-radius: 8;
-    -fx-padding: 8 20; /* Padding cho nút */
-    -fx-cursor: hand; /* Đổi con trỏ khi trỏ chuột */
+/* Hiệu ứng shade khi hover */
+.button:hover {
+    -fx-background-color: #d96925; /* Màu cam đậm hơn khi hover */
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.5), 10, 0, 0, 3); /* Đổ bóng mạnh hơn */
+    -fx-border-color: #bfbfbf; /* Viền xám đậm hơn */
 }
 
-/* Hiệu ứng hover */
-.menu-button:hover {
-    -fx-background-color: #ffe0b2; /* Màu nền nhạt khi hover */
-}
-
-/* Hiệu ứng khi nhấn */
-.menu-button:pressed {
-    -fx-background-color: #ffcc80; /* Màu nền khi nhấn */
+/* Hiệu ứng khi nhấn (pressed) */
+.button:pressed {
+    -fx-background-color: #c7571c; /* Màu cam đậm hơn nữa khi nhấn */
+    -fx-effect: none; /* Loại bỏ đổ bóng */
+    -fx-translate-y: 2px; /* Dịch nút xuống 2px để tạo hiệu ứng nhấn */
 }
