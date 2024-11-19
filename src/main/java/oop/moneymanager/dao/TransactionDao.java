@@ -6,9 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 import oop.moneymanager.model.TransactionModel;
 
@@ -203,7 +201,66 @@ public class TransactionDao implements DaoInterface<TransactionModel>{
 
         return transactions;
     }
+    public Map<String, Map<String, Double>> getTransactionSummaryByKind(String username) {
+        String sql = "SELECT transaction_kind, type, SUM(amount) AS total FROM transaction WHERE username = ? GROUP BY transaction_kind, type";
 
+        Map<String, Map<String, Double>> summary = new HashMap<>();
 
-    
+        try (Connection connection = JDBCUtil.getConnection();
+             PreparedStatement statement = connection.prepareStatement(sql)) {
+
+            statement.setString(1, username);
+            ResultSet resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                String kind = resultSet.getString("transaction_kind"); // CASH, CREDIT_CARD, BANK_ACCOUNT
+                String type = resultSet.getString("type").toUpperCase(); // INCOME, EXPENSE
+                double total = resultSet.getDouble("total");
+
+                summary.putIfAbsent(kind, new HashMap<>());
+                summary.get(kind).put(type, total);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return summary;
+    }
+    public Map<String, Map<String, Double>> getDetailedTransactionSummaryByTime(String username, String period) {
+        String sql = getQueryByPeriod(period);
+
+        Map<String, Map<String, Double>> summary = new HashMap<>();
+
+        try (Connection connection = JDBCUtil.getConnection();
+             PreparedStatement statement = connection.prepareStatement(sql)) {
+
+            statement.setString(1, username);
+            ResultSet resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                String kind = resultSet.getString("transaction_kind");
+                String time = resultSet.getString("time"); // Thời gian hiển thị
+                double total = resultSet.getDouble("total");
+
+                summary.putIfAbsent(kind, new HashMap<>());
+                summary.get(kind).put(time, total);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return summary;
+    }
+    private String getQueryByPeriod(String period) {
+        switch (period.toLowerCase()) {
+            case "day":
+                return "SELECT transaction_kind, DAY(transaction_date) AS time, SUM(amount) AS total FROM transaction WHERE username = ? AND MONTH(transaction_date) = MONTH(CURRENT_DATE()) AND YEAR(transaction_date) = YEAR(CURRENT_DATE()) GROUP BY transaction_kind, DAY(transaction_date)";
+            case "month":
+                return "SELECT transaction_kind, MONTH(transaction_date) AS time, SUM(amount) AS total FROM transaction WHERE username = ? AND YEAR(transaction_date) = YEAR(CURRENT_DATE()) GROUP BY transaction_kind, MONTH(transaction_date)";
+            case "year":
+                return "SELECT transaction_kind, YEAR(transaction_date) AS time, SUM(amount) AS total FROM transaction WHERE username = ? GROUP BY transaction_kind, YEAR(transaction_date)";
+            default:
+                return "";
+        }
+    }
 }

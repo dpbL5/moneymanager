@@ -54,7 +54,7 @@
             </columns>
         </TableView>
         <ChoiceBox fx:id="stat_choice_box" layoutX="346.0" layoutY="6.0" prefHeight="22.0" prefWidth="150.0" />
-        <Text layoutX="14.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Chi tiết">
+        <Text layoutX="14.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Details">
             <font>
                 <Font name="System Bold" size="14.0" />
             </font>
