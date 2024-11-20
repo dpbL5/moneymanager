@@ -128,7 +128,7 @@ public class DailyBoardController implements Initializable{
             update();
         });
 
-        // Set the transaction list view
+        // Set the transaction list view and cell factory
         transListView.setItems(transObsList);
         transListView.setCellFactory(transListView -> new TransactionCellController());
         

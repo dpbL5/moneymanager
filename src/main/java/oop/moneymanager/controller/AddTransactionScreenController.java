@@ -9,6 +9,7 @@ import javafx.scene.control.*;
 
 import javafx.event.ActionEvent;
 import javafx.scene.layout.VBox;
+import javafx.util.StringConverter;
 import oop.moneymanager.PreferencesHelper;
 import oop.moneymanager.dao.TransactionDao;
 import oop.moneymanager.model.TransactionModel;
@@ -152,12 +153,33 @@ public class AddTransactionScreenController implements Initializable {
         this.note.clear();
 
         // Reset DatePicker field
-        date_choice.setValue(null);
+        // date_choice.setValue(null);
 
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        // Tạo converter để chuyển đổi LocalDate thành String và ngược lại
+        date_choice.setConverter(new StringConverter<LocalDate>() {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+            
+            // Lấy ngày tháng từ LocalDate và chuyển thành String
+            @Override
+            public String toString(LocalDate date) {
+                return date != null ? formatter.format(date) : "";
+            }
+
+            // Lấy String và chuyển thành LocalDate
+            @Override
+            public LocalDate fromString(String string) {
+                return string != null && !string.isEmpty() ? LocalDate.parse(string, formatter) : null;
+            }
+        });
+
+        // Set giá trị mặc định cho DatePicker
+        date_choice.setValue(LocalDate.now());
+
         generatecategory();
         generatetype();
         generatekind();
