@@ -41,8 +41,7 @@ public class LoginScreenController implements Initializable {
             alert.setHeaderText("Thông báo đăng nhập:");
             if (loginHandle.isValidLogin(username, password)) {
                 PreferencesHelper.saveLoginInfo(username, password);
-                alert.setContentText("Đăng nhập thành công. Chào mừng bạn!");
-                
+                // alert.setContentText("Đăng nhập thành công. Chào mừng bạn!");
                 // Dang nhap thanh cong chuyen sang man hinh chinh
                 SwitchSceneController switchController = new  SwitchSceneController();
                 switchController.switchToMainScreen(event);

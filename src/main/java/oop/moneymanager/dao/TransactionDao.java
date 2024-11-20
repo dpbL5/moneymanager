@@ -30,10 +30,8 @@ public class TransactionDao implements DaoInterface<TransactionModel>{
     @Override
     public int insert(TransactionModel t) throws SQLException {
         String url = "INSERT INTO transaction (category, type, amount, note, username, transaction_kind, transaction_date) VALUES (?, ?, ?, ?, ?, ?, ?)";
-
         try (var connection = JDBCUtil.getConnection()) {
-            PreparedStatement statement = connection.prepareStatement(url,
-                PreparedStatement.RETURN_GENERATED_KEYS);
+            PreparedStatement statement = connection.prepareStatement(url, PreparedStatement.RETURN_GENERATED_KEYS);
             statement.setString(1, t.getCategory());
             statement.setString(2, t.getType().toString());
             statement.setDouble(3, t.getAmount());
@@ -65,9 +63,7 @@ public class TransactionDao implements DaoInterface<TransactionModel>{
 
     @Override
     public int update(TransactionModel t) {
-        String url = "UPDATE transaction " +
-            "SET category = ?, type = ?, amount = ?, note = ?, username = ?, transaction_kind = ?, transaction_date = ?" + 
-            "WHERE tran_id = ?";
+        String url = "UPDATE transaction SET category = ?, type = ?, amount = ?, note = ?, username = ?, transaction_kind = ?, transaction_date = ? WHERE tran_id = ?";
         try (var connection = JDBCUtil.getConnection()) {
             PreparedStatement statement = connection.prepareStatement(url);
             statement.setString(1, t.getCategory());
@@ -78,7 +74,7 @@ public class TransactionDao implements DaoInterface<TransactionModel>{
             statement.setString(6, t.getKind().toString());
             statement.setDate(7, Date.valueOf(t.getDate()));
             statement.setInt(8, t.getId());
-            int row = statement.executeUpdate(url);
+            int row = statement.executeUpdate();
             return row;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -92,7 +88,7 @@ public class TransactionDao implements DaoInterface<TransactionModel>{
         try (var connection = JDBCUtil.getConnection()) {
             PreparedStatement statement = connection.prepareStatement(url);
             statement.setInt(1, t.getId());
-            int row = statement.executeUpdate(url);
+            int row = statement.executeUpdate();
             return row;
         } catch (SQLException e) {
             e.printStackTrace();

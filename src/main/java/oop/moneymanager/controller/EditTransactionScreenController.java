@@ -7,6 +7,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Dialog;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -102,15 +103,26 @@ public class EditTransactionScreenController {
             TransactionModel.TransactionKind.valueOf(kindBox.getValue())
         );
         transactionDao.update(transaction);
+
         ((Stage) ((Node) event.getSource()).getScene().getWindow()).close();
     }
 
     @FXML
     void deleteHandle(ActionEvent event) {
         TransactionDao transactionDao = new TransactionDao();
-        System.out.println(tempTransaction.getId());
-        transactionDao.selectByID(Integer.toString(tempTransaction.getId()));
-        // System.out.println(transactionDao.delete(tempTransaction) + " row deleted");
+
+        Dialog dialog = new Dialog();
+        dialog.setContentText("Are you sure you want to delete this transaction?");
+        dialog.setTitle("Delete Transaction");
+        dialog.getDialogPane().getButtonTypes().add(javafx.scene.control.ButtonType.YES);
+        dialog.getDialogPane().getButtonTypes().add(javafx.scene.control.ButtonType.NO);
+
+        // if user click no, do nothing
+        if (dialog.showAndWait().get() == javafx.scene.control.ButtonType.NO) {
+            return;
+        }
+
+        transactionDao.delete(tempTransaction);
         ((Stage) ((Node) event.getSource()).getScene().getWindow()).close();
     }
 
