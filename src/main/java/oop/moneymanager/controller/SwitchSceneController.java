@@ -53,4 +53,14 @@ public class SwitchSceneController {
         stage.centerOnScreen();
         stage.show();
     }
+
+    private Scene previousScene;
+    public void switchtoChangeInformation(ActionEvent event) throws IOException {
+        ChangeInformationController controller = new ChangeInformationController();
+        scene = controller.setScene();
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.centerOnScreen();
+        stage.show();
+    }
 }

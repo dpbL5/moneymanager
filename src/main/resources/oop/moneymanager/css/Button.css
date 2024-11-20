@@ -1,27 +1,31 @@
-/* Style chính cho nút */
+
+/* Style cho các nút (Button) */
 .button {
-    -fx-background-color: #e78300; /* Màu cam nhạt */
+    -fx-background-color: linear-gradient(to bottom, #e78300, #d96925); /* Hiệu ứng gradient */
     -fx-text-fill: white; /* Màu chữ trắng */
     -fx-font-size: 10px;
     -fx-font-weight: bold;
-    -fx-background-radius: 5px; /* Bo góc */
-    -fx-border-color: #CCCCCC; /* Viền xám nhạt */
+    -fx-background-radius: 12px;
+    -fx-border-color: #cccccc;
+    -fx-border-radius: 12px;
     -fx-border-width: 2px;
-    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.3), 5, 0, 0, 2); /* Đổ bóng nhẹ */
-    -fx-padding: 10px 15px; /* Khoảng cách bên trong nút */
-    -fx-cursor: hand; /* Hiển thị con trỏ dạng tay khi hover */
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 5, 0, 0, 2); /* Đổ bóng nhẹ */
+    -fx-padding: 10px 20px;
+    -fx-cursor: hand;
 }
 
-/* Hiệu ứng shade khi hover */
+/* Hiệu ứng hover cho nút */
 .button:hover {
-    -fx-background-color: #d96925; /* Màu cam đậm hơn khi hover */
+    -fx-background-color: linear-gradient(to bottom, #d96925, #c7571c); /* Gradient đậm hơn */
     -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.5), 10, 0, 0, 3); /* Đổ bóng mạnh hơn */
-    -fx-border-color: #bfbfbf; /* Viền xám đậm hơn */
+    -fx-border-color: #bfbfbf;
 }
 
-/* Hiệu ứng khi nhấn (pressed) */
+/* Hiệu ứng nhấn */
 .button:pressed {
-    -fx-background-color: #c7571c; /* Màu cam đậm hơn nữa khi nhấn */
-    -fx-effect: none; /* Loại bỏ đổ bóng */
-    -fx-translate-y: 2px; /* Dịch nút xuống 2px để tạo hiệu ứng nhấn */
+    -fx-background-color: #c7571c;
+    -fx-effect: none;
+    -fx-translate-y: 2px;
 }
+
+

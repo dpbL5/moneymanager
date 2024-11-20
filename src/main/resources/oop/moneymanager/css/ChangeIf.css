@@ -1,0 +1,75 @@
+/* Style chính cho AnchorPane */
+.anchor-pane {
+    -fx-background-color: linear-gradient(to bottom, #f9f9f9, #e9e9e9); /* Nền gradient */
+    -fx-padding: 20px;
+    -fx-border-color: #cccccc;
+    -fx-border-width: 1px;
+    -fx-border-radius: 10px;
+}
+
+/* Header Label */
+.header-label {
+    -fx-text-fill: #333333; /* Màu chữ đậm */
+    -fx-font-weight: bold;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 5, 0, 0, 2);
+}
+
+/* Form GridPane */
+.form-pane {
+    -fx-background-color: #ffffff; /* Nền trắng */
+    -fx-padding: 20px;
+    -fx-border-color: #cccccc;
+    -fx-border-width: 2px;
+    -fx-border-radius: 10px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 8, 0, 0, 3);
+}
+
+/* Label trong form */
+.form-label {
+    -fx-text-fill: #555555; /* Màu chữ trung tính */
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+
+/* TextField trong form */
+.form-textfield {
+    -fx-background-color: #f9f9f9;
+    -fx-border-color: #cccccc;
+    -fx-border-radius: 5px;
+    -fx-border-width: 1.5px;
+    -fx-padding: 8px;
+    -fx-font-size: 13px;
+}
+
+.form-textfield:hover {
+    -fx-border-color: #e78300; /* Màu cam nhạt khi hover */
+}
+
+.form-textfield:focused {
+    -fx-border-color: #d96925; /* Màu cam đậm khi focus */
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 4, 0, 0, 2);
+}
+
+/* Buttons */
+.action-button {
+    -fx-background-color: linear-gradient(to bottom, #e78300, #d96925); /* Gradient cam */
+    -fx-text-fill: white;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 10px;
+    -fx-border-color: #cccccc;
+    -fx-border-width: 2px;
+    -fx-padding: 10px 20px;
+    -fx-cursor: hand;
+}
+
+.action-button:hover {
+    -fx-background-color: linear-gradient(to bottom, #d96925, #c7571c);
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.5), 10, 0, 0, 3);
+}
+
+.action-button:pressed {
+    -fx-background-color: #c7571c;
+    -fx-effect: none;
+    -fx-translate-y: 2px;
+}

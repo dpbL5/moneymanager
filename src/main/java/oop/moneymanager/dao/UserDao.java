@@ -46,6 +46,7 @@ public class UserDao implements DaoInterface<UserModel> {
         }
     }
 
+
     @Override
     public int delete(UserModel userModel) {
         String url = "DELETE FROM user WHERE name = ? and email = ?";
@@ -123,5 +124,18 @@ public class UserDao implements DaoInterface<UserModel> {
             throw new RuntimeException(e);
         }
         return user;
+    }
+    public int change(UserModel user) throws SQLException {
+        String query = "UPDATE user SET email = ?, phone = ? WHERE name = ?";
+        try (Connection con = JDBCUtil.getConnection();
+             PreparedStatement stmt = con.prepareStatement(query)) {
+            stmt.setString(1, user.getEmail());
+            stmt.setString(2, user.getPhone());
+            stmt.setString(3, user.getUserName()); // Điều kiện WHERE tìm người dùng theo name (cũ)
+            return stmt.executeUpdate();
+        }
+        catch (SQLException e) {
+        }
+        return 0;
     }
 }

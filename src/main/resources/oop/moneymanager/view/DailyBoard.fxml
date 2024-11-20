@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="700.0" prefWidth="800.0" stylesheets="@../css/Button.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="oop.moneymanager.controller.DailyBoardController">
+<AnchorPane prefHeight="700.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="oop.moneymanager.controller.DailyBoardController">
    <Label alignment="CENTER" layoutY="25.0" prefWidth="800.0" text="Dailyboard">
       <font>
          <Font name="System Bold" size="20.0" />
@@ -22,11 +22,11 @@
       </graphic>
    </Button>
    <ListView fx:id="transListView" layoutX="25.0" layoutY="222.0" prefHeight="560.0" prefWidth="750.0" styleClass="anchor-pane" stylesheets="@../css/DropshadowPane.css" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0" />
-   <Label fx:id="mYearLabel" layoutX="75.0" layoutY="66.0" prefWidth="120.0" text="Nov 2024">
+   <Label fx:id="mYearLabel" layoutX="85.0" layoutY="63.0" prefWidth="120.0" text="Nov 2024">
       <font>
          <Font name="Roboto" size="24.0" />
       </font>
    </Label>
-   <Button fx:id="previousMYear" layoutX="25.0" layoutY="60.0" mnemonicParsing="false" text="&lt;" />
-   <Button fx:id="nextMYear" layoutX="200.0" layoutY="60.0" mnemonicParsing="false" text="&gt;" />
+   <Button fx:id="previousMYear" layoutX="25.0" layoutY="60.0" mnemonicParsing="false" stylesheets="@../css/Button.css" text="&lt;" />
+   <Button fx:id="nextMYear" layoutX="195.0" layoutY="60.0" mnemonicParsing="false" stylesheets="@../css/Button.css" text="&gt;" />
 </AnchorPane>
