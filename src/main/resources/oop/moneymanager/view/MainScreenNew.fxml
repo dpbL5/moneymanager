@@ -4,6 +4,8 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
@@ -11,51 +13,78 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" stylesheets="@../css/MenuBar.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="oop.moneymanager.controller.MainScreenNewController">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="oop.moneymanager.controller.MainScreenNewController">
    <children>
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
-            <VBox fillWidth="false" prefHeight="700.0" prefWidth="173.0" spacing="50.0" style="-fx-background-color: gainsboro;">
+            <VBox fillWidth="false" prefHeight="700.0" prefWidth="192.0" spacing="30.0" style="-fx-background-color: gainsboro;">
                <children>
                   <AnchorPane prefHeight="152.0" prefWidth="174.0">
                      <children>
-                        <FontAwesomeIconView fill="#e78300" glyphName="USER" layoutX="59.0" layoutY="57.0" size="50" text="" wrappingWidth="42.91429901123047" />
-                        <Label alignment="CENTER" layoutX="-21.0" layoutY="64.0" prefHeight="39.0" prefWidth="205.0" text="Welcome" textAlignment="CENTER">
+                        <Label alignment="CENTER" layoutX="35.0" layoutY="84.0" prefHeight="26.0" prefWidth="102.0" text="Welcome" textAlignment="CENTER">
                            <font>
                               <Font name="Franklin Gothic Heavy" size="20.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER" layoutX="-15.0" layoutY="96.0" prefHeight="26.0" prefWidth="202.0" text="Võ Hoàng An">
+                        <Label fx:id="username_lbl" alignment="CENTER" layoutX="11.0" layoutY="111.0" prefHeight="26.0" prefWidth="151.0" text="Võ Hoàng An">
                            <font>
                               <Font size="16.0" />
                            </font>
                         </Label>
+                        <ImageView fitHeight="49.0" fitWidth="60.0" layoutX="62.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/wallet.png" />
+                           </image>
+                        </ImageView>
                      </children>
                   </AnchorPane>
-                  <Button mnemonicParsing="false" onAction="#onDailyBoardButtonClicked" prefHeight="24.0" prefWidth="166.0" style="-fx-background-color: #e78300;" text="Hàng ngày" textFill="WHITE">
+                  <Button mnemonicParsing="false" onAction="#onDailyBoardButtonClicked" prefHeight="24.0" prefWidth="166.0" style="-fx-background-color: #e78300;" text="Daily" textFill="WHITE">
                      <font>
                         <Font size="16.0" />
                      </font>
+                     <graphic>
+                        <FontAwesomeIconView fill="#fafafa" glyphName="CALENDAR" />
+                     </graphic>
                   </Button>
-                  <Button mnemonicParsing="false" onAction="#onStatisticalButtonClicked" prefHeight="16.0" prefWidth="166.0" style="-fx-background-color: #e78300;" text="Thống kê" textFill="WHITE">
+                  <Button mnemonicParsing="false" onAction="#onAddTransactionButtonClicked" prefHeight="39.0" prefWidth="165.0" style="-fx-background-color: #e78300;" text="Add Transaction" textFill="WHITE">
                      <font>
                         <Font size="16.0" />
                      </font>
+                     <graphic>
+                        <FontAwesomeIconView fill="#fafafa" glyphName="PLUS" />
+                     </graphic>
                   </Button>
-                  <Button mnemonicParsing="false" onAction="#onAccountInfoButtonClicked" prefHeight="6.0" prefWidth="166.0" style="-fx-background-color: #e78300;" text="Thông tin tài khoản" textFill="WHITE">
+                  <Button mnemonicParsing="false" onAction="#onStatisticalButtonClicked" prefHeight="16.0" prefWidth="166.0" style="-fx-background-color: #e78300;" text="Statistic" textFill="WHITE">
                      <font>
                         <Font size="16.0" />
                      </font>
+                     <graphic>
+                        <FontAwesomeIconView fill="#fafafa" glyphName="LINE_CHART" />
+                     </graphic>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="39.0" prefWidth="165.0" style="-fx-background-color: #e78300;" text="Loại tiền" textFill="WHITE">
+                  <Button layoutX="20.0" layoutY="300.0" mnemonicParsing="false" onAction="#onWalletButtonClicked" prefHeight="16.0" prefWidth="166.0" style="-fx-background-color: #e78300;" text="Wallets" textFill="WHITE">
                      <font>
                         <Font size="16.0" />
                      </font>
+                     <graphic>
+                        <FontAwesomeIconView fill="#fafafa" glyphName="DOLLAR" />
+                     </graphic>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="9.0" prefWidth="166.0" style="-fx-background-color: #e78300;" text="Đăng xuất" textFill="WHITE">
+                  <Button mnemonicParsing="false" onAction="#onAccountInfoButtonClicked" prefHeight="6.0" prefWidth="166.0" style="-fx-background-color: #e78300;" text="User" textFill="WHITE">
                      <font>
                         <Font size="16.0" />
                      </font>
+                     <graphic>
+                        <FontAwesomeIconView fill="#fafafa" glyphName="USER" />
+                     </graphic>
+                  </Button>
+                  <Button mnemonicParsing="false" prefHeight="9.0" prefWidth="166.0" style="-fx-background-color: #e78300;" text="Log out" textFill="WHITE">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <graphic>
+                        <FontAwesomeIconView fill="#fafafa" glyphName="SIGN_OUT" />
+                     </graphic>
                   </Button>
                </children>
                <padding>

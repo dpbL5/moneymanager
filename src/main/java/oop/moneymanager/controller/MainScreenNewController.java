@@ -5,10 +5,13 @@ import java.util.ResourceBundle;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
+import oop.moneymanager.PreferencesHelper;
 
 public class MainScreenNewController implements Initializable{
-
+    @FXML
+    public Label username_lbl;
     @FXML
     private Pane viewPane;
 
@@ -35,7 +38,22 @@ public class MainScreenNewController implements Initializable{
     
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
+        username_lbl.setText(PreferencesHelper.getUsername());
         Pane pane = new MultiFxmlController().getPane("DailyBoard");
+        viewPane.getChildren().add(pane);
+    }
+
+    @FXML
+    void onAddTransactionButtonClicked() {
+        Pane pane = new MultiFxmlController().getPane("AddTransactionView");
+        viewPane.getChildren().clear();
+        viewPane.getChildren().add(pane);
+    }
+
+    @FXML
+    void onWalletButtonClicked() {
+        Pane pane = new MultiFxmlController().getPane("WalletView");
+        viewPane.getChildren().clear();
         viewPane.getChildren().add(pane);
     }
 }

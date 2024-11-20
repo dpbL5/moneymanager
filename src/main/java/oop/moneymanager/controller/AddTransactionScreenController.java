@@ -9,6 +9,7 @@ import javafx.scene.control.*;
 
 import javafx.event.ActionEvent;
 import javafx.scene.layout.VBox;
+import oop.moneymanager.PreferencesHelper;
 import oop.moneymanager.dao.TransactionDao;
 import oop.moneymanager.model.TransactionModel;
 
@@ -80,7 +81,7 @@ public class AddTransactionScreenController implements Initializable {
         }
         String formattedDate = selectedDate.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
         System.out.println("Date: " + formattedDate);;
-        TransactionModel transaction = new TransactionModel(3,"bao1",category,money,note,selectedDate, TransactionModel.TransactionType.valueOf(type), TransactionModel.TransactionKind.valueOf(kind));
+        TransactionModel transaction = new TransactionModel(3, PreferencesHelper.getUsername(),category,money,note,selectedDate, TransactionModel.TransactionType.valueOf(type), TransactionModel.TransactionKind.valueOf(kind));
         System.out.println(transaction.toString());
         try {
             int row = TransactionDao.getInstance().insert(transaction);
@@ -129,7 +130,7 @@ public class AddTransactionScreenController implements Initializable {
             return;
         }
 
-        TransactionModel transaction = new TransactionModel(3,"bao1",category,money,note,selectedDate, TransactionModel.TransactionType.valueOf(type), TransactionModel.TransactionKind.valueOf(kind));
+        TransactionModel transaction = new TransactionModel(3,PreferencesHelper.getUsername(),category,money,note,selectedDate, TransactionModel.TransactionType.valueOf(type), TransactionModel.TransactionKind.valueOf(kind));
         System.out.println(transaction.toString());
         try {
             int row = TransactionDao.getInstance().insert(transaction);
