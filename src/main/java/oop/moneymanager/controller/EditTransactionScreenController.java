@@ -103,8 +103,11 @@ public class EditTransactionScreenController {
             TransactionModel.TransactionKind.valueOf(kindBox.getValue())
         );
         transactionDao.update(transaction);
-
+        
         ((Stage) ((Node) event.getSource()).getScene().getWindow()).close();
+
+        DailyBoardController dailyBoardController = new DailyBoardController();
+        dailyBoardController.update();
     }
 
     @FXML

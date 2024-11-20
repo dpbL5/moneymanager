@@ -35,20 +35,20 @@ public class LoginScreenController implements Initializable {
         try{
             String username = Username.getText().toString();
             String password = Password.getText().toString();
-            System.out.println(username + " " + password + " ");
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Đăng Nhập");
-            alert.setHeaderText("Thông báo đăng nhập:");
             if (loginHandle.isValidLogin(username, password)) {
                 PreferencesHelper.saveLoginInfo(username, password);
+                System.out.println("Login success with username: " + username);
                 // alert.setContentText("Đăng nhập thành công. Chào mừng bạn!");
                 // Dang nhap thanh cong chuyen sang man hinh chinh
                 SwitchSceneController switchController = new  SwitchSceneController();
                 switchController.switchToMainScreen(event);
             } else {
+                alert.setTitle("Đăng Nhập");
+                alert.setHeaderText("Thông báo đăng nhập:");
                 alert.setContentText("Thông tin đăng nhập không chính xác. Vui lòng kiểm tra lại và thử đăng nhập lại.");
+                alert.show();
             }
-            alert.show();
         }
         catch (Exception e){
             System.out.println(e.toString());

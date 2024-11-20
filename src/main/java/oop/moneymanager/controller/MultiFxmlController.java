@@ -18,7 +18,7 @@ public class MultiFxmlController {
             }
             viewPane = FXMLLoader.load(url);
         } catch (IOException e) {
-            System.out.println("No fxml found for " + path);
+            System.out.println(path + " not Found");
         }
         return viewPane;
     }

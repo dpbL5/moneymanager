@@ -6,7 +6,10 @@ import javafx.scene.Scene;
 
 import java.io.IOException;
 
+@Deprecated
 public class MainScreenController{
+    
+    @Deprecated
     public Scene setScene() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/oop/moneymanager/view/MainScreenNew.fxml"));
         Parent root = loader.load();

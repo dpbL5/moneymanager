@@ -18,11 +18,8 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.Optional;
 import java.util.ResourceBundle;
-import java.util.Set;
-import java.util.TreeSet;
 
 
 public class AddTransactionScreenController implements Initializable {
