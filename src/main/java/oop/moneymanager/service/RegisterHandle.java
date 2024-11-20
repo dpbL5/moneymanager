@@ -6,6 +6,7 @@ import oop.moneymanager.model.UserModel;
 import java.sql.SQLException;
 
 public class RegisterHandle {
+    private static UserModel user;
     public static RegisterHandle getInstance(){
         return new RegisterHandle();
     }
@@ -13,6 +14,9 @@ public class RegisterHandle {
         try {
             UserModel userCheck = null;
             System.out.println(username + " " + password);
+            if(isLowercaseLettersOnly(username)==false){
+                return 0;
+            }
             userCheck = UserDao.getInstance().selectByUserName(username);
             if (userCheck != null) {
                 return 2;
@@ -27,5 +31,12 @@ public class RegisterHandle {
             System.out.println(e.getMessage());
         }
         return 0;
+    }
+    public boolean isLowercaseLettersOnly(String input) {
+        if (input == null || input.isEmpty()) {
+            return false;
+        }
+        // Sử dụng biểu thức chính quy để kiểm tra
+        return input.matches("[a-z0-9]+");
     }
 }

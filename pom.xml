@@ -17,6 +17,11 @@
             <version>8.0.30</version>
         </dependency>
         <dependency>
+            <groupId>org.libj</groupId>
+            <artifactId>mail</artifactId>
+            <version>0.4.4</version>
+        </dependency>
+        <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-controls</artifactId>
             <version>22</version>

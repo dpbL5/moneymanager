@@ -1,5 +1,6 @@
 package oop.moneymanager.model;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class TransactionModel {
@@ -8,14 +9,14 @@ public class TransactionModel {
     private Integer id;
     private String username;
     private String category;
-    private Double amount; 
+    private Double amount;
     private String note;
-    private LocalDateTime date;
+    private LocalDate date;
     private TransactionType type;
     private TransactionKind kind;
 
-    public TransactionModel(Integer id, String username, String category, Double amount, String note, LocalDateTime date,
-            TransactionType type, TransactionKind kind) {
+    public TransactionModel(Integer id, String username, String category, Double amount, String note, LocalDate date,
+                            TransactionType type, TransactionKind kind) {
         this.id = id;
         this.username = username;
         this.category = category;
@@ -26,11 +27,23 @@ public class TransactionModel {
         this.kind = kind;
     }
 
+    public TransactionModel(String category,String type, Double amount) {
+        this.type = TransactionType.valueOf(type);
+        this.category = category;
+        this.amount = amount;
+    }
+
+    public String toString() {
+        return String.join(" ",
+                id.toString(), category,type.toString(),String.valueOf(amount),note,username,kind.toString(),date.toString());
+    }
+
+
     public enum TransactionType {
         INCOME("INCOME"), EXPENSE("EXPENSE");
 
         private String value;
-        
+
         TransactionType(String value) {
             this.value = value;
         }
@@ -40,16 +53,12 @@ public class TransactionModel {
         CASH("CASH"), BANK_ACCOUNT("BANK_ACCOUNT"), CREDIT_CARD("CREDIT_CARD");
 
         private String value;
-        
+
         TransactionKind(String value) {
             this.value = value;
         }
     }
-    public TransactionModel( String category, String type, Double amount){
-        this.category = category;
-        this.amount = amount;
-        this.type = TransactionType.valueOf(type.toUpperCase());
-    }
+
     public void setUsername(String username) {
         this.username = username;
     }
@@ -66,7 +75,7 @@ public class TransactionModel {
         this.note = note;
     }
 
-    public void setDate(LocalDateTime date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 
@@ -98,7 +107,7 @@ public class TransactionModel {
         return note;
     }
 
-    public LocalDateTime getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
@@ -110,6 +119,6 @@ public class TransactionModel {
         return kind;
     }
 
-    
+
 
 }

@@ -9,6 +9,7 @@ import javafx.scene.chart.LineChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
+import oop.moneymanager.PreferencesHelper;
 import oop.moneymanager.dao.TransactionDao;
 
 import java.net.URL;
@@ -54,12 +55,12 @@ public class WalletController implements Initializable {
 
         // Gắn sự kiện thay đổi cho ChoiceBox
         wallet_choice_box.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            updateLineChart(newValue.toLowerCase(), "bao2");
+            updateLineChart(newValue.toLowerCase(), PreferencesHelper.getUsername());
         });
 
         // Nạp dữ liệu ban đầu
-        loadWalletData("bao2");
-        updateLineChart("day", "bao2");
+        loadWalletData(PreferencesHelper.getUsername());
+        updateLineChart("day", PreferencesHelper.getUsername());
     }
 
     // Nạp dữ liệu thu nhập, chi tiêu cho các nhãn hiển thị

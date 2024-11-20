@@ -1,6 +1,7 @@
 package oop.moneymanager.controller;
 
 import java.net.URL;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Observable;
@@ -35,7 +36,7 @@ public class DailyBoardController implements Initializable{
                 "Category " + i,
                 rand.nextDouble() * 1000,
                 "Note " + i,
-                LocalDateTime.now(),
+                    LocalDate.now(),
                 TransactionModel.TransactionType.EXPENSE,
                 TransactionModel.TransactionKind.CASH
             ));

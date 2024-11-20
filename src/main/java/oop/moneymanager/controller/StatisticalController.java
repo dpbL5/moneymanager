@@ -8,6 +8,7 @@ import javafx.geometry.Side;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
+import oop.moneymanager.PreferencesHelper;
 import oop.moneymanager.dao.TransactionDao;
 import oop.moneymanager.model.DetailModel;
 import oop.moneymanager.model.TransactionModel;
@@ -57,12 +58,14 @@ public class StatisticalController implements Initializable {
     private UserModel userModel;
     private ObservableList<DetailModel> Incomedetails = FXCollections.observableArrayList();
     private ObservableList<DetailModel> Expensedetails = FXCollections.observableArrayList();
+    private static LocalDate  startDate = LocalDate.now().minusDays(30);
+    private static LocalDate endDate = LocalDate.now();
 
     public void settingPiechart(PieChart pieChart) {
         pieChart.setLegendSide(Side.BOTTOM);
         pieChart.setLabelsVisible(false);
         pieChart.setStartAngle(90);
-        pieChart.setAnimated(true);
+//        pieChart.setAnimated(true);
         pieChart.setClockwise(false);
     }
 
@@ -95,8 +98,8 @@ public class StatisticalController implements Initializable {
         transactionDao = new TransactionDao();
 
         // Đặt giá trị mặc định cho DatePicker
-        sta_date_end.setValue(LocalDate.now()); // Ngày kết thúc là ngày hiện tại
-        sta_date_start.setValue(LocalDate.now().minusDays(30)); // Ngày bắt đầu là 30 ngày trước ngày hiện tại
+        sta_date_end.setValue(endDate); // Ngày kết thúc là ngày hiện tại
+        sta_date_start.setValue(startDate); // Ngày bắt đầu là 30 ngày trước ngày hiện tại
 
         settingPiechart(stat_in_pie_chart);
         settingPiechart(stat_out_pie_chart);
@@ -115,8 +118,8 @@ public class StatisticalController implements Initializable {
     }
 
     private void loadData() {
-        LocalDate endDate = sta_date_end.getValue();
-        LocalDate startDate = sta_date_start.getValue();
+        endDate = sta_date_end.getValue();
+        startDate = sta_date_start.getValue();
 
         if (endDate == null) {
             endDate = LocalDate.now();
@@ -129,14 +132,14 @@ public class StatisticalController implements Initializable {
 
         if (daysBetween > 30) {
             messageLabel.setText("Thời gian vượt quá 30 ngày, vui lòng chọn lại");
-            stat_in_pie_chart.getData().clear();
-            stat_out_pie_chart.getData().clear();
+//            stat_in_pie_chart.getData().clear();
+//            stat_out_pie_chart.getData().clear();
         } else {
             double totalIncome = 0;
             double totalExpense = 0;
 
             messageLabel.setText("");
-            String username = "bao2";
+            String username = PreferencesHelper.getUsername();
             List<TransactionModel> transactions = transactionDao.selectByRangedateAndUsername(username, startDate, endDate);
 
             // Làm mới danh sách chi tiết

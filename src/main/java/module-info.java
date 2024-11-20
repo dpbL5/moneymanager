@@ -5,6 +5,7 @@ module oop.moneymanager {
     requires java.sql;
     requires java.desktop;
     requires java.prefs;
+    requires java.mail;
 
     opens oop.moneymanager to javafx.fxml;
     exports oop.moneymanager;

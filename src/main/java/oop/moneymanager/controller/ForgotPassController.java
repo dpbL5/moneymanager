@@ -1,21 +1,15 @@
 package oop.moneymanager.controller;
 
+import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.Dialog;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-
+import javafx.scene.control.*;
 import javafx.event.ActionEvent;
 import javafx.scene.layout.VBox;
-import oop.moneymanager.PreferencesHelper;
-import oop.moneymanager.dao.UserDao;
-import oop.moneymanager.model.UserModel;
-
+import oop.moneymanager.service.ForgotPasswordHandl;
 import java.io.IOException;
 
 public class ForgotPassController {
@@ -30,61 +24,52 @@ public class ForgotPassController {
         Scene scene = new Scene(root);
         return scene;
     }
-    public void setButtonSubmit(ActionEvent event) {
-        String username = username_field.getText();
-        String email = email_field.getText();
-        UserModel user = UserDao.getInstance().selectByUserName(PreferencesHelper.getUsername());
-        int ok = 1;
-        if (!username.isEmpty() && username.equals(user.getUserName()) && !email.isEmpty() && email.equals(user.getEmail()) ) {
-            showInputDialog("Quản lí thông tin của bạn tốt hơn!",user.getPassWord(),ok);
-        }
-        else {
-            ok = 0;
-            showInputDialog("Nhập sai thông tin người dùng","vui lòng nhập lại thông tin của bạn",ok);
-        }
+    public void setButtonSubmit(ActionEvent event){
+        String userName = username_field.getText();
+        String emailText = email_field.getText();
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Register");
 
+        boolean isCheck = ForgotPasswordHandl.getInstance().checkSendMail(userName,emailText);
+        if (isCheck) ProgressBarController.getInstance(13226L).showProgressBar();
+        Task<Boolean> sendMailTask = new Task<Boolean>() {
+            @Override
+            protected Boolean call() throws Exception {
+                boolean isCheckConditions = ForgotPasswordHandl.getInstance().checkSendMail(userName,  emailText);
+                if(!isCheckConditions) return false;
+                return ForgotPasswordHandl.confirmPasswordResetRequest(userName,emailText);
+            }
+        };
+
+        sendMailTask.setOnSucceeded(send -> {
+            boolean isSend = sendMailTask.getValue();
+            if (isSend) {
+
+                alert.setContentText("Cảm ơn bạn đã cung cấp thông tin. Chúng tôi đang xử lý yêu cầu của bạn.\n" +
+                        "Vui lòng kiểm tra hộp thư đến của bạn để nhận mật khẩu mới.\n " +
+                        "Nếu bạn không nhận được email trong vòng vài phút, vui lòng kiểm tra thư mục Spam hoặc liên hệ với " +
+                        "chúng tôi để được hỗ trợ.");
+                alert.setOnCloseRequest(e -> {
+                    SwitchSceneController switchController = new SwitchSceneController();
+                    try {
+                        switchController.switchToLoginScreen(event);
+                    } catch (IOException ex) {
+                        throw new RuntimeException(ex);
+                    }
+                });
+            } else {
+                alert.setContentText("Xin lỗi, có vẻ như thông tin bạn đã nhập không đúng.\n" +
+                        "Vui lòng kiểm tra lại và nhập thông tin chính xác.");
+            }
+            alert.show();
+        });
+        new Thread(sendMailTask).start();
     }
     public  void setButtonCancel(ActionEvent event) throws IOException {
-    SwitchSceneController controller = new SwitchSceneController();
-    controller.switchToLoginScreen(event);
+        SwitchSceneController controller = new SwitchSceneController();
+        controller.switchToLoginScreen(event);
     }
-    private void showInputDialog(String title, String password,int ok) {
-        Dialog<Void> dialog = new Dialog<>();
-        dialog.setTitle(title);
 
-        // Tạo giao diện bên trong Dialog
-        VBox dialogContent = new VBox(50);
-        dialogContent.setPadding(new Insets(50));
-
-        Label newpasswordLabel = new Label();
-        if(ok == 1)
-        {
-            newpasswordLabel.setText("Mật khẩu của bạn là: " + password);
-        }
-        else
-        {
-            newpasswordLabel.setText(password);
-        }
-
-
-
-        ButtonType confirmButtonType = new ButtonType("Xác nhận");
-        dialog.getDialogPane().getButtonTypes().addAll(confirmButtonType, ButtonType.CLOSE);
-
-        // Nút "Xác nhận" xử lý sự kiện
-        dialog.getDialogPane().lookupButton(confirmButtonType).setOnMouseEntered(event -> {
-
-        });
-
-        // Thêm các phần tử vào VBox
-        dialogContent.getChildren().addAll(newpasswordLabel);
-
-        // Đặt VBox vào Dialog
-        dialog.getDialogPane().setContent(dialogContent);
-
-        // Hiển thị Dialog và chờ người dùng đóng lại
-        dialog.showAndWait();
-    }
 
 
 }
