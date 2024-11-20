@@ -1,5 +1,7 @@
 # Ignore Folder
 target/
+.idea/
+.vscode/
 
 
 # Log file
