@@ -72,6 +72,7 @@
       <HBox alignment="CENTER" layoutY="400.0" prefHeight="100.0" prefWidth="600.0" spacing="50.0">
          <children>
             <Button mnemonicParsing="false" onAction="#saveHandle" prefHeight="25.0" prefWidth="100.0" stylesheets="@../css/Button.css" text="Save" />
+            <Button mnemonicParsing="false" onAction="#deleteHandle" prefHeight="25.0" prefWidth="100.0" stylesheets="@../css/Button.css" text="Delete" />
             <Button mnemonicParsing="false" onAction="#cancelHandle" prefHeight="25.0" prefWidth="100.0" stylesheets="@../css/Button.css" text="Cancel" />
          </children>
       </HBox>

@@ -5,7 +5,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextArea;
@@ -17,6 +16,8 @@ import oop.moneymanager.model.TransactionModel;
 import oop.moneymanager.model.TransactionModel.TransactionKind;
 
 public class EditTransactionScreenController {
+
+    private TransactionModel tempTransaction;
 
     @FXML
     private TextField amountField;
@@ -73,6 +74,7 @@ public class EditTransactionScreenController {
             TransactionKind.CREDIT_CARD.toString()
         );
 
+        tempTransaction = transaction;
         amountField.setText(String.valueOf(transaction.getAmount()));
         categoryBox.setValue(transaction.getCategory());
         datePicker.setValue(transaction.getDate());
@@ -88,15 +90,27 @@ public class EditTransactionScreenController {
 
     @FXML
     void saveHandle(ActionEvent event) {
-        // TransactionModel transaction = new TransactionModel(
-        //     Integer.parseInt(amountField.getText()),
-        //     categoryBox.getValue(),
-        //     datePicker.getValue(),
-        //     TransactionModel.TransactionKind.valueOf(kindBox.getValue()),
-        //     noteArea.getText(),
-        //     TransactionModel..valueOf(typeBox.getValue())
-        // );
-        // TransactionDao.update(transaction);
+        TransactionDao transactionDao = new TransactionDao();
+        TransactionModel transaction = new TransactionModel(
+            tempTransaction.getId(), 
+            PreferencesHelper.getUsername(), 
+            categoryBox.getValue(), 
+            Double.parseDouble(amountField.getText()), 
+            noteArea.getText(), 
+            datePicker.getValue(), 
+            TransactionModel.TransactionType.valueOf(typeBox.getValue()), 
+            TransactionModel.TransactionKind.valueOf(kindBox.getValue())
+        );
+        transactionDao.update(transaction);
+        ((Stage) ((Node) event.getSource()).getScene().getWindow()).close();
+    }
+
+    @FXML
+    void deleteHandle(ActionEvent event) {
+        TransactionDao transactionDao = new TransactionDao();
+        System.out.println(tempTransaction.getId());
+        transactionDao.selectByID(Integer.toString(tempTransaction.getId()));
+        // System.out.println(transactionDao.delete(tempTransaction) + " row deleted");
         ((Stage) ((Node) event.getSource()).getScene().getWindow()).close();
     }
 

@@ -160,13 +160,13 @@ public class TransactionDao implements DaoInterface<TransactionModel>{
 
     @Override
     public TransactionModel selectByID(String ID) {
-        String url = "SELECT * FROM transactions WHERE trans_id = " + ID;
+        String url = "SELECT * FROM transaction WHERE tran_id = " + ID;
         try (var connection = JDBCUtil.getConnection()) {
             PreparedStatement statement = connection.prepareStatement(url);
             var result = statement.executeQuery(url);
             if (result.next()) {
                 return new TransactionModel(
-                    result.getInt(0), 
+                    result.getInt(1), 
                     result.getString(6), 
                     result.getString(2), 
                     result.getDouble(4), 
