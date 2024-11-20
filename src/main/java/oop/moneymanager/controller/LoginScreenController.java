@@ -31,28 +31,24 @@ public class LoginScreenController implements Initializable {
         Scene scene = new Scene(root);
         return scene;
     }
-    public void bttLogIn  (ActionEvent event) throws IOException {
+    public void bttLogIn(ActionEvent event) throws IOException {
         try{
             String username = Username.getText().toString();
             String password = Password.getText().toString();
-
-//            String username = "bao1";
-//            String password = "12345";
             System.out.println(username + " " + password + " ");
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Đăng Nhập");
             alert.setHeaderText("Thông báo đăng nhập:");
-            System.out.println("heloo");
-        if (loginHandle.isValidLogin(username, password)) {
-            PreferencesHelper.saveLoginInfo(username, password);
-            alert.setContentText("Đăng nhập thành công. Chào mừng bạn!");
-            
-            SwitchSceneController switchController = new  SwitchSceneController();
-            switchController.switchToMainScreen(event);
-        }
-        else {
-            alert.setContentText("Thông tin đăng nhập không chính xác. Vui lòng kiểm tra lại và thử đăng nhập lại.");
-        }
+            if (loginHandle.isValidLogin(username, password)) {
+                PreferencesHelper.saveLoginInfo(username, password);
+                alert.setContentText("Đăng nhập thành công. Chào mừng bạn!");
+                
+                // Dang nhap thanh cong chuyen sang man hinh chinh
+                SwitchSceneController switchController = new  SwitchSceneController();
+                switchController.switchToMainScreen(event);
+            } else {
+                alert.setContentText("Thông tin đăng nhập không chính xác. Vui lòng kiểm tra lại và thử đăng nhập lại.");
+            }
             alert.show();
         }
         catch (Exception e){

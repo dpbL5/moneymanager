@@ -1,10 +1,7 @@
 package oop.moneymanager.controller;
 
-import java.lang.reflect.Constructor;
 import java.text.DecimalFormat;
-import java.text.NumberFormat;
 import java.time.format.DateTimeFormatter;
-import java.util.Locale;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -72,7 +69,6 @@ public class TransactionCellController extends ListCell<TransactionModel> {
                 }
             }
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-            DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
             
             System.out.println(transaction.toString());
 

@@ -1,11 +1,8 @@
 package oop.moneymanager.model;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 public class TransactionModel {
-    private static Integer idCounter = 0;
-
     private Integer id;
     private String username;
     private String category;
