@@ -131,7 +131,7 @@ public class StatisticalController implements Initializable {
         long daysBetween = Duration.between(startDate.atStartOfDay(), endDate.atStartOfDay()).toDays();
 
         if (daysBetween > 30) {
-            messageLabel.setText("Thời gian vượt quá 30 ngày, vui lòng chọn lại");
+            messageLabel.setText("The selected time range exceeds 30 days. Please select again!");
 //            stat_in_pie_chart.getData().clear();
 //            stat_out_pie_chart.getData().clear();
         } else {
