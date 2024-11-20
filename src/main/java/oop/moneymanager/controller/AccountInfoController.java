@@ -10,15 +10,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
-import javafx.stage.Stage;
 import oop.moneymanager.PreferencesHelper;
 import oop.moneymanager.dao.UserDao;
 import oop.moneymanager.model.UserModel;
 
 import java.io.IOException;
 import java.net.URL;
-import java.security.SecureRandom;
 import java.util.ResourceBundle;
 
 public class AccountInfoController implements Initializable {

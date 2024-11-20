@@ -1,14 +1,30 @@
 package oop.moneymanager;
 
+import java.util.ArrayList;
+import java.util.TreeSet;
 import java.util.prefs.Preferences;
+
+import oop.moneymanager.dao.TransactionDao;
+import oop.moneymanager.model.TransactionModel;
 
 public class PreferencesHelper {
 
     private static final String PREFS_NODE = "myAppPrefs";  // Tên của node lưu trữ
     private static final String KEY_USERNAME = "username";
     private static final String KEY_PASSWORD = "password";
-
-    private static Preferences preferences = Preferences.userRoot().node(PREFS_NODE);
+    
+    private static TreeSet<String> savedCategory = new TreeSet<>();
+    private static Preferences preferences = Preferences.userRoot().node(PREFS_NODE);  
+    
+    // Lưu thông tin danh mục
+    public static TreeSet<String> getSavedCategory() {
+        TransactionDao transactionDao = new TransactionDao();
+        ArrayList<TransactionModel> list = transactionDao.selectByCondition("username = \"" + getUsername() + "\"");
+        list.forEach(category -> {
+            savedCategory.add(category.getCategory());
+        });
+        return savedCategory;
+    }
 
     // Lưu thông tin đăng nhập
     public static void saveLoginInfo(String username, String password) {

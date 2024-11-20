@@ -12,6 +12,10 @@ public class TransactionModel {
     private TransactionType type;
     private TransactionKind kind;
 
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
     public TransactionModel(Integer id, String username, String category, Double amount, String note, LocalDate date,
                             TransactionType type, TransactionKind kind) {
         this.id = id;

@@ -30,7 +30,7 @@
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
                <children>
                   <Label styleClass="text" text="Date" />
-                  <DatePicker />
+                  <DatePicker fx:id="datePicker" />
                </children>
             </HBox>
             <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1">
@@ -38,13 +38,13 @@
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
                      <children>
                         <Label prefHeight="18.0" prefWidth="50.0" styleClass="text" text="Type" />
-                        <ChoiceBox cache="true" nodeOrientation="LEFT_TO_RIGHT" prefWidth="150.0" />
+                        <ChoiceBox fx:id="typeBox" cache="true" nodeOrientation="LEFT_TO_RIGHT" prefWidth="150.0" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
                      <children>
                         <Label prefWidth="50.0" text="Category" />
-                        <ChoiceBox prefWidth="150.0" />
+                        <ChoiceBox fx:id="categoryBox" prefWidth="150.0" />
                      </children>
                   </HBox>
                </children>
@@ -52,27 +52,27 @@
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0" GridPane.rowIndex="1">
                <children>
                   <Label text="Amount" />
-                  <TextField promptText="Amount" />
+                  <TextField fx:id="amountField" promptText="Amount" />
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0" GridPane.columnSpan="2" GridPane.rowIndex="2">
                <children>
                   <Label text="Note" />
-                  <TextArea prefHeight="50.0" prefWidth="300.0" />
+                  <TextArea fx:id="noteArea" prefHeight="50.0" prefWidth="300.0" />
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <children>
                   <Label prefHeight="18.0" prefWidth="50.0" text="Kind" />
-                  <ChoiceBox cache="true" nodeOrientation="LEFT_TO_RIGHT" prefWidth="150.0" />
+                  <ChoiceBox fx:id="kindBox" cache="true" nodeOrientation="LEFT_TO_RIGHT" prefWidth="150.0" />
                </children>
             </HBox>
          </children>
       </GridPane>
       <HBox alignment="CENTER" layoutY="400.0" prefHeight="100.0" prefWidth="600.0" spacing="50.0">
          <children>
-            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" stylesheets="@../css/Button.css" text="Save" />
-            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" stylesheets="@../css/Button.css" text="Button" />
+            <Button mnemonicParsing="false" onAction="#saveHandle" prefHeight="25.0" prefWidth="100.0" stylesheets="@../css/Button.css" text="Save" />
+            <Button mnemonicParsing="false" onAction="#cancelHandle" prefHeight="25.0" prefWidth="100.0" stylesheets="@../css/Button.css" text="Cancel" />
          </children>
       </HBox>
       <Label alignment="CENTER" layoutY="10.0" prefHeight="40.0" prefWidth="600.0" text="Edit Transaction">

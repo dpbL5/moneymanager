@@ -5,13 +5,17 @@ import java.time.format.DateTimeFormatter;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import oop.moneymanager.model.TransactionModel;
 
 public class TransactionCellController extends ListCell<TransactionModel> {
+
+    TransactionModel tempdata;
 
     @FXML
     private Label amountLabel;
@@ -38,11 +42,17 @@ public class TransactionCellController extends ListCell<TransactionModel> {
 
     public TransactionCellController() {
         this.setOnMouseClicked(event -> {
-            Stage stage = new Stage();
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/oop/moneymanager/view/EditTransactionScreen.fxml"));
+            if (tempdata == null) {
+                System.out.println("Blank cell clicked");
+                return;
+            }
+
             try {
-                stage.setScene(new javafx.scene.Scene(loader.load()));
-                stage.show();
+                EditTransactionScreenController controller = new EditTransactionScreenController(tempdata);
+                Stage stage = new Stage();
+                stage.initModality(Modality.APPLICATION_MODAL);
+                stage.setScene(new Scene(controller.getRoot()));
+                stage.showAndWait();
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -53,13 +63,18 @@ public class TransactionCellController extends ListCell<TransactionModel> {
     protected void updateItem(TransactionModel transaction, boolean empty) {
         super.updateItem(transaction, empty);
 
+        // luu lai data cua transaction
+        tempdata = transaction;
+
         if (empty || transaction == null) {
             setText(null);
             setGraphic(null);
         } else {
             if (mLLoader == null) {
                 // Load the fxml file
-                mLLoader = new FXMLLoader(getClass().getResource("/oop/moneymanager/view/TransactionCell.fxml"));
+                mLLoader = new FXMLLoader(
+                    getClass().getResource("/oop/moneymanager/view/TransactionCell.fxml")
+                );
                 mLLoader.setController(this);
 
                 try {
@@ -70,13 +85,10 @@ public class TransactionCellController extends ListCell<TransactionModel> {
             }
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
             
-            System.out.println(transaction.toString());
-
-//            timeLabel.setText(transaction.getDate().toLocalTime().format(timeFormatter).toString());
+            // System.out.println(transaction.toString());
             dateLabel.setText(transaction.getDate().format(formatter).toString());
             categoryLabel.setText(transaction.getCategory().toString());
             noteLabel.setText(transaction.getNote().toString());
-
             DecimalFormat numberFormat = new DecimalFormat("#,###.##");
             amountLabel.setText(numberFormat.format(transaction.getAmount()));
             fromAccount.setText(transaction.getKind().toString());

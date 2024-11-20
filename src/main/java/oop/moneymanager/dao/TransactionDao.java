@@ -8,8 +8,6 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.*;
-import java.util.ArrayList;
-import java.util.List;
 
 import oop.moneymanager.model.TransactionModel;
 
@@ -28,12 +26,14 @@ public class TransactionDao implements DaoInterface<TransactionModel>{
         return new TransactionDao();
     }
 
+    // tra ve id cua transaction vua insert
     @Override
     public int insert(TransactionModel t) throws SQLException {
         String url = "INSERT INTO transaction (category, type, amount, note, username, transaction_kind, transaction_date) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
         try (var connection = JDBCUtil.getConnection()) {
-            PreparedStatement statement = connection.prepareStatement(url);
+            PreparedStatement statement = connection.prepareStatement(url,
+                PreparedStatement.RETURN_GENERATED_KEYS);
             statement.setString(1, t.getCategory());
             statement.setString(2, t.getType().toString());
             statement.setDouble(3, t.getAmount());
@@ -41,8 +41,20 @@ public class TransactionDao implements DaoInterface<TransactionModel>{
             statement.setString(5, t.getUsername());
             statement.setString(6, t.getKind().toString());
             statement.setString(7, t.getDate().toString());
-
             int row = statement.executeUpdate();
+
+            if (row > 0) {
+                try (ResultSet generatedKeys = statement.getGeneratedKeys()) {
+                    if (generatedKeys.next()) {
+                        int id = generatedKeys.getInt(1); // Get the generated key
+                        t.setId(id);
+                        System.out.println("Inserted record ID: " + id);
+                    } else {
+                        System.out.println("No ID was generated.");
+                    }
+                }
+            }
+
             return row;
         } catch (SQLException e) {
             e.printStackTrace();

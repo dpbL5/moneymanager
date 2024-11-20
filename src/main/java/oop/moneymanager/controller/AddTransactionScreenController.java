@@ -18,8 +18,11 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.Set;
+import java.util.TreeSet;
 
 
 public class AddTransactionScreenController implements Initializable {
@@ -80,8 +83,12 @@ public class AddTransactionScreenController implements Initializable {
             return;
         }
         String formattedDate = selectedDate.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
-        System.out.println("Date: " + formattedDate);;
-        TransactionModel transaction = new TransactionModel(3, PreferencesHelper.getUsername(),category,money,note,selectedDate, TransactionModel.TransactionType.valueOf(type), TransactionModel.TransactionKind.valueOf(kind));
+        System.out.println("Date: " + formattedDate);
+        TransactionModel transaction = new TransactionModel(
+            3, PreferencesHelper.getUsername(),category,money,note,selectedDate, 
+            TransactionModel.TransactionType.valueOf(type),
+            TransactionModel.TransactionKind.valueOf(kind));
+        
         System.out.println(transaction.toString());
         try {
             int row = TransactionDao.getInstance().insert(transaction);
@@ -91,7 +98,7 @@ public class AddTransactionScreenController implements Initializable {
             e.printStackTrace();
         }
         SwitchSceneController switchSceneController = new SwitchSceneController();
-        switchSceneController.switchToLoginScreen(event);
+        switchSceneController.switchToMainScreen(event);
 
     }
     public void bttcontinue(ActionEvent event) throws IOException {
@@ -163,20 +170,7 @@ public class AddTransactionScreenController implements Initializable {
     {
         // Thêm danh mục mặc định
         category_choice.getItems().addAll(
-                "Food",
-                "Transport",
-                "Entertainment",
-                "Shopping",
-                "Utilities",
-                "Healthcare",
-                "Education",
-                "Travel",
-                "Savings",
-                "Investments",
-                "Gifts",
-                "Charity",
-                "Insurance",
-                "Taxes"
+            PreferencesHelper.getSavedCategory()
         );
 
         addCategoryButton.setVisible(false);
@@ -203,6 +197,7 @@ public class AddTransactionScreenController implements Initializable {
             result.ifPresent(newCategory -> {
                 if (!newCategory.trim().isEmpty() && !category_choice.getItems().contains(newCategory)) {
                     category_choice.getItems().add(newCategory);
+                    PreferencesHelper.getSavedCategory().add(newCategory);
                     category_choice.setValue(newCategory);
                 }
             });
@@ -219,7 +214,7 @@ public class AddTransactionScreenController implements Initializable {
     public void aler_information(String header,String content)
     {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("thông báo");
+        alert.setTitle("Thông báo");
         alert.setHeaderText(header);
         alert.setContentText(content);
         alert.show();
