@@ -71,6 +71,15 @@ public class LoginScreenController implements Initializable {
             Username.textProperty().addListener((observable, oldValue, newValue) -> {
                 login.setDisable(newValue.trim().isEmpty());
             });
+
+            // bat su kien khi nhan enter
+            Password.setOnAction(event -> {
+                try {
+                    bttLogIn(event);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            });
         }
        catch (Exception e){
            System.out.println(e.toString());
