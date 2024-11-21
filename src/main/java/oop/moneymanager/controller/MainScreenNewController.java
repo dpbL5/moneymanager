@@ -12,12 +12,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import oop.moneymanager.PreferencesHelper;
 import oop.moneymanager.dao.UserDao;
 import oop.moneymanager.model.UserModel;
-import oop.moneymanager.service.LoginHandle;
 
 public class MainScreenNewController implements Initializable{
     @FXML
@@ -88,19 +86,25 @@ public class MainScreenNewController implements Initializable{
         // clear login info
         PreferencesHelper.clearLoginInfo();
         
+        // Hiện dialog xác nhận
         Dialog  dialog = new Dialog();
         dialog.setContentText("Are you sure you want to log out?");
         dialog.setTitle("Log out");
         dialog.getDialogPane().getButtonTypes().add(javafx.scene.control.ButtonType.YES);
         dialog.getDialogPane().getButtonTypes().add(javafx.scene.control.ButtonType.NO);
         dialog.showAndWait();
-
-        try {
-            SwitchSceneController switchSceneController = new SwitchSceneController();
-            switchSceneController.switchToLoginScreen(event);
-        } catch (IOException e) {
-            // e.printStackTrace();
-            System.out.println("Can't switch to login screen");
+        
+        // Nếu chọn NO thì không thực hiện log out
+        if (dialog.getResult() == javafx.scene.control.ButtonType.NO) {
+            return;
+        } else {
+            try {
+                SwitchSceneController switchSceneController = new SwitchSceneController();
+                switchSceneController.switchToLoginScreen(event);
+            } catch (IOException e) {
+                // e.printStackTrace();
+                System.out.println("Can't switch to login screen");
+            }
         }
     }
 }

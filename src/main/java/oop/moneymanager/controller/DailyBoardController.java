@@ -37,6 +37,9 @@ public class DailyBoardController implements Initializable{
     @FXML
     private TextField yearField;
 
+    @FXML
+    private Button thisMonthButton;
+
     private ObservableList<TransactionModel> transObsList;
 
     public DailyBoardController() {
@@ -128,9 +131,16 @@ public class DailyBoardController implements Initializable{
             update();
         });
 
+        thisMonthButton.setOnMouseClicked(event -> {
+            currentMYear = LocalDate.now();
+            monthChoice.setValue(currentMYear.getMonth().toString());
+            yearField.setText(Integer.toString(currentMYear.getYear()));
+            update();
+        });
+
         // Set the transaction list view and cell factory
         transListView.setItems(transObsList);
-        transListView.setCellFactory(transListView -> new TransactionCellController());
+        transListView.setCellFactory(transListView -> new TransactionCellController(this));
         
         System.out.println("-< DailyBoardController Initialized >-");
     }

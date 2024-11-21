@@ -9,9 +9,13 @@ public class TransactionModel {
     private Double amount;
     private String note;
     private LocalDate date;
-    private TransactionType type;
-    private TransactionKind kind;
+    private TransactionType type; // 
+    private TransactionKind kind; // Đúng ra nên dùng source thay vì kind nhưng thôi để như hiện tại
 
+    /*
+        Trường hợp cho thêm mới khi mình không biết id hiện tại
+        Thì phải request lên server để lấy id vừa tạo và gán lại bằng setter
+    */ 
     public void setId(Integer id) {
         this.id = id;
     }

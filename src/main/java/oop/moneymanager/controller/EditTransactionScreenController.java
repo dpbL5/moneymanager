@@ -69,7 +69,6 @@ public class EditTransactionScreenController {
         );
 
         PreferencesHelper.getSavedCategory().forEach(category -> {
-            System.out.println(category);
             categoryBox.getItems().add(category);
         });
 
@@ -111,6 +110,8 @@ public class EditTransactionScreenController {
 
     @FXML
     void cancelHandle(ActionEvent event) {
+        // Test if the event source is correct
+        System.out.println(((Node) event.getSource()).toString());
         ((Stage) ((Node) event.getSource()).getScene().getWindow()).close();
     }
 
@@ -128,6 +129,7 @@ public class EditTransactionScreenController {
             TransactionModel.TransactionKind.valueOf(kindBox.getValue())
         );
         transactionDao.update(transaction);
+        
         
         ((Stage) ((Node) event.getSource()).getScene().getWindow()).close();
     }
