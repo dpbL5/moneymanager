@@ -6,14 +6,12 @@ module oop.moneymanager {
     requires java.desktop;
     requires java.prefs;
     requires java.mail;
-
-    opens oop.moneymanager to javafx.fxml;
-    exports oop.moneymanager;
-
-    opens oop.moneymanager.model to javafx.base;
-    exports oop.moneymanager.model;
-
-    opens oop.moneymanager.controller to javafx.fxml, de.jensd.fx.glyphs.commons;
+    requires de.jensd.fx.glyphs.commons;
+    requires org.apache.poi.ooxml;
+    
+    opens oop.moneymanager.controller to javafx.fxml;
     exports oop.moneymanager.controller;
-
+    exports oop.moneymanager.dao;
+    exports oop.moneymanager.model;
+    exports oop.moneymanager;
 }

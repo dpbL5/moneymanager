@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -19,6 +20,11 @@ public class App extends Application {
             // Directing Scene
             Parent root = FXMLLoader.load(getClass().getResource("/oop/moneymanager/view/LoginScreenView.fxml"));
             primaryStage.setResizable(false);
+            primaryStage.getIcons().add(
+                new Image(
+                    getClass().getResourceAsStream("/oop/moneymanager/images/Logo_zoom.png")
+                )
+            );            
             primaryStage.setTitle("Money Manager");
             primaryStage.setScene(new Scene(root));
             primaryStage.show();

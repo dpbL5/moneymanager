@@ -1,5 +1,8 @@
 package oop.moneymanager.controller;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,6 +14,7 @@ import javafx.scene.control.Dialog;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import javafx.util.StringConverter;
 import oop.moneymanager.PreferencesHelper;
 import oop.moneymanager.dao.TransactionDao;
 import oop.moneymanager.model.TransactionModel;
@@ -79,6 +83,27 @@ public class EditTransactionScreenController {
         amountField.setText(String.valueOf(transaction.getAmount()));
         categoryBox.setValue(transaction.getCategory());
         datePicker.setValue(transaction.getDate());
+
+        /*
+         * Tạo converter để chuyển đổi LocalDate thành String và ngược lại
+         * Định dạng ngày tháng là dd/MM/yyyy
+         */
+        datePicker.setConverter(new StringConverter<LocalDate>() {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+            
+            // Lấy ngày tháng từ LocalDate và chuyển thành String
+            @Override
+            public String toString(LocalDate date) {
+                return date != null ? formatter.format(date) : "";
+            }
+
+            // Lấy String và chuyển thành LocalDate
+            @Override
+            public LocalDate fromString(String string) {
+                return string != null && !string.isEmpty() ? LocalDate.parse(string, formatter) : null;
+            }
+        });
+
         kindBox.setValue(transaction.getKind().toString());
         noteArea.setText(transaction.getNote());
         typeBox.setValue(transaction.getType().toString());

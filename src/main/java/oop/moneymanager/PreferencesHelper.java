@@ -36,7 +36,6 @@ public class PreferencesHelper {
     public static String getUsername() {
         return preferences.get(KEY_USERNAME, null); // trả về null nếu không có giá trị
     }
-
     // Lấy mật khẩu
     public static String getPassword() {
         return preferences.get(KEY_PASSWORD, null);

@@ -46,6 +46,7 @@ public class UserDao implements DaoInterface<UserModel> {
         }
     }
 
+
     @Override
     public int delete(UserModel userModel) {
         String url = "DELETE FROM user WHERE name = ? and email = ?";
@@ -84,7 +85,7 @@ public class UserDao implements DaoInterface<UserModel> {
     }
 
     @Override
-    public UserModel selectByID(String ID) {
+    public UserModel selectByID(String id) {
         return null;
     }
     public UserModel selectByUserName(String userName) {
@@ -103,6 +104,21 @@ public class UserDao implements DaoInterface<UserModel> {
             throw new RuntimeException(e);
         }
         return user;
+    }
+    public boolean selectByEmail(String email) {
+        String sql = "SELECT * FROM user WHERE email = ?";
+        try (Connection con = JDBCUtil.getConnection();
+             PreparedStatement stmt = con.prepareStatement(sql)) {
+            stmt.setString(1,email);
+            ResultSet rs = stmt.executeQuery();
+            while(rs.next()){
+                return true;
+            }
+            return false;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 
     public UserModel selectByUserNamePassWord(String userName, String passWord) {
@@ -123,5 +139,18 @@ public class UserDao implements DaoInterface<UserModel> {
             throw new RuntimeException(e);
         }
         return user;
+    }
+    public int change(UserModel user) throws SQLException {
+        String query = "UPDATE user SET email = ?, phone = ? WHERE name = ?";
+        try (Connection con = JDBCUtil.getConnection();
+             PreparedStatement stmt = con.prepareStatement(query)) {
+            stmt.setString(1, user.getEmail());
+            stmt.setString(2, user.getPhone());
+            stmt.setString(3, user.getUserName()); // Điều kiện WHERE tìm người dùng theo name (cũ)
+            return stmt.executeUpdate();
+        }
+        catch (SQLException e) {
+        }
+        return 0;
     }
 }

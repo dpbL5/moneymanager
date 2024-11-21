@@ -10,11 +10,12 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <GridPane alignment="CENTER" layoutX="20.0" layoutY="58.0" prefHeight="351.0" prefWidth="552.0" styleClass="anchor-pane" stylesheets="@../css/DropshadowPane.css">
         <columnConstraints>
@@ -27,44 +28,63 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+            <HBox alignment="CENTER" prefHeight="106.0" prefWidth="264.0" spacing="20.0">
                <children>
-                  <Label styleClass="text" text="Date" />
+                  <Label styleClass="text" text="Date">
+                     <font>
+                        <Font size="16.0" />
+                     </font></Label>
                   <DatePicker fx:id="datePicker" />
                </children>
             </HBox>
             <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1">
                <children>
-                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+                  <Pane prefHeight="111.0" prefWidth="250.0">
                      <children>
-                        <Label prefHeight="18.0" prefWidth="50.0" styleClass="text" text="Type" />
-                        <ChoiceBox fx:id="typeBox" cache="true" nodeOrientation="LEFT_TO_RIGHT" prefWidth="150.0" />
+                        <ChoiceBox fx:id="typeBox" cache="true" layoutX="106.0" layoutY="13.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="26.0" prefWidth="146.0" />
+                        <ChoiceBox fx:id="categoryBox" layoutX="106.0" layoutY="63.0" prefHeight="26.0" prefWidth="146.0" />
+                        <Label layoutX="14.0" layoutY="63.0" prefHeight="26.0" prefWidth="66.0" text="Category">
+                           <font>
+                              <Font size="16.0" />
+                           </font></Label>
+                        <Label layoutX="22.0" layoutY="14.0" prefHeight="18.0" prefWidth="50.0" styleClass="text" text="Type">
+                           <font>
+                              <Font size="16.0" />
+                           </font></Label>
                      </children>
-                  </HBox>
-                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
-                     <children>
-                        <Label prefWidth="50.0" text="Category" />
-                        <ChoiceBox fx:id="categoryBox" prefWidth="150.0" />
-                     </children>
-                  </HBox>
+                  </Pane>
                </children>
             </VBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0" GridPane.rowIndex="1">
                <children>
-                  <Label text="Amount" />
+                  <Label text="Amount">
+                     <font>
+                        <Font size="16.0" />
+                     </font></Label>
                   <TextField fx:id="amountField" promptText="Amount" />
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0" GridPane.columnSpan="2" GridPane.rowIndex="2">
                <children>
-                  <Label text="Note" />
-                  <TextArea fx:id="noteArea" prefHeight="50.0" prefWidth="300.0" />
+                  <Label text="Note">
+                     <font>
+                        <Font size="16.0" />
+                     </font></Label>
+                  <TextArea fx:id="noteArea" prefHeight="50.0" prefWidth="300.0" text="Andeptrai18cent&#10;" />
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <children>
-                  <Label prefHeight="18.0" prefWidth="50.0" text="Kind" />
-                  <ChoiceBox fx:id="kindBox" cache="true" nodeOrientation="LEFT_TO_RIGHT" prefWidth="150.0" />
+                  <Pane prefHeight="110.0" prefWidth="270.0">
+                     <children>
+                        <ChoiceBox fx:id="kindBox" cache="true" layoutX="106.0" layoutY="38.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="26.0" prefWidth="146.0" />
+                        <Label layoutX="27.0" layoutY="39.0" prefHeight="18.0" prefWidth="50.0" text="Kind">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
                </children>
             </HBox>
          </children>
@@ -78,7 +98,7 @@
       </HBox>
       <Label alignment="CENTER" layoutY="10.0" prefHeight="40.0" prefWidth="600.0" text="Edit Transaction">
          <font>
-            <Font name="System Bold" size="18.0" />
+            <Font name="System Bold" size="20.0" />
          </font>
       </Label>
    </children>

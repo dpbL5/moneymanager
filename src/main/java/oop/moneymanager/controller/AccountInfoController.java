@@ -42,7 +42,7 @@ public class AccountInfoController implements Initializable {
     }
     public void btt_logout(ActionEvent event) throws IOException {
         SwitchSceneController controller = new SwitchSceneController();
-        controller.switchToLoginScreen(event);
+        controller.switchtoChangeInformation(event);
     }
     public void btt_changepassword(ActionEvent event) throws IOException {
         showInputDialog();

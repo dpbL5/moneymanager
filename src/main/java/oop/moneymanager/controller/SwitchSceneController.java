@@ -12,7 +12,7 @@ public class SwitchSceneController {
     private Scene scene;
 
     public void switchToMainScreen(ActionEvent event) throws IOException {
-        MainScreenController controller = new MainScreenController();
+        MainScreenNewController controller = new MainScreenNewController();
         scene = controller.setScene();
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.setScene(scene);
@@ -47,6 +47,16 @@ public class SwitchSceneController {
     }
     public void switchToForgotpassword(ActionEvent event) throws IOException {
         ForgotPassController controller = new ForgotPassController();
+        scene = controller.setScene();
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.centerOnScreen();
+        stage.show();
+    }
+
+    private Scene previousScene;
+    public void switchtoChangeInformation(ActionEvent event) throws IOException {
+        ChangeInformationController controller = new ChangeInformationController();
         scene = controller.setScene();
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.setScene(scene);

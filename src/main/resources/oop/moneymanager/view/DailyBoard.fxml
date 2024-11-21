@@ -33,3 +33,4 @@
    </TextField>
    <ChoiceBox fx:id="monthChoice" layoutX="124.0" layoutY="67.0" prefHeight="28.0" prefWidth="126.0" />
 </AnchorPane>
+<!-- fix loi  -->
