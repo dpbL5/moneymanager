@@ -4,7 +4,7 @@ import oop.moneymanager.dao.UserDao;
 import oop.moneymanager.model.UserModel;
 
 public class LoginHandle {
-    private static UserModel user;
+    private UserModel user;
     public static LoginHandle getInstance(){
         return new LoginHandle();
     }

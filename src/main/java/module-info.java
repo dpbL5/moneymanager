@@ -8,6 +8,7 @@ module oop.moneymanager {
     requires java.mail;
     requires de.jensd.fx.glyphs.commons;
     requires org.apache.poi.ooxml;
+    requires javafx.base;
     
     opens oop.moneymanager.controller to javafx.fxml;
     exports oop.moneymanager.controller;

@@ -4,16 +4,20 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import oop.moneymanager.PreferencesHelper;
 import oop.moneymanager.dao.UserDao;
 import oop.moneymanager.model.UserModel;
+import oop.moneymanager.service.LoginHandle;
 
 public class MainScreenNewController implements Initializable{
     @FXML
@@ -25,6 +29,15 @@ public class MainScreenNewController implements Initializable{
     @FXML
     private UserModel user;
     UserModel userModel = new UserModel();
+    
+    @Override
+    public void initialize(URL arg0, ResourceBundle arg1) {
+        user = UserDao.getInstance().selectByUserName(PreferencesHelper.getUsername());
+        email_label.setText(user.getEmail());
+        username_lbl.setText(PreferencesHelper.getUsername());
+        Pane pane = new MultiFxmlController().getPane("DailyBoard");
+        viewPane.getChildren().add(pane);
+    }
 
     @FXML
     public Scene setScene() throws IOException {
@@ -55,14 +68,6 @@ public class MainScreenNewController implements Initializable{
         viewPane.getChildren().add(pane);
     }
     
-    @Override
-    public void initialize(URL arg0, ResourceBundle arg1) {
-        user = UserDao.getInstance().selectByUserName(PreferencesHelper.getUsername());
-        email_label.setText(user.getEmail());
-        username_lbl.setText(PreferencesHelper.getUsername());
-        Pane pane = new MultiFxmlController().getPane("DailyBoard");
-        viewPane.getChildren().add(pane);
-    }
 
     @FXML
     void onAddTransactionButtonClicked() {
@@ -76,5 +81,26 @@ public class MainScreenNewController implements Initializable{
         Pane pane = new MultiFxmlController().getPane("WalletView");
         viewPane.getChildren().clear();
         viewPane.getChildren().add(pane);
+    }
+
+    @FXML
+    void onLogoutButtonClicked(ActionEvent event) {
+        // clear login info
+        PreferencesHelper.clearLoginInfo();
+        
+        Dialog  dialog = new Dialog();
+        dialog.setContentText("Are you sure you want to log out?");
+        dialog.setTitle("Log out");
+        dialog.getDialogPane().getButtonTypes().add(javafx.scene.control.ButtonType.YES);
+        dialog.getDialogPane().getButtonTypes().add(javafx.scene.control.ButtonType.NO);
+        dialog.showAndWait();
+
+        try {
+            SwitchSceneController switchSceneController = new SwitchSceneController();
+            switchSceneController.switchToLoginScreen(event);
+        } catch (IOException e) {
+            // e.printStackTrace();
+            System.out.println("Can't switch to login screen");
+        }
     }
 }

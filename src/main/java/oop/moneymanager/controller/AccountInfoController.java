@@ -40,15 +40,12 @@ public class AccountInfoController implements Initializable {
         Scene scene = new Scene(root);
         return scene;
     }
-    public void btt_logout(ActionEvent event) throws IOException {
-        SwitchSceneController controller = new SwitchSceneController();
-        controller.switchtoChangeInformation(event);
-    }
     public void btt_changepassword(ActionEvent event) throws IOException {
         showInputDialog();
     }
     public void btt_adjust(ActionEvent event) throws IOException {
-
+        SwitchSceneController controller = new SwitchSceneController();
+        controller.switchtoChangeInformation(event);
     }
 
     // Hàm hiển thị Dialog cho phép nhập username và email

@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="oop.moneymanager.controller.MainScreenNewController">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="oop.moneymanager.controller.MainScreenNewController">
    <children>
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
@@ -88,7 +88,7 @@
                         <FontAwesomeIconView fill="#fafafa" glyphName="USER" />
                      </graphic>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="9.0" prefWidth="166.0" style="-fx-background-color: #e78300;" text="Log out" textFill="WHITE">
+                  <Button mnemonicParsing="false" onAction="#onLogoutButtonClicked" prefHeight="9.0" prefWidth="166.0" style="-fx-background-color: #e78300;" text="Log out" textFill="WHITE">
                      <font>
                         <Font size="16.0" />
                      </font>

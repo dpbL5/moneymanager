@@ -8,7 +8,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="800.0" style="-fx-border-color: FFA500;" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="oop.moneymanager.controller.AccountInfoController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="800.0" style="-fx-border-color: FFA500;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="oop.moneymanager.controller.AccountInfoController">
    <children>
       <Text layoutX="132.0" layoutY="186.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username" wrappingWidth="111.58307838439941">
          <font>
@@ -30,7 +30,7 @@
             <Font size="23.0" />
          </font>
       </Text>
-      <Button fx:id="logout_Button" layoutX="127.0" layoutY="514.0" mnemonicParsing="false" onAction="#btt_logout" prefHeight="63.0" prefWidth="246.0" style="-fx-background-color: #e78300;" text="Sửa đổi thông tin" textFill="WHITE">
+      <Button fx:id="adjudtButton" layoutX="127.0" layoutY="514.0" mnemonicParsing="false" onAction="#btt_adjust" prefHeight="63.0" prefWidth="246.0" style="-fx-background-color: #e78300;" text="Sửa đổi thông tin" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font></Button>

@@ -130,9 +130,6 @@ public class EditTransactionScreenController {
         transactionDao.update(transaction);
         
         ((Stage) ((Node) event.getSource()).getScene().getWindow()).close();
-
-        DailyBoardController dailyBoardController = new DailyBoardController();
-        dailyBoardController.update();
     }
 
     @FXML
@@ -148,9 +145,13 @@ public class EditTransactionScreenController {
         // if user click no, do nothing
         if (dialog.showAndWait().get() == javafx.scene.control.ButtonType.NO) {
             return;
+        } else {
+            // if user click yes, delete transaction
+            transactionDao.delete(tempTransaction);
+            System.out.println("Delete transaction");
         }
 
-        transactionDao.delete(tempTransaction);
+        System.out.println(((Node) event.getSource()).toString());
         ((Stage) ((Node) event.getSource()).getScene().getWindow()).close();
     }
 
