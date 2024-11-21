@@ -27,7 +27,6 @@ public class AccountInfoController implements Initializable {
     @FXML
     private Label money_field;
 
-
     private UserModel user;
 
     public AccountInfoController() {

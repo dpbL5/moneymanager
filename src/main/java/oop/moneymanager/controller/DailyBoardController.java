@@ -142,7 +142,7 @@ public class DailyBoardController implements Initializable{
         transListView.setItems(transObsList);
         transListView.setCellFactory(transListView -> new TransactionCellController(this));
         
-        System.out.println("-< DailyBoardController Initialized >-");
+        System.out.println("->> DailyBoardController Initialized");
     }
 
 }

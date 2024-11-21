@@ -110,8 +110,6 @@ public class EditTransactionScreenController {
 
     @FXML
     void cancelHandle(ActionEvent event) {
-        // Test if the event source is correct
-        System.out.println(((Node) event.getSource()).toString());
         ((Stage) ((Node) event.getSource()).getScene().getWindow()).close();
     }
 
@@ -128,9 +126,18 @@ public class EditTransactionScreenController {
             TransactionModel.TransactionType.valueOf(typeBox.getValue()), 
             TransactionModel.TransactionKind.valueOf(kindBox.getValue())
         );
-        transactionDao.update(transaction);
+        int result = transactionDao.update(transaction);
         
-        
+        // Check if userinput is valid
+        if (result == 0) {
+            Dialog dialog = new Dialog();
+            dialog.setContentText("Invalid input");
+            dialog.setTitle("Error");
+            dialog.getDialogPane().getButtonTypes().add(javafx.scene.control.ButtonType.OK);
+            dialog.showAndWait();
+            return;
+        }
+
         ((Stage) ((Node) event.getSource()).getScene().getWindow()).close();
     }
 
@@ -153,7 +160,6 @@ public class EditTransactionScreenController {
             System.out.println("Delete transaction");
         }
 
-        System.out.println(((Node) event.getSource()).toString());
         ((Stage) ((Node) event.getSource()).getScene().getWindow()).close();
     }
 
