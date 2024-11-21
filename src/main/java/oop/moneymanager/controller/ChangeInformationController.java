@@ -58,11 +58,22 @@ public class ChangeInformationController implements Initializable {
             alert.show();
             return;
         }
+        String EMAIL_REGEX = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
+        if(email.matches(EMAIL_REGEX)==false) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Thông báo");
+            alert.setHeaderText(null);
+            alert.setContentText("Vui lòng nhập đúng định dạng email\n" +
+                    "" +"Ví dụ: baodeptrai@gmail.com");
+            alert.show();
+            return;
+        }
 
         // Cập nhật đối tượng UserModel
 
         boolean checkuser = UserDao.getInstance().selectByEmail(email);
-        if (checkuser == false) {
+        if (checkuser == false
+        ) {
             user.setEmail(email);
             user.setPhone(phone);
             int row = UserDao.getInstance().change(user);
