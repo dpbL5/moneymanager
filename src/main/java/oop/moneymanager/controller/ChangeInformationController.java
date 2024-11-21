@@ -51,29 +51,47 @@ public class ChangeInformationController implements Initializable {
 
         // Kiểm tra dữ liệu hợp lệ
         if (email.isEmpty() || phone.isEmpty()) {
-            System.out.println("Vui lòng nhập đầy đủ thông tin!");
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Thông báo");
+            alert.setHeaderText(null);
+            alert.setContentText("Vui lòng nhập đủ thông tin");
+            alert.show();
             return;
         }
 
         // Cập nhật đối tượng UserModel
-        user.setEmail(email);
-        user.setPhone(phone);
-        int row = UserDao.getInstance().change(user);
-        System.out.println(row);
-        if (row == 1) {
+
+        boolean checkuser = UserDao.getInstance().selectByEmail(email);
+        if (checkuser == false) {
+            user.setEmail(email);
+            user.setPhone(phone);
+            int row = UserDao.getInstance().change(user);
+            System.out.println(row);
+            if (row == 1) {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Thông báo");
+                alert.setHeaderText(null);
+                alert.setContentText("Đã cập nhật thành công!");
+                alert.showAndWait();
+                SwitchSceneController controller = new SwitchSceneController();
+                controller.switchToMainScreen(event);
+            }
+        }
+        else {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Thông báo");
             alert.setHeaderText(null);
-            alert.setContentText("Đã cập nhật thành công!");
+            alert.setContentText("Email đã được sử dụng, vui lòng nhập 1 email khác");
             alert.showAndWait();
         }
-        SwitchSceneController controller = new SwitchSceneController();
-        controller.switchToMainScreen(event);
+
+
+
     }
     @FXML
     public void handleCancelButton(ActionEvent event) throws IOException {
-        SwitchSceneController controller = new SwitchSceneController();
-        controller.switchToAccountInfo(event);
+        SwitchSceneController switchSceneController = new SwitchSceneController();
+        switchSceneController.switchToMainScreen(event);
     }
 
     @Override

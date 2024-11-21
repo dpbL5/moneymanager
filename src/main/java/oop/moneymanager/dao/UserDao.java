@@ -85,7 +85,7 @@ public class UserDao implements DaoInterface<UserModel> {
     }
 
     @Override
-    public UserModel selectByID(String ID) {
+    public UserModel selectByID(String id) {
         return null;
     }
     public UserModel selectByUserName(String userName) {
@@ -104,6 +104,21 @@ public class UserDao implements DaoInterface<UserModel> {
             throw new RuntimeException(e);
         }
         return user;
+    }
+    public boolean selectByEmail(String email) {
+        String sql = "SELECT * FROM user WHERE email = ?";
+        try (Connection con = JDBCUtil.getConnection();
+             PreparedStatement stmt = con.prepareStatement(sql)) {
+            stmt.setString(1,email);
+            ResultSet rs = stmt.executeQuery();
+            while(rs.next()){
+                return true;
+            }
+            return false;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 
     public UserModel selectByUserNamePassWord(String userName, String passWord) {
