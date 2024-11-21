@@ -12,7 +12,7 @@ public class SwitchSceneController {
     private Scene scene;
 
     public void switchToMainScreen(ActionEvent event) throws IOException {
-        MainScreenController controller = new MainScreenController();
+        MainScreenNewController controller = new MainScreenNewController();
         scene = controller.setScene();
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.setScene(scene);

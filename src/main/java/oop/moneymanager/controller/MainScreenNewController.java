@@ -1,10 +1,14 @@
 package oop.moneymanager.controller;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import oop.moneymanager.PreferencesHelper;
@@ -21,6 +25,14 @@ public class MainScreenNewController implements Initializable{
     @FXML
     private UserModel user;
     UserModel userModel = new UserModel();
+
+    @FXML
+    public Scene setScene() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/oop/moneymanager/view/MainScreenNew.fxml"));
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+        return scene;
+    }
 
     @FXML
     void onAccountInfoButtonClicked() {
