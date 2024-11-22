@@ -127,47 +127,53 @@ public class StatisticalController implements Initializable {
         if (startDate == null) {
             startDate = endDate.minusDays(30);
         }
+        if (startDate.isAfter(endDate)) {
+            messageLabel.setText("The start date must be earlier than the end date. Please select again.");
+            return; // Thoát khỏi hàm nếu ngày bắt đầu lớn hơn ngày kết thúc
+        }
 
         long daysBetween = Duration.between(startDate.atStartOfDay(), endDate.atStartOfDay()).toDays();
 
         if (daysBetween > 30) {
             messageLabel.setText("The selected time range exceeds 30 days. Please select again!");
-//            stat_in_pie_chart.getData().clear();
-//            stat_out_pie_chart.getData().clear();
-        } else {
-            double totalIncome = 0;
-            double totalExpense = 0;
-
-            messageLabel.setText("");
-            String username = PreferencesHelper.getUsername();
-            List<TransactionModel> transactions = transactionDao.selectByRangedateAndUsername(username, startDate, endDate);
-
-            // Làm mới danh sách chi tiết
-            Incomedetails.clear();
-            Expensedetails.clear();
-
             stat_in_pie_chart.getData().clear();
             stat_out_pie_chart.getData().clear();
-
-            Map<String, Double> incomeData = new HashMap<>();
-            Map<String, Double> expenseData = new HashMap<>();
-
-            for (TransactionModel transaction : transactions) {
-                if ("INCOME".equalsIgnoreCase(String.valueOf(transaction.getType()))) {
-                    incomeData.merge(transaction.getCategory(), transaction.getAmount(), Double::sum);
-                } else if ("EXPENSE".equalsIgnoreCase(String.valueOf(transaction.getType()))) {
-                    expenseData.merge(transaction.getCategory(), transaction.getAmount(), Double::sum);
-                }
-            }
-
-            totalIncome = addDataToPieChart(stat_in_pie_chart, incomeData, "Income");
-            totalExpense = addDataToPieChart(stat_out_pie_chart, expenseData, "Expense");
-
-            stat_income_lbl.setText(String.valueOf(totalIncome));
-            stat_out_lbl.setText(String.valueOf(totalExpense * -1.0));
-            stat_total_lbl.setText(String.valueOf(totalIncome - totalExpense));
+            return; // Thoát khỏi hàm nếu khoảng cách thời gian vượt quá 30 ngày
         }
+
+        double totalIncome = 0;
+        double totalExpense = 0;
+
+        messageLabel.setText("");
+        String username = PreferencesHelper.getUsername();
+        List<TransactionModel> transactions = transactionDao.selectByRangedateAndUsername(username, startDate, endDate);
+
+        // Làm mới danh sách chi tiết
+        Incomedetails.clear();
+        Expensedetails.clear();
+
+        stat_in_pie_chart.getData().clear();
+        stat_out_pie_chart.getData().clear();
+
+        Map<String, Double> incomeData = new HashMap<>();
+        Map<String, Double> expenseData = new HashMap<>();
+
+        for (TransactionModel transaction : transactions) {
+            if ("INCOME".equalsIgnoreCase(String.valueOf(transaction.getType()))) {
+                incomeData.merge(transaction.getCategory(), transaction.getAmount(), Double::sum);
+            } else if ("EXPENSE".equalsIgnoreCase(String.valueOf(transaction.getType()))) {
+                expenseData.merge(transaction.getCategory(), transaction.getAmount(), Double::sum);
+            }
+        }
+
+        totalIncome = addDataToPieChart(stat_in_pie_chart, incomeData, "Income");
+        totalExpense = addDataToPieChart(stat_out_pie_chart, expenseData, "Expense");
+
+        stat_income_lbl.setText(String.valueOf(totalIncome));
+        stat_out_lbl.setText(String.valueOf(totalExpense * -1.0));
+        stat_total_lbl.setText(String.valueOf(totalIncome - totalExpense));
     }
+
 
     private double addDataToPieChart(PieChart pieChart, Map<String, Double> data, String transactionType) {
         double threshold = 5.0; // Ngưỡng để xác định các danh mục nhỏ
@@ -175,38 +181,32 @@ public class StatisticalController implements Initializable {
         double totalValue = data.values().stream().mapToDouble(Double::doubleValue).sum(); // Tổng giá trị để tính phần trăm
 
         for (Map.Entry<String, Double> entry : data.entrySet()) {
-            if (entry.getValue() > threshold) {
-                // Tính phần trăm
-                double percentage = (entry.getValue() / totalValue) * 100;
-                String label = entry.getKey() + " (" + String.format("%.1f", percentage) + "%)";
+            // Tính phần trăm
+            double percentage = (entry.getValue() / totalValue) * 100;
 
-                // Tạo PieChart.Data với tên chứa phần trăm
+            // Thêm dữ liệu đầy đủ vào bảng (không kiểm tra ngưỡng)
+            if ("Income".equals(transactionType)) {
+                Incomedetails.add(new DetailModel(entry.getKey(), entry.getValue(), String.format("%.1f%%", percentage)));
+            } else if ("Expense".equals(transactionType)) {
+                Expensedetails.add(new DetailModel(entry.getKey(), entry.getValue(), String.format("%.1f%%", percentage)));
+            }
+
+            // Chỉ thêm vào PieChart nếu vượt ngưỡng
+            if (percentage > threshold) {
+                String label = entry.getKey() + " (" + String.format("%.1f", percentage) + "%)";
                 PieChart.Data chartData = new PieChart.Data(label, entry.getValue());
                 pieChart.getData().add(chartData);
-
-                // Chỉ thêm vào details nếu phù hợp với transactionType
-                if ("Income".equals(transactionType) && entry.getValue() > 0) {
-                    Incomedetails.add(new DetailModel(entry.getKey(), entry.getValue(), String.format("%.1f%%", percentage)));
-                } else if ("Expense".equals(transactionType)) {
-                    Expensedetails.add(new DetailModel(entry.getKey(), entry.getValue(), String.format("%.1f%%", percentage)));
-                }
             } else {
                 otherTotal += entry.getValue();
             }
         }
 
-        // Thêm danh mục "Khác" nếu có dữ liệu
+        // Thêm danh mục "Khác" vào PieChart nếu có dữ liệu
         if (otherTotal > 0) {
             double otherPercentage = (otherTotal / totalValue) * 100;
-            String otherLabel = "Khác (" + String.format("%.1f", otherPercentage) + "%)";
+            String otherLabel = "Others (" + String.format("%.1f", otherPercentage) + "%)";
             PieChart.Data otherData = new PieChart.Data(otherLabel, otherTotal);
             pieChart.getData().add(otherData);
-
-            if ("Income".equals(transactionType) && otherTotal > 0) {
-                Incomedetails.add(new DetailModel("Khác", otherTotal, String.format("%.1f%%", otherPercentage)));
-            } else if ("Expense".equals(transactionType)) {
-                Expensedetails.add(new DetailModel("Khác", otherTotal, String.format("%.1f%%", otherPercentage)));
-            }
         }
 
         return totalValue;
