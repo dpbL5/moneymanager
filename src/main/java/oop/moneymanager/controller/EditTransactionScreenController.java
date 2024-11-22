@@ -69,7 +69,6 @@ public class EditTransactionScreenController {
         );
 
         PreferencesHelper.getSavedCategory().forEach(category -> {
-            System.out.println(category);
             categoryBox.getItems().add(category);
         });
 
@@ -127,12 +126,19 @@ public class EditTransactionScreenController {
             TransactionModel.TransactionType.valueOf(typeBox.getValue()), 
             TransactionModel.TransactionKind.valueOf(kindBox.getValue())
         );
-        transactionDao.update(transaction);
+        int result = transactionDao.update(transaction);
         
-        ((Stage) ((Node) event.getSource()).getScene().getWindow()).close();
+        // Check if userinput is valid
+        if (result == 0) {
+            Dialog dialog = new Dialog();
+            dialog.setContentText("Invalid input");
+            dialog.setTitle("Error");
+            dialog.getDialogPane().getButtonTypes().add(javafx.scene.control.ButtonType.OK);
+            dialog.showAndWait();
+            return;
+        }
 
-        DailyBoardController dailyBoardController = new DailyBoardController();
-        dailyBoardController.update();
+        ((Stage) ((Node) event.getSource()).getScene().getWindow()).close();
     }
 
     @FXML
@@ -148,9 +154,12 @@ public class EditTransactionScreenController {
         // if user click no, do nothing
         if (dialog.showAndWait().get() == javafx.scene.control.ButtonType.NO) {
             return;
+        } else {
+            // if user click yes, delete transaction
+            transactionDao.delete(tempTransaction);
+            System.out.println("Delete transaction");
         }
 
-        transactionDao.delete(tempTransaction);
         ((Stage) ((Node) event.getSource()).getScene().getWindow()).close();
     }
 

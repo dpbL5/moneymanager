@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
@@ -15,20 +16,21 @@
     <children>
       <Pane layoutY="-1.0" prefHeight="103.0" prefWidth="600.0" style="-fx-background-color: e78300;">
          <children>
-              <Label layoutX="14.0" layoutY="30.0" prefHeight="43.0" prefWidth="226.0" styleClass="header-label" text="Edit Information">
+              <Label layoutX="97.0" layoutY="34.0" prefHeight="38.0" prefWidth="214.0" styleClass="header-label" text="Edit Information." textFill="WHITE">
                   <font>
-                      <Font size="26.0" />
+                      <Font size="24.0" />
                   </font>
               </Label>
+            <FontAwesomeIconView fill="WHITE" glyphName="PENCIL" layoutX="66.0" layoutY="62.0" size="26" text="" />
          </children>
       </Pane>
-        <GridPane hgap="20" layoutX="73.0" layoutY="150.0" prefHeight="200.0" prefWidth="453.0" styleClass="form-pane" vgap="20">
+        <GridPane hgap="20" layoutX="76.0" layoutY="156.0" prefHeight="200.0" prefWidth="460.0" styleClass="form-pane" vgap="20">
             <children>
 
                 <Label styleClass="form-label" text="Email:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-                <TextField fx:id="emailField" styleClass="form-textfield" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                <TextField fx:id="emailField" prefHeight="38.0" prefWidth="329.0" styleClass="form-textfield" GridPane.columnIndex="1" GridPane.rowIndex="1" />
 
-                <Label styleClass="form-label" text="Phone:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                <Label prefHeight="20.0" prefWidth="63.0" styleClass="form-label" text="Phone:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
                 <TextField fx:id="phoneField" styleClass="form-textfield" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             </children>
          <columnConstraints>
@@ -44,8 +46,8 @@
         </GridPane>
         <HBox alignment="CENTER" layoutX="138.0" layoutY="398.0" prefHeight="43.0" prefWidth="335.0" spacing="20">
             <children>
-                <Button fx:id="saveButton" onAction="#handleSaveButton" prefHeight="43.0" prefWidth="107.0" styleClass="action-button" text="Save" />
-                <Button fx:id="cancelButton" onAction="#handleCancelButton" prefHeight="43.0" prefWidth="107.0" styleClass="action-button" text="Cancel" />
+                <Button fx:id="saveButton" onAction="#handleSaveButton" prefHeight="43.0" prefWidth="119.0" styleClass="action-button" text="Save" />
+                <Button fx:id="cancelButton" onAction="#handleCancelButton" prefHeight="43.0" prefWidth="119.0" styleClass="action-button" text="Cancel" />
             </children>
         </HBox>
     </children>

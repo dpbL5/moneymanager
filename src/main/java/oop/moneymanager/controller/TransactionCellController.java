@@ -40,7 +40,7 @@ public class TransactionCellController extends ListCell<TransactionModel> {
 
     private FXMLLoader mLLoader;
 
-    public TransactionCellController() {
+    public TransactionCellController(DailyBoardController dailyBoardController) {
         this.setOnMouseClicked(event -> {
             if (tempdata == null) {
                 System.out.println("Blank cell clicked");
@@ -53,6 +53,12 @@ public class TransactionCellController extends ListCell<TransactionModel> {
                 stage.initModality(Modality.APPLICATION_MODAL);
                 stage.setScene(new Scene(controller.getRoot()));
                 stage.showAndWait();
+
+                // update lai daily board
+                if (!stage.isShowing()) {
+                    dailyBoardController.update();
+                }
+
             } catch (Exception e) {
                 e.printStackTrace();
             }

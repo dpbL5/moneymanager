@@ -9,7 +9,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 import oop.moneymanager.PreferencesHelper;
 import oop.moneymanager.dao.UserDao;
 import oop.moneymanager.model.UserModel;
@@ -72,8 +71,7 @@ public class ChangeInformationController implements Initializable {
         // Cập nhật đối tượng UserModel
 
         boolean checkuser = UserDao.getInstance().selectByEmail(email);
-        if (checkuser == false
-        ) {
+        if (checkuser == false) {
             user.setEmail(email);
             user.setPhone(phone);
             int row = UserDao.getInstance().change(user);

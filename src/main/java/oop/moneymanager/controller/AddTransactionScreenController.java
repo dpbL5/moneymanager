@@ -45,7 +45,8 @@ public class AddTransactionScreenController implements Initializable {
         Scene scene = new Scene(root);
         return scene;
     }
-    public void bttsave(ActionEvent event) throws IOException, SQLException {
+
+    private void saveTransaction() {
         String category = category_choice.getValue();
         String type = type_choice.getValue();
         String amount = this.amount.getText();
@@ -82,76 +83,39 @@ public class AddTransactionScreenController implements Initializable {
         }
         String formattedDate = selectedDate.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
         System.out.println("Date: " + formattedDate);
+        // Khởi tạo với ID = -1 vì ID lấy lại từ DB
         TransactionModel transaction = new TransactionModel(
-            3, PreferencesHelper.getUsername(),category,money,note,selectedDate, 
+            -1, PreferencesHelper.getUsername(),category, money, note, selectedDate, 
             TransactionModel.TransactionType.valueOf(type),
             TransactionModel.TransactionKind.valueOf(kind));
         
         System.out.println(transaction.toString());
         try {
             int row = TransactionDao.getInstance().insert(transaction);
-            System.out.println(row);
+            System.out.println("->> " + row + " row(s) inserted");
         }
         catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    public void bttsave(ActionEvent event) throws IOException, SQLException {
+        saveTransaction();
         SwitchSceneController switchSceneController = new SwitchSceneController();
         switchSceneController.switchToMainScreen(event);
-
     }
-    public void bttcontinue(ActionEvent event) throws IOException {
-        String category = category_choice.getValue();
-        String type = type_choice.getValue();
-        String amount = this.amount.getText();
-        double money;
-        String note = this.note.getText();
-        String kind = this.kind_choice.getValue();
-        LocalDate selectedDate = date_choice.getValue(); // Lấy giá trị LocalDate
-        if(category == null) {
-            aler_information("bạn chưa chọn category cho số tiền của mình","háy nhấp vào category để thêm");
-            return;
-        }
-        if(type == null) {
-            aler_information("bạn chưa chọn type cho giao dịch của mình","hãy nhấp vào type để thêm");
-            return;
-        }
-        try{
-            money = Double.parseDouble(amount);
-        }
-        catch (Exception e) {
-            aler_information("bạn chưa nhập hoặc đã nhập sai định dạng số", "vui lòng nhập lại");
-            return;
-        }
-        if(note == null || note.trim().isEmpty()) {
-            aler_information("bạn chưa nhập lưu ý cho giao dịch này","ban nên note lai cho giao dịch của mình để tránh nhầm lẫn");
-            return;
-        }
-        if(kind == null || kind.trim().isEmpty()) {
-            aler_information("bạn chưa chọn phương thức cho giao dịch  ","vui lòng chọn lại");
-            return;
-        }
-        if (selectedDate == null) {
-            aler_information("bạn chưa chọn ngày cho giao dịch này","hãy chọn ngày để quản lý tối ưu hơn");
-            return;
-        }
 
-        TransactionModel transaction = new TransactionModel(3,PreferencesHelper.getUsername(),category,money,note,selectedDate, TransactionModel.TransactionType.valueOf(type), TransactionModel.TransactionKind.valueOf(kind));
-        System.out.println(transaction.toString());
-        try {
-            int row = TransactionDao.getInstance().insert(transaction);
-            System.out.println(row);
-        }
-        catch (SQLException e) {
-            e.printStackTrace();
-        }
+    public void bttcontinue(ActionEvent event) throws IOException {
+        // Dùng lại hàm chứ code lại làm gì bạn ơi!!
+        saveTransaction();
+        
+        // Reset ChoiceBox fields
         category_choice.setValue(null);
         type_choice.setValue(null);
         kind_choice.setValue(null);
-
         // Reset TextField fields
         this.amount.clear();
         this.note.clear();
-
         // Reset DatePicker field
         // date_choice.setValue(null);
 

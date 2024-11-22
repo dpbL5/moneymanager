@@ -3,7 +3,7 @@
 .button {
     -fx-background-color: linear-gradient(to bottom, #e78300, #d96925); /* Hiệu ứng gradient */
     -fx-text-fill: white; /* Màu chữ trắng */
-    -fx-font-size: 10px;
+    -fx-font-size: 12px;
     -fx-font-weight: bold;
     -fx-background-radius: 12px;
     -fx-border-color: #cccccc;

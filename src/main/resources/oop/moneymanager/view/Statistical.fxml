@@ -7,20 +7,22 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="700.0" prefWidth="800.0" stylesheets="@../css/Statistical.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="oop.moneymanager.controller.StatisticalController">
+<AnchorPane prefHeight="700.0" prefWidth="800.0" stylesheets="@../css/Statistical.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="oop.moneymanager.controller.StatisticalController">
    <DatePicker fx:id="sta_date_start" layoutX="253.0" layoutY="75.0" />
    <DatePicker fx:id="sta_date_end" layoutX="474.0" layoutY="75.0" />
-   <Text layoutX="445.0" layoutY="92.0" strokeType="OUTSIDE" strokeWidth="0.0" text="to" />
-   <Text layoutX="110.0" layoutY="92.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Range Date :" />
-   <Text layoutX="380.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="STATISTIC">
+   <Text layoutX="446.0" layoutY="92.0" strokeType="OUTSIDE" strokeWidth="0.0" text="to">
       <font>
-         <Font name="System Bold" size="20.0" />
-      </font>
-   </Text>
+         <Font size="15.0" />
+      </font></Text>
+   <Text layoutX="95.0" layoutY="93.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Range Date :">
+      <font>
+         <Font size="15.0" />
+      </font></Text>
    <AnchorPane fx:id="stat_income_pane" layoutX="38.0" layoutY="143.0" prefHeight="258.0" prefWidth="361.0" styleClass="anchor-pane">
       <PieChart fx:id="stat_in_pie_chart" layoutX="11.0" layoutY="4.0" prefHeight="270.0" prefWidth="339.0" styleClass="pie-chart" title="INCOME" />
    </AnchorPane>
@@ -31,33 +33,60 @@
       <font>
          <Font size="15.0" />
       </font></Label>
-   <Text layoutX="209.0" layoutY="92.0" strokeType="OUTSIDE" strokeWidth="0.0" text="From" />
+   <Text layoutX="201.0" layoutY="93.0" strokeType="OUTSIDE" strokeWidth="0.0" text="From">
+      <font>
+         <Font size="15.0" />
+      </font></Text>
    <AnchorPane fx:id="stat_total_pane" layoutX="37.0" layoutY="438.0" prefHeight="244.0" prefWidth="213.0">
       <AnchorPane fx:id="total_header" layoutX="0.8" layoutY="8.0" prefHeight="53.0" prefWidth="355.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <Text layoutX="14.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Type" wrappingWidth="55.6640625" />
-         <Text layoutX="121.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Amount" />
+         <Text layoutX="14.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Type" wrappingWidth="55.6640625">
+            <font>
+               <Font size="15.0" />
+            </font></Text>
+         <Text layoutX="121.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Amount">
+            <font>
+               <Font size="15.0" />
+            </font></Text>
       </AnchorPane>
-      <Text layoutX="10.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total" AnchorPane.leftAnchor="8.0" />
+      <Text layoutX="10.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total" AnchorPane.leftAnchor="8.0">
+         <font>
+            <Font size="15.0" />
+         </font></Text>
       <Line endX="64.0" layoutX="111.0" layoutY="188.0" startX="-100.0" />
       <Label fx:id="stat_total_lbl" layoutX="131.0" layoutY="211.0" text="20000" AnchorPane.leftAnchor="120.0" />
-      <Text fill="#1141d1" layoutX="8.0" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Income" AnchorPane.leftAnchor="8.0" />
+      <Text fill="#1141d1" layoutX="8.0" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Income" AnchorPane.leftAnchor="8.0">
+         <font>
+            <Font size="15.0" />
+         </font></Text>
       <Label fx:id="stat_income_lbl" alignment="TOP_LEFT" layoutX="131.0" layoutY="82.0" text="20000" textFill="#3149e1" AnchorPane.leftAnchor="120.0" />
-      <Text fill="#df1f1f" layoutX="6.0" layoutY="152.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Expense" AnchorPane.leftAnchor="8.0" />
+      <Text fill="#df1f1f" layoutX="6.0" layoutY="152.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Expense" AnchorPane.leftAnchor="8.0">
+         <font>
+            <Font size="15.0" />
+         </font></Text>
       <Label fx:id="stat_out_lbl" alignment="CENTER" layoutX="131.0" layoutY="139.0" text="20000" textFill="#d11c1c" AnchorPane.leftAnchor="120.0" />
    </AnchorPane>
     <AnchorPane fx:id="stat_details_pane" layoutX="266.0" layoutY="438.0" prefHeight="244.0" prefWidth="507.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
         <TableView fx:id="stat_details_table" layoutX="10.0" layoutY="36.0" prefHeight="199.0" prefWidth="487.0">
             <columns>
-                <TableColumn fx:id="categoryColumn" prefWidth="192.0" text="Category" />
-                <TableColumn fx:id="amountColumn" prefWidth="199.20001220703125" text="Amount" />
-                <TableColumn fx:id="percentageColumn" prefWidth="99.20001220703125" text="Percentage" />
+                <TableColumn fx:id="categoryColumn" prefWidth="187.20001220703125" text="Category" />
+                <TableColumn fx:id="amountColumn" prefWidth="187.20001220703125" text="Amount" />
+                <TableColumn fx:id="percentageColumn" prefWidth="118.4000244140625" text="Percentage" />
             </columns>
         </TableView>
         <ChoiceBox fx:id="stat_choice_box" layoutX="346.0" layoutY="6.0" prefHeight="22.0" prefWidth="150.0" />
         <Text layoutX="14.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Details">
             <font>
-                <Font name="System Bold" size="14.0" />
+                <Font name="System Bold" size="15.0" />
             </font>
         </Text>
     </AnchorPane>
+   <Pane prefHeight="55.0" prefWidth="800.0" style="-fx-background-color: e78300;">
+      <children>
+         <Text fill="WHITE" layoutX="355.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="STATISTIC">
+            <font>
+               <Font name="System Bold" size="20.0" />
+            </font>
+         </Text>
+      </children>
+   </Pane>
 </AnchorPane>
