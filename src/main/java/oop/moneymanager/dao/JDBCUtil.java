@@ -5,8 +5,8 @@ import java.sql.SQLException;
 
 public class  JDBCUtil {
     private static String url = "jdbc:mysql://localhost:3306/moneymanager?autoReconnect=true&useSSL=false";
-    private static String userName = "root1";
-    private static String passWord = "1234";
+    private static String userName = "root";
+    private static String passWord = "baolinh56";
     public static Connection getConnection(){
         Connection con = null;
         try {

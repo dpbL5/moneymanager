@@ -82,10 +82,7 @@ public class MainScreenNewController implements Initializable{
     }
 
     @FXML
-    void onLogoutButtonClicked(ActionEvent event) {
-        // clear login info
-        PreferencesHelper.clearLoginInfo();
-        
+    void onLogoutButtonClicked(ActionEvent event) {      
         // Hiện dialog xác nhận
         Dialog  dialog = new Dialog();
         dialog.setContentText("Are you sure you want to log out?");
@@ -97,8 +94,10 @@ public class MainScreenNewController implements Initializable{
         // Nếu chọn NO thì không thực hiện log out
         if (dialog.getResult() == javafx.scene.control.ButtonType.NO) {
             return;
-        } else {
+        } else { // Nếu chọn YES thì thực hiện log out
             try {
+                // Xóa thông tin đăng nhập
+                PreferencesHelper.clearLoginInfo();
                 SwitchSceneController switchSceneController = new SwitchSceneController();
                 switchSceneController.switchToLoginScreen(event);
             } catch (IOException e) {
