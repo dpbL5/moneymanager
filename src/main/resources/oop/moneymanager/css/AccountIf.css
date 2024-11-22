@@ -1,0 +1,49 @@
+/* Định dạng cơ bản cho Pane */
+.custom-pane {
+    -fx-background-color: #ffffff; /* Nền trắng */
+    -fx-border-color: #ccc;       /* Viền màu xám nhạt */
+    -fx-border-width: 1px;        /* Độ rộng viền */
+    -fx-border-radius: 15px;      /* Bo tròn viền */
+    -fx-background-radius: 15px; /* Bo tròn nền */
+    -fx-padding: 15px;            /* Khoảng cách bên trong */
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 5, 0.5, 0, 2); /* Hiệu ứng bóng nhẹ */
+    -fx-transition: all 0.3s ease; /* Hiệu ứng chuyển động */
+}
+
+/* Hiệu ứng khi di chuột vào Pane */
+.custom-pane:hover {
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.25), 10, 0.5, 0, 4); /* Bóng đậm hơn */
+    -fx-border-color: #5a9; /* Thay đổi màu viền khi hover */
+}
+
+/* Hiệu ứng khi Pane được focus */
+.custom-pane:focused {
+    -fx-effect: dropshadow(gaussian, rgba(90, 153, 90, 0.5), 15, 0.5, 0, 6); /* Bóng nổi rõ */
+    -fx-border-color: #5a9; /* Đổi màu viền */
+}
+/* Định dạng cho button */
+.custom-button {
+    -fx-background-color: #e78300; /* Màu nền cam */
+    -fx-text-fill: #ffffff; /* Chữ màu trắng */
+    -fx-font-size: 16px; /* Kích thước chữ */
+    -fx-font-weight: bold; /* Chữ đậm */
+    -fx-padding: 10px 20px; /* Khoảng cách trong */
+    -fx-border-radius: 25px; /* Viền bo tròn */
+    -fx-background-radius: 25px; /* Nền bo tròn */
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 10, 0.5, 0, 5); /* Hiệu ứng bóng mờ */
+    -fx-cursor: hand; /* Con trỏ chuột dạng "hand" khi hover */
+    -fx-transition: 0.3s ease-in-out; /* Hiệu ứng chuyển đổi mượt */
+}
+
+/* Hiệu ứng khi hover vào button */
+.custom-button:hover {
+    -fx-background-color: #e64a19; /* Màu nền đậm hơn */
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 15, 0.7, 0, 7); /* Bóng đậm hơn */
+}
+
+/* Hiệu ứng khi nhấn vào button */
+.custom-button:pressed {
+    -fx-background-color: #d84315; /* Màu nền đậm hơn nữa */
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 5, 0.5, 0, 3); /* Bóng nhẹ hơn */
+}
+

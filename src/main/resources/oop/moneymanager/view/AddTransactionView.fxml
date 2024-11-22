@@ -132,9 +132,9 @@
     </AnchorPane>
     <Button layoutX="120.0" layoutY="550.0" mnemonicParsing="false" onAction="#bttsave" prefHeight="26.0" prefWidth="225.0" text="Save" />
     <Button layoutX="434.0" layoutY="550.0" mnemonicParsing="false" onAction="#bttcontinue" prefHeight="26.0" prefWidth="226.0" text="Continue" />
-   <Pane prefHeight="66.0" prefWidth="800.0" style="-fx-background-color: e78300;">
+   <Pane prefHeight="55.0" prefWidth="815.0" style="-fx-background-color: e78300;">
       <children>
-          <Text fill="WHITE" layoutX="323.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add Transaction">
+          <Text fill="WHITE" layoutX="323.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add Transaction">
             <font>
                <Font name="System Bold" size="20.0" />
             </font>

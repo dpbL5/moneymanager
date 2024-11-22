@@ -80,7 +80,7 @@
             </font>
         </Text>
     </AnchorPane>
-   <Pane layoutX="-2.0" layoutY="-1.0" prefHeight="55.0" prefWidth="806.0" style="-fx-background-color: e78300;">
+   <Pane prefHeight="55.0" prefWidth="800.0" style="-fx-background-color: e78300;">
       <children>
          <Text fill="WHITE" layoutX="355.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="STATISTIC">
             <font>

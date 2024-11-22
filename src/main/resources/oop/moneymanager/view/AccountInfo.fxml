@@ -1,76 +1,110 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="800.0" style="-fx-border-color: FFA500;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="oop.moneymanager.controller.AccountInfoController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="800.0" stylesheets="@../css/AccountIf.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="oop.moneymanager.controller.AccountInfoController">
    <children>
-      <Text layoutX="132.0" layoutY="186.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username" wrappingWidth="111.58307838439941">
+      <Text fill="#666161" layoutX="132.0" layoutY="193.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username" wrappingWidth="111.58307838439941">
          <font>
-            <Font size="23.0" />
+            <Font name="System Bold" size="23.0" />
          </font>
       </Text>
-      <Text layoutX="133.0" layoutY="265.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email" wrappingWidth="84.4898681640625">
+      <Text fill="#666161" layoutX="132.0" layoutY="272.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email" wrappingWidth="84.4898681640625">
          <font>
-            <Font size="23.0" />
+            <Font name="System Bold" size="23.0" />
          </font>
       </Text>
-      <Text layoutX="133.0" layoutY="349.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Số điện thoại">
+      <Text fill="#666161" layoutX="132.0" layoutY="358.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Số điện thoại">
          <font>
-            <Font size="23.0" />
+            <Font name="System Bold" size="23.0" />
          </font>
       </Text>
-      <Text layoutX="133.0" layoutY="437.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Số tài khoản" wrappingWidth="149.20587158203125">
+      <Text fill="#666161" layoutX="132.0" layoutY="443.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Số tài khoản" wrappingWidth="149.20587158203125">
          <font>
-            <Font size="23.0" />
+            <Font name="System Bold" size="23.0" />
          </font>
       </Text>
-      <Button fx:id="adjudtButton" layoutX="127.0" layoutY="514.0" mnemonicParsing="false" onAction="#btt_adjust" prefHeight="63.0" prefWidth="246.0" style="-fx-background-color: #e78300;" text="Sửa đổi thông tin" textFill="WHITE">
+      <Button fx:id="adjudtButton" layoutX="132.0" layoutY="514.0" mnemonicParsing="false" onAction="#btt_adjust" prefHeight="63.0" prefWidth="246.0" styleClass="custom-button" text="Sửa đổi thông tin" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font></Button>
-      <Label fx:id="username_field" layoutX="372.0" layoutY="168.0" text="andeptrai18cent" AnchorPane.leftAnchor="370.0">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Label>
-      <Label fx:id="email_field" layoutX="372.0" layoutY="247.0" text="voan07082004@gmail.com" AnchorPane.leftAnchor="370.0">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Label>
-      <Label fx:id="phone_field" layoutX="372.0" layoutY="333.0" text="0982327225" AnchorPane.leftAnchor="370.0">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Label>
-      <Label fx:id="money_field" layoutX="372.0" layoutY="412.0" text="056458456" AnchorPane.leftAnchor="370.0">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Label>
-      <FontAwesomeIconView glyphName="USER" layoutX="91.0" layoutY="185.0" size="25" />
-      <FontAwesomeIconView glyphName="ENVELOPE" layoutX="87.0" layoutY="264.0" size="25" />
-      <FontAwesomeIconView glyphName="PHONE" layoutX="90.0" layoutY="351.0" size="25" text="" />
-      <Button fx:id="change_PassWord" layoutX="440.0" layoutY="514.0" mnemonicParsing="false" onAction="#btt_changepassword" prefHeight="63.0" prefWidth="245.0" style="-fx-background-color: #e78300;" text="Đổi mật khẩu" textFill="WHITE">
+      <Button fx:id="change_PassWord" layoutX="431.0" layoutY="514.0" mnemonicParsing="false" onAction="#btt_changepassword" prefHeight="63.0" prefWidth="245.0" styleClass="custom-button" text="Đổi mật khẩu" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font></Button>
-      <FontAwesomeIconView glyphName="BANK" layoutX="85.0" layoutY="436.0" size="25" />
       <TextField />
-      <AnchorPane prefHeight="133.0" prefWidth="800.0" style="-fx-background-color: #e78300;">
+      <AnchorPane prefHeight="55.0" prefWidth="811.0" style="-fx-background-color: #e78300;">
          <children>
-            <Text fill="WHITE" layoutX="74.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Thông tin cá nhân" wrappingWidth="301.67340087890625">
+            <Text fill="WHITE" layoutX="302.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User Information" wrappingWidth="301.67340087890625">
                <font>
-                  <Font size="31.0" />
+                  <Font name="System Bold" size="26.0" />
                </font>
             </Text>
          </children>
       </AnchorPane>
+      <ImageView fitHeight="48.0" fitWidth="43.0" layoutX="78.0" layoutY="162.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/user.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="48.0" fitWidth="43.0" layoutX="78.0" layoutY="241.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/communication.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="48.0" fitWidth="43.0" layoutX="78.0" layoutY="318.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/phone.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="48.0" fitWidth="43.0" layoutX="78.0" layoutY="406.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/passcode.png" />
+         </image>
+      </ImageView>
+      <Pane layoutX="355.0" layoutY="156.0" prefHeight="55.0" prefWidth="322.0" styleClass="custom-pane">
+         <children>
+            <Label fx:id="username_field" layoutX="14.0" layoutY="13.0" prefHeight="30.0" prefWidth="302.0" text="andeptrai18cent">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Pane layoutX="355.0" layoutY="234.0" prefHeight="55.0" prefWidth="322.0" styleClass="custom-pane">
+         <children>
+            <Label fx:id="email_field" layoutX="14.0" layoutY="13.0" prefHeight="30.0" prefWidth="302.0" text="voan0708@gmail.com">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Pane layoutX="355.0" layoutY="312.0" prefHeight="55.0" prefWidth="322.0" styleClass="custom-pane">
+         <children>
+            <Label fx:id="phone_field" layoutX="14.0" layoutY="13.0" prefHeight="30.0" prefWidth="302.0" text="0982327225">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Pane layoutX="355.0" layoutY="399.0" prefHeight="55.0" prefWidth="322.0" styleClass="custom-pane">
+         <children>
+            <Label fx:id="money_field" layoutX="14.0" layoutY="13.0" prefHeight="30.0" prefWidth="302.0" text="056458456">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
    </children>
 </AnchorPane>
