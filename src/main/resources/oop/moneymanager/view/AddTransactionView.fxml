@@ -89,7 +89,7 @@
             <children>
                <ImageView fitHeight="42.0" fitWidth="49.0" layoutX="14.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
                   <image>
-                     <Image url="@../images/wallet%20(1).png" />
+                     <Image url="@../images/wallet1.png" />
                   </image>
                </ImageView>
                   <Text layoutX="70.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Type">
@@ -117,7 +117,7 @@
             <children>
                <ImageView fitHeight="42.0" fitWidth="42.0" layoutX="14.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
                   <image>
-                     <Image url="@../images/wallet%20(2).png" />
+                     <Image url="@../images/wallet2.png" />
                   </image>
                </ImageView>
                   <Text layoutX="72.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Kind">
