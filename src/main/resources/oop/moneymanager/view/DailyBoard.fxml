@@ -13,7 +13,7 @@
 <!-- fix loi  -->
 
 <AnchorPane prefHeight="700.0" prefWidth="800.0" stylesheets="@../css/Button.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="oop.moneymanager.controller.DailyBoardController">
-   <Label alignment="CENTER" layoutY="25.0" prefWidth="800.0" text="Dailyboard">
+   <Label alignment="CENTER" layoutY="14.0" prefWidth="800.0" text="Dailyboard">
       <font>
          <Font name="System Bold" size="20.0" />
       </font>

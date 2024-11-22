@@ -9,7 +9,7 @@
 
 /* Header Label */
 .header-label {
-    -fx-text-fill: #333333; /* Màu chữ đậm */
+    -fx-text-fill: white; /* Màu chữ đậm */
     -fx-font-weight: bold;
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 5, 0, 0, 2);
 }

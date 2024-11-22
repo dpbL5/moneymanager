@@ -71,8 +71,7 @@ public class ChangeInformationController implements Initializable {
         // Cập nhật đối tượng UserModel
 
         boolean checkuser = UserDao.getInstance().selectByEmail(email);
-        if (checkuser == false
-        ) {
+        if (checkuser == false) {
             user.setEmail(email);
             user.setPhone(phone);
             int row = UserDao.getInstance().change(user);
