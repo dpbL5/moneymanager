@@ -1,11 +1,11 @@
 .anchor-pane {
-    -fx-background-color: linear-gradient(to bottom, #ffffff, #f0f8ff);; /* Background color */
+    -fx-background-color: #ffffff; /* Background color */
     -fx-background-radius: 15; /* Rounded corners */
     -fx-border-radius: 15; /* Rounded border */
+    -fx-border-color: #cccccc; /* Light border color */
     -fx-border-width: 1; /* Border width */
     -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.3), 10, 0, 0, 5); /* Drop shadow */
-    -fx-padding: 10;
-    -fx-border-color: #d0d0d0;
+    -fx-padding: 1; /* Internal padding for spacing */
 }
 .pane_1{
     -fx-background-color:#508D4E;
@@ -28,23 +28,83 @@
     -fx-background-radius: 10px;
     -fx-border-color: black;
 }
-.label-income {
-    -fx-text-fill: #1b2ad1;
+.date-picker {
+    -fx-background-color: white;
+    -fx-background-radius: 5px;
+    -fx-border-radius: 5px;
+    -fx-border-color: #FF8C00; /* Dark orange border */
+}
+
+.date-picker:hover {
+    -fx-border-color: #FFA500; /* Lighter orange on hover */
+}
+
+.date-picker .arrow-button {
+    -fx-background-color: #FF8C00;
+    -fx-background-radius: 0 5px 5px 0;
+}
+
+.date-picker .arrow-button:hover {
+    -fx-background-color: #FFA500;
+}
+
+/* Button styling */
+.button {
+    -fx-background-color: #FF8C00;
+    -fx-text-fill: white;
+    -fx-background-radius: 5px;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+}
+
+.button:hover {
+    -fx-background-color: #FFA500;
+}
+
+.button:pressed {
+    -fx-background-color: #FF7000;
+}
+/* Progress bar styling */
+.progress-bar {
+    -fx-accent: #FF8C00;
+}
+
+.progress-bar .track {
+    -fx-background-color: #FFE5CC;
+    -fx-background-radius: 5px;
+}
+
+.progress-bar .bar {
+    -fx-background-radius: 5px;
+}
+
+/* Percentage label special styling */
+#percen_lbl {
     -fx-font-size: 16px;
     -fx-font-weight: bold;
+    -fx-text-fill: #FF8C00;
 }
-/* Label nổi bật cho giá trị âm */
-.label-expense {
-    -fx-text-fill: #f72828;
-    -fx-font-size: 16px;
+
+/* Total limit and remaining labels */
+#total_limit_lbl, #remaining_lbl {
     -fx-font-weight: bold;
+    -fx-font-size: 15px;
 }
-.gridpane {
-    -fx-padding: 10;
-    -fx-hgap: 10;
-    -fx-vgap: 10;
-    -fx-border-color: #cccccc;
-    -fx-border-width: 2;
-    -fx-border-radius: 5;
-    -fx-background-radius: 5;
+
+/* Refresh button specific styling */
+#refresh_percen_btn {
+    -fx-background-color: #FF9933;
+}
+
+#refresh_percen_btn:hover {
+    -fx-background-color: #FFB366;
+}
+
+/* Edit limit button specific styling */
+#edit_limit_btn {
+    -fx-background-color: #FF9933;
+}
+
+#edit_limit_btn:hover {
+    -fx-background-color: #FFB366;
 }

@@ -29,7 +29,7 @@
    <AnchorPane fx:id="stat_expense_pane" layoutX="413.0" layoutY="143.0" prefHeight="280.0" prefWidth="362.0" styleClass="anchor-pane">
       <PieChart fx:id="stat_out_pie_chart" animated="false" layoutX="8.0" layoutY="4.0" prefHeight="270.0" prefWidth="346.0" styleClass="pie-chart" title="EXPENSE" />
    </AnchorPane>
-   <Label fx:id="messageLabel" contentDisplay="CENTER" layoutX="223.0" layoutY="113.0" text="Khoảng thời gian vượt quá 30 ngày , vui lòng chọn lại" textFill="#f40000">
+   <Label fx:id="messageLabel" contentDisplay="CENTER" layoutX="223.0" layoutY="113.0" text="Khoảng thời gian vượt quá 30 ngày , vui lòng chọn lại" textAlignment="CENTER" textFill="#f40000">
       <font>
          <Font size="15.0" />
       </font></Label>
