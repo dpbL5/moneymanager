@@ -10,7 +10,8 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="oop.moneymanager.controller.RegisterScreenController">
+<?import javafx.scene.control.PasswordField?>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="oop.moneymanager.controller.RegisterScreenController">
     <top>
         <AnchorPane prefHeight="101.0" prefWidth="600.0" style="-fx-background-color: #e78300;" BorderPane.alignment="CENTER">
             <ImageView fitHeight="98.0" fitWidth="100.0" layoutX="469.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
@@ -26,38 +27,46 @@
     </top>
     <center>
         <AnchorPane prefHeight="406.0" prefWidth="600.0" BorderPane.alignment="CENTER">
-            <TextField fx:id="re_email_fld" layoutX="92.0" layoutY="50.0" prefHeight="26.0" prefWidth="416.0" />
-            <TextField fx:id="re_username_fld" layoutX="92.0" layoutY="120.0" prefHeight="26.0" prefWidth="416.0" />
-            <TextField fx:id="re_password_fld" layoutX="92.0" layoutY="199.0" prefHeight="26.0" prefWidth="416.0" />
-            <TextField fx:id="re_confirm_fld" layoutX="92.0" layoutY="274.0" prefHeight="26.0" prefWidth="416.0" />
+            <TextField fx:id="re_email_fld" layoutX="92.0" layoutY="50.0" prefHeight="26.0" prefWidth="416.0" style="-fx-background-radius: 5; -fx-border-color: lightgray; -fx-border-radius: 5;" />
+            <TextField fx:id="re_username_fld" layoutX="92.0" layoutY="110.0" prefHeight="26.0" prefWidth="416.0" style="-fx-background-radius: 5; -fx-border-color: lightgray; -fx-border-radius: 5;" />
+            <TextField fx:id="re_phone_fld" layoutX="92.0" layoutY="170.0" prefHeight="26.0" prefWidth="416.0" style="-fx-background-radius: 5; -fx-border-color: lightgray; -fx-border-radius: 5;" />
+            <PasswordField fx:id="re_password_fld" layoutX="92.0" layoutY="230.0" prefHeight="26.0" prefWidth="416.0" style="-fx-background-radius: 5; -fx-border-color: lightgray; -fx-border-radius: 5;" />
+            <PasswordField fx:id="re_confirm_fld" layoutX="92.0" layoutY="290.0" prefHeight="26.0" prefWidth="416.0" style="-fx-background-radius: 5; -fx-border-color: lightgray; -fx-border-radius: 5;" />
+
             <Text layoutX="92.0" layoutY="36.0" text="Email">
                 <font>
-                    <Font size="20.0" />
+                    <Font size="18.0" />
                 </font>
             </Text>
-            <Text layoutX="92.0" layoutY="105.0" text="User name">
+            <Text layoutX="92.0" layoutY="96.0" text="User name">
                 <font>
-                    <Font size="20.0" />
+                    <Font size="18.0" />
                 </font>
             </Text>
-            <Text layoutX="92.0" layoutY="178.0" text="Password">
+            <Text layoutX="92.0" layoutY="156.0" text="Phone">
                 <font>
-                    <Font size="20.0" />
+                    <Font size="18.0" />
                 </font>
             </Text>
-            <Text layoutX="92.0" layoutY="254.0" text="Confirm Password">
+            <Text layoutX="92.0" layoutY="216.0" text="Password">
                 <font>
-                    <Font size="20.0" />
+                    <Font size="18.0" />
                 </font>
             </Text>
-            <Button layoutX="92.0" layoutY="317.0" mnemonicParsing="false" onAction="#setSubmit" prefHeight="26.0" prefWidth="416.0" style="-fx-background-color: #e78300;" text="Register" textFill="WHITE">
+            <Text layoutX="92.0" layoutY="276.0" text="Confirm Password">
                 <font>
-                    <Font name="System Bold" size="12.0" />
+                    <Font size="18.0" />
+                </font>
+            </Text>
+
+            <Button layoutX="95.0" layoutY="341.0" mnemonicParsing="false" onAction="#setSubmit" prefHeight="30.0" prefWidth="163.0" style="-fx-background-color: #e78300; -fx-background-radius: 5;" text="Register" textFill="WHITE">
+                <font>
+                    <Font name="System Bold" size="14.0" />
                 </font>
             </Button>
-            <Button fx:id="cancel_btn" layoutX="92.0" layoutY="357.0" mnemonicParsing="false" onAction="#setCancel" prefHeight="26.0" prefWidth="416.0" style="-fx-background-color: #e78300;" text="Cancel" textFill="WHITE">
+            <Button fx:id="cancel_btn" layoutX="340.0" layoutY="341.0" mnemonicParsing="false" onAction="#setCancel" prefHeight="30.0" prefWidth="168.0" style="-fx-background-color: #e78300; -fx-background-radius: 5;" text="Cancel" textFill="WHITE">
                 <font>
-                    <Font name="System Bold" size="12.0" />
+                    <Font name="System Bold" size="14.0" />
                 </font>
             </Button>
         </AnchorPane>

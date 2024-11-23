@@ -21,6 +21,8 @@ public class RegisterScreenController {
     @FXML
     public TextField re_username_fld;
     @FXML
+    private TextField re_phone_fld;
+    @FXML
     public TextField re_password_fld;
     @FXML
     public TextField re_confirm_fld;
@@ -37,19 +39,28 @@ public class RegisterScreenController {
         try   {
             String emailText = re_email_fld.getText().toString();
             String usernameText = re_username_fld.getText().toString();
+            String phoneText = re_phone_fld.getText().toString();
             String passwordText = re_password_fld.getText().toString();
             String confirmPasswordText = re_confirm_fld.getText().toString();
-            System.out.println(usernameText + " " + emailText + " " + passwordText + " " + confirmPasswordText);
+            if(emailText.isEmpty()  || usernameText.isEmpty()  || phoneText.isEmpty()  || passwordText.isEmpty()  || confirmPasswordText.isEmpty() ) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error");
+                alert.setHeaderText(null);
+                alert.setContentText("Please fill all the fields");
+                alert.showAndWait();
+                return;
+            }
+            System.out.println(usernameText + " " + emailText + " " + phoneText + " " + passwordText + " " + confirmPasswordText);
+            // Check registration logic
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Register");
             alert.setHeight(250);
-            alert.setHeaderText("Thông báo đăng kí!");
-            int isRegister = registerHandle.isRegister(usernameText, emailText, passwordText, confirmPasswordText);
+            alert.setHeaderText("Registration Notification!");
+
+            int isRegister = registerHandle.isRegister(usernameText, emailText, phoneText, passwordText, confirmPasswordText);
             if (isRegister == 1) {
-                alert.setContentText("Bạn đã đăng kí tài khoản thành công");
-                // set hanh dong sau khi an ok o alert
+                alert.setContentText("You have successfully registered an account.");
                 alert.setOnCloseRequest(e -> {
-                    // neu thanh cong se ve man hinh login
                     SwitchSceneController switchController = new SwitchSceneController();
                     try {
                         switchController.switchToLoginScreen(event);
@@ -58,18 +69,19 @@ public class RegisterScreenController {
                     }
                 });
             } else if (isRegister == 0) {
-                alert.setContentText("Đăng kí thất bại, vui lòng kiểm tra lại thông tin\nLưu ý: UserName không có kí tự đặc biệt,viết thường " +
-                        "và viết liền không dấu");
+                alert.setContentText("Registration failed. Please check your information.\nNote: Username must not contain special characters, must be lowercase and without spaces.");
+            } else if (isRegister == 4) {
+                alert.setContentText("The email is already in use. Please enter another email.\nIf you already have an account but forgot the password, please switch to the login screen and select the 'Forgot Password' feature.");
+            } else if (isRegister == 3) {
+                alert.setContentText("The phone number is already in use. Please enter another phone number.\nIf you already have an account but forgot the password, please switch to the login screen and select the 'Forgot Password' feature.");
             } else if (isRegister == 2) {
-                alert.setContentText("username hoặc email đã được sử dụng để tạo tài khoản vui lòng nhập username và email khác " +
-                        "\nNếu bạn đã có tài khoản nhưng không nhớ mật khẩu hãy chuyển sang màn hình login và chọn tính năng Forgot password");
+                alert.setContentText("The username is already in use. Please enter another username.\nIf you already have an account but forgot the password, please switch to the login screen and select the 'Forgot Password' feature.");
             }
             alert.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Error: " + e.getMessage());
         }
-        catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
-
     }
 
     public void setCancel(ActionEvent event) throws IOException {

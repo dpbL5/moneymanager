@@ -61,7 +61,6 @@ public class ProgressBarController extends Task<Void> {
                 }
             });
 
-            // Ngủ một khoảng thời gian ngắn (ví dụ: 50 mili giây)
             Thread.sleep(50);
         }
 
