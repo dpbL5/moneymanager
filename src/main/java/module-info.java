@@ -12,6 +12,7 @@ module oop.moneymanager {
     
     opens oop.moneymanager.controller to javafx.fxml;
     exports oop.moneymanager.controller;
+    opens oop.moneymanager.dao to java.sql;
     exports oop.moneymanager.dao;
     exports oop.moneymanager.model;
     exports oop.moneymanager;

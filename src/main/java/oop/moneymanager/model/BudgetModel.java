@@ -14,6 +14,10 @@ public class BudgetModel {
         this.date_init = date_init;
         this.amount = amount;
     }
+    public BudgetModel( String username,double amount) {
+        this.amount = amount;
+        this.username = username;
+    }
     public BudgetModel() {}
 
     public int getBudget_id() {

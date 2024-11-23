@@ -238,31 +238,4 @@ public class TransactionDao implements DaoInterface<TransactionModel>{
 
         return summary;
     }
-    public Map<String, Double> getBudgetAndExpenseSummary(String username) {
-        Map<String, Double> summary = new HashMap<>();
-
-        String sql = "SELECT (SELECT COALESCE(SUM(amount), 0) "
-                + "FROM budget WHERE username = ? AND MONTH(date_init) = MONTH(CURRENT_DATE()) "
-                + "AND YEAR(date_init) = YEAR(CURRENT_DATE())) AS total_limit, "
-                + "(SELECT COALESCE(SUM(amount), 0) FROM transaction "
-                + "WHERE username = ? AND type = 'EXPENSE' "
-                + "AND MONTH(transaction_date) = MONTH(CURRENT_DATE()) "
-                + "AND YEAR(transaction_date) = YEAR(CURRENT_DATE())) AS total_expense";
-
-        try (Connection connection = JDBCUtil.getConnection();
-             PreparedStatement statement = connection.prepareStatement(sql)) {
-
-            statement.setString(1, username);
-            statement.setString(2, username);
-
-            ResultSet resultSet = statement.executeQuery();
-            if (resultSet.next()) {
-                summary.put("total_limit", resultSet.getDouble("total_limit"));
-                summary.put("total_expense", resultSet.getDouble("total_expense"));
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return summary;
-    }
 }
