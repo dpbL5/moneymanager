@@ -169,9 +169,9 @@ public class StatisticalController implements Initializable {
         totalIncome = addDataToPieChart(stat_in_pie_chart, incomeData, "Income");
         totalExpense = addDataToPieChart(stat_out_pie_chart, expenseData, "Expense");
 
-        stat_income_lbl.setText(String.valueOf(totalIncome));
-        stat_out_lbl.setText(String.valueOf(totalExpense * -1.0));
-        stat_total_lbl.setText(String.valueOf(totalIncome - totalExpense));
+        stat_income_lbl.setText(String.valueOf(totalIncome) + " VND");
+        stat_out_lbl.setText(String.valueOf(totalExpense * -1.0) + " VND");
+        stat_total_lbl.setText(String.valueOf(totalIncome - totalExpense) + " VND");
     }
 
 
@@ -184,14 +184,14 @@ public class StatisticalController implements Initializable {
             // Tính phần trăm
             double percentage = (entry.getValue() / totalValue) * 100;
 
-            // Thêm dữ liệu đầy đủ vào bảng (không kiểm tra ngưỡng)
+
             if ("Income".equals(transactionType)) {
                 Incomedetails.add(new DetailModel(entry.getKey(), entry.getValue(), String.format("%.1f%%", percentage)));
             } else if ("Expense".equals(transactionType)) {
                 Expensedetails.add(new DetailModel(entry.getKey(), entry.getValue(), String.format("%.1f%%", percentage)));
             }
 
-            // Chỉ thêm vào PieChart nếu vượt ngưỡng
+
             if (percentage > threshold) {
                 String label = entry.getKey() + " (" + String.format("%.1f", percentage) + "%)";
                 PieChart.Data chartData = new PieChart.Data(label, entry.getValue());
@@ -201,7 +201,6 @@ public class StatisticalController implements Initializable {
             }
         }
 
-        // Thêm danh mục "Khác" vào PieChart nếu có dữ liệu
         if (otherTotal > 0) {
             double otherPercentage = (otherTotal / totalValue) * 100;
             String otherLabel = "Others (" + String.format("%.1f", otherPercentage) + "%)";

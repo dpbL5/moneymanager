@@ -148,14 +148,14 @@ public class WalletController implements Initializable {
                 // Nếu totalLimit là null hoặc 0, thực hiện chèn mới
                 BudgetModel budgetModel = new BudgetModel();
                 budgetModel.setUsername(username);
-                budgetModel.setDate_init(LocalDate.now()); // Dùng ngày hiện tại
+                budgetModel.setDate_init(LocalDate.now());
                 budgetModel.setAmount(newLimit);
 
                 budgetDao.insert(budgetModel);
                 message_lbl.setText("Budget limit inserted successfully.");
             } else {
                 // Nếu totalLimit không null, thực hiện cập nhật
-                budgetDao.updateBudgetLimit(username, newLimit);
+                budgetDao.update(new BudgetModel(username,newLimit));
                 message_lbl.setText("Budget limit updated successfully.");
             }
 
@@ -178,7 +178,7 @@ public class WalletController implements Initializable {
             message_lbl.setText("Start date must be earlier than end date.");
             return;
         }
-        message_lbl.setText(""); // Xóa thông báo lỗi nếu không có lỗi
+        message_lbl.setText("");
 
 
         Map<String, Map<String, Double>> summary = transactionDao.getTransactionSummaryByKind(username, startDate, endDate);
@@ -192,14 +192,14 @@ public class WalletController implements Initializable {
         wallet_ex_bank_lbl.setText(formatAmount(summary, "BANK_ACCOUNT", "EXPENSE"));
         wallet_ex_credit_lbl.setText(formatAmount(summary, "CREDIT_CARD", "EXPENSE"));
 
-        // Tính tổng thu nhập và chi tiêu
+
         double totalIncome = getTotalAmount(summary, "INCOME");
         double totalExpense = getTotalAmount(summary, "EXPENSE");
 
-        // Cập nhật tổng thu nhập, chi tiêu và số dư
-        wallet_income_lbl.setText(String.format("%.2f", totalIncome));
-        wallet_expense_lbl.setText(String.format("%.2f", totalExpense));
-        wallet_total_lbl.setText(String.format("%.2f", totalIncome - totalExpense));
+        // update label
+        wallet_income_lbl.setText(String.format("%.2f VND", totalIncome));
+        wallet_expense_lbl.setText(String.format("%.2f VND", totalExpense));
+        wallet_total_lbl.setText(String.format("%.2f VND", totalIncome - totalExpense));
     }
 
     private String formatAmount(Map<String, Map<String, Double>> summary, String kind, String type) {

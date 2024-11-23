@@ -25,6 +25,25 @@ public class BudgetDao implements DaoInterface<BudgetModel> {
 
     @Override
     public int update(BudgetModel budgetModel) {
+        String sql = "UPDATE budget " +
+                "SET amount = ? " +
+                "WHERE username = ? " +
+                "AND MONTH(date_init) = MONTH(CURRENT_DATE()) " +
+                "AND YEAR(date_init) = YEAR(CURRENT_DATE())";
+        try (Connection connection = JDBCUtil.getConnection();
+             PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setDouble(1, budgetModel.getAmount()); // Giá trị mới cho amount
+            statement.setString(2, budgetModel.getUsername()); // Điều kiện username
+
+            int rowsAffected = statement.executeUpdate();
+            if (rowsAffected > 0) {
+                System.out.println("Budget limit updated successfully.");
+            } else {
+                System.out.println("No matching budget found for update.");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return 0;
     }
 
@@ -74,25 +93,25 @@ public class BudgetDao implements DaoInterface<BudgetModel> {
         }
         return summary;
     }
-    public void updateBudgetLimit(String username, double newLimit) {
-        String sql = "UPDATE budget " +
-                "SET amount = ? " +
-                "WHERE username = ? " +
-                "AND MONTH(date_init) = MONTH(CURRENT_DATE()) " +
-                "AND YEAR(date_init) = YEAR(CURRENT_DATE())";
-        try (Connection connection = JDBCUtil.getConnection();
-             PreparedStatement statement = connection.prepareStatement(sql)) {
-            statement.setDouble(1, newLimit); // Giá trị mới cho amount
-            statement.setString(2, username); // Điều kiện username
-
-            int rowsAffected = statement.executeUpdate(); // Thực thi lệnh UPDATE
-            if (rowsAffected > 0) {
-                System.out.println("Budget limit updated successfully.");
-            } else {
-                System.out.println("No matching budget found for update.");
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
+//    public void updateBudgetLimit(String username, double newLimit) {
+//        String sql = "UPDATE budget " +
+//                "SET amount = ? " +
+//                "WHERE username = ? " +
+//                "AND MONTH(date_init) = MONTH(CURRENT_DATE()) " +
+//                "AND YEAR(date_init) = YEAR(CURRENT_DATE())";
+//        try (Connection connection = JDBCUtil.getConnection();
+//             PreparedStatement statement = connection.prepareStatement(sql)) {
+//            statement.setDouble(1, newLimit); // Giá trị mới cho amount
+//            statement.setString(2, username); // Điều kiện username
+//
+//            int rowsAffected = statement.executeUpdate(); // Thực thi lệnh UPDATE
+//            if (rowsAffected > 0) {
+//                System.out.println("Budget limit updated successfully.");
+//            } else {
+//                System.out.println("No matching budget found for update.");
+//            }
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+//    }
 }
