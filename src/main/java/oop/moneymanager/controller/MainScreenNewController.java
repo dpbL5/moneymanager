@@ -34,7 +34,7 @@ public class MainScreenNewController implements Initializable{
         email_label.setText(user.getEmail());
         username_lbl.setText(PreferencesHelper.getUsername());
         Pane pane = new MultiFxmlController().getPane("DailyBoard");
-        viewPane.getChildren().add(pane);
+        viewPane.getChildren().add(pane); 
     }
 
     @FXML

@@ -9,6 +9,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import oop.moneymanager.PreferencesHelper;
 import oop.moneymanager.dao.UserDao;
 import oop.moneymanager.model.UserModel;
@@ -43,8 +45,20 @@ public class AccountInfoController implements Initializable {
         showInputDialog();
     }
     public void btt_adjust(ActionEvent event) throws IOException {
-        SwitchSceneController controller = new SwitchSceneController();
-        controller.switchtoChangeInformation(event);
+        // Tải file FXML dành cho pop-up
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/oop/moneymanager/view/ChangeInfo.fxml"));
+        Parent root = loader.load();
+
+        // Tạo một Stage mới cho pop-up
+        Stage popupStage = new Stage();
+        popupStage.setTitle("Change Information");
+        popupStage.setScene(new Scene(root));
+
+        // Đặt chế độ Modal để khóa giao diện chính
+        popupStage.initModality(Modality.APPLICATION_MODAL);
+
+        // Hiển thị pop-up
+        popupStage.showAndWait();
     }
 
     // Hàm hiển thị Dialog cho phép nhập username và email

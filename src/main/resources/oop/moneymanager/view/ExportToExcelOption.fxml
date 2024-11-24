@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="300.0" spacing="20.0" stylesheets="@../css/Button.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="oop.moneymanager.controller.ExportToExcelController">
+   <children>
+      <Button fx:id="thisMonth" alignment="CENTER" mnemonicParsing="false" prefWidth="200.0" text="Export this month" />
+      <Button fx:id="lastMonth" mnemonicParsing="false" prefWidth="200.0" text="Export last month" />
+      <Button fx:id="thisYear" mnemonicParsing="false" prefWidth="200.0" text="Export this year" />
+      <Button fx:id="lastYear" mnemonicParsing="false" prefWidth="200.0" text="Export last year" />
+   </children>
+   <opaqueInsets>
+      <Insets />
+   </opaqueInsets>
+</VBox>
