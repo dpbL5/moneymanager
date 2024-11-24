@@ -197,16 +197,16 @@ public class WalletController implements Initializable {
         double totalExpense = getTotalAmount(summary, "EXPENSE");
 
         // update label
-        wallet_income_lbl.setText(String.format("%.2f VND", totalIncome));
-        wallet_expense_lbl.setText(String.format("%.2f VND", totalExpense));
-        wallet_total_lbl.setText(String.format("%.2f VND", totalIncome - totalExpense));
+        wallet_income_lbl.setText(String.format("%.2f $", totalIncome));
+        wallet_expense_lbl.setText(String.format("%.2f $", totalExpense));
+        wallet_total_lbl.setText(String.format("%.2f $", totalIncome - totalExpense));
     }
 
     private String formatAmount(Map<String, Map<String, Double>> summary, String kind, String type) {
         if (summary.containsKey(kind) && summary.get(kind).containsKey(type)) {
-            return String.format("%.2f", summary.get(kind).get(type));
+            return String.format("%.2f $", summary.get(kind).get(type));
         }
-        return "0.00";
+        return "0.00 $";
     }
 
     private double getTotalAmount(Map<String, Map<String, Double>> summary, String type) {
@@ -222,15 +222,15 @@ public class WalletController implements Initializable {
         Double totalLimit = summary.get("total_limit");
         double totalExpense = summary.getOrDefault("total_expense", 0.0);
         double remaining = 0;
-        if (totalLimit == null || totalLimit == 0.0) {
+        if (totalLimit == null) {
             total_limit_lbl.setText("NOT SET");
             remaining_lbl.setText("NOT SET");
             percen_bar.setProgress(100);
             percen_lbl.setText("100%");
         } else {
             remaining = totalLimit - totalExpense;
-            total_limit_lbl.setText(String.format("%.0f", totalLimit) + " VND");
-            remaining_lbl.setText(String.format("%.0f", remaining)+ " VND");
+            total_limit_lbl.setText(String.format("%.0f", totalLimit) + " $");
+            remaining_lbl.setText(String.format("%.0f", remaining)+ " $");
             if(remaining <= 0 ) {
                 if(Alertcount == 1) {
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -239,10 +239,12 @@ public class WalletController implements Initializable {
                     alert.setContentText("LIMIT EXCEEDED");
                     alert.showAndWait();
                     Alertcount = 2;
+                    percen_bar.setProgress(0);
                 }
                 limit_message_lbl.setText("LIMIT EXCEEDED");
                 percen_bar.setProgress(0);
                 percen_lbl.setText("0%");
+                return;
             }
             double percent = (remaining / totalLimit) * 100;
             percen_bar.setProgress(percent / 100);

@@ -56,8 +56,8 @@ public class StatisticalController implements Initializable {
 
     private TransactionDao transactionDao;
     private UserModel userModel;
-    private ObservableList<DetailModel> Incomedetails = FXCollections.observableArrayList();
-    private ObservableList<DetailModel> Expensedetails = FXCollections.observableArrayList();
+    private final ObservableList<DetailModel> Incomedetails = FXCollections.observableArrayList();
+    private final ObservableList<DetailModel> Expensedetails = FXCollections.observableArrayList();
     private static LocalDate  startDate = LocalDate.now().minusDays(30);
     private static LocalDate endDate = LocalDate.now();
 
@@ -132,14 +132,14 @@ public class StatisticalController implements Initializable {
             return; // Thoát khỏi hàm nếu ngày bắt đầu lớn hơn ngày kết thúc
         }
 
-        long daysBetween = Duration.between(startDate.atStartOfDay(), endDate.atStartOfDay()).toDays();
-
-        if (daysBetween > 30) {
-            messageLabel.setText("The selected time range exceeds 30 days. Please select again!");
-            stat_in_pie_chart.getData().clear();
-            stat_out_pie_chart.getData().clear();
-            return; // Thoát khỏi hàm nếu khoảng cách thời gian vượt quá 30 ngày
-        }
+//        long daysBetween = Duration.between(startDate.atStartOfDay(), endDate.atStartOfDay()).toDays();
+//
+//        if (daysBetween > 30) {
+//            messageLabel.setText("The selected time range exceeds 30 days. Please select again!");
+//            stat_in_pie_chart.getData().clear();
+//            stat_out_pie_chart.getData().clear();
+//            return; // Thoát khỏi hàm nếu khoảng cách thời gian vượt quá 30 ngày
+//        }
 
         double totalIncome = 0;
         double totalExpense = 0;
@@ -169,9 +169,9 @@ public class StatisticalController implements Initializable {
         totalIncome = addDataToPieChart(stat_in_pie_chart, incomeData, "Income");
         totalExpense = addDataToPieChart(stat_out_pie_chart, expenseData, "Expense");
 
-        stat_income_lbl.setText(String.valueOf(totalIncome) + " VND");
-        stat_out_lbl.setText(String.valueOf(totalExpense * -1.0) + " VND");
-        stat_total_lbl.setText(String.valueOf(totalIncome - totalExpense) + " VND");
+        stat_income_lbl.setText(String.valueOf(totalIncome) + " $");
+        stat_out_lbl.setText(String.valueOf(totalExpense * -1.0) + " $");
+        stat_total_lbl.setText(String.valueOf(totalIncome - totalExpense) + " $");
     }
 
 
