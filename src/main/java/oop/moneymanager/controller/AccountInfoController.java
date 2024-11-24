@@ -111,12 +111,14 @@ private void showInputDialog() {
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setHeaderText("Success!:");
                     alert.setContentText("Change password successfully.!");
-                    alert.show();
+                    alert.showAndWait();
+                    dialog.close();
                 } else {
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setHeaderText("Fail:");
                     alert.setContentText("an error occured,please try again.");
                     alert.show();
+
                 }
             } else {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
