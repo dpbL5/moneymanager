@@ -70,7 +70,12 @@ public class RegisterScreenController {
                 });
             } else if (isRegister == 0) {
                 alert.setContentText("Registration failed. Please check your information.\nNote: Username must not contain special characters, must be lowercase and without spaces.");
-            } else if (isRegister == 4) {
+
+            }
+            else if(isRegister == 5) {
+                alert.setContentText("Passwords do not match.");
+            }
+            else if (isRegister == 4) {
                 alert.setContentText("The email is already in use. Please enter another email.\nIf you already have an account but forgot the password, please switch to the login screen and select the 'Forgot Password' feature.");
             } else if (isRegister == 3) {
                 alert.setContentText("The phone number is already in use. Please enter another phone number.\nIf you already have an account but forgot the password, please switch to the login screen and select the 'Forgot Password' feature.");

@@ -22,21 +22,21 @@
             <Font name="System Bold" size="23.0" />
          </font>
       </Text>
-      <Text fill="#666161" layoutX="132.0" layoutY="358.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Số điện thoại">
+      <Text fill="#666161" layoutX="132.0" layoutY="358.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Phone">
          <font>
             <Font name="System Bold" size="23.0" />
          </font>
       </Text>
-      <Text fill="#666161" layoutX="132.0" layoutY="443.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Số tài khoản" wrappingWidth="149.20587158203125">
+      <Text fill="#666161" layoutX="132.0" layoutY="443.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bank account" wrappingWidth="149.20587158203125">
          <font>
             <Font name="System Bold" size="23.0" />
          </font>
       </Text>
-      <Button fx:id="adjudtButton" layoutX="132.0" layoutY="514.0" mnemonicParsing="false" onAction="#btt_adjust" prefHeight="63.0" prefWidth="246.0" styleClass="custom-button" text="Sửa đổi thông tin" textFill="WHITE">
+      <Button fx:id="adjudtButton" layoutX="132.0" layoutY="514.0" mnemonicParsing="false" onAction="#btt_adjust" prefHeight="63.0" prefWidth="246.0" styleClass="custom-button" text="Change information" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font></Button>
-      <Button fx:id="change_PassWord" layoutX="431.0" layoutY="514.0" mnemonicParsing="false" onAction="#btt_changepassword" prefHeight="63.0" prefWidth="245.0" styleClass="custom-button" text="Đổi mật khẩu" textFill="WHITE">
+      <Button fx:id="change_PassWord" layoutX="431.0" layoutY="514.0" mnemonicParsing="false" onAction="#btt_changepassword" prefHeight="63.0" prefWidth="245.0" styleClass="custom-button" text="Change Password" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font></Button>

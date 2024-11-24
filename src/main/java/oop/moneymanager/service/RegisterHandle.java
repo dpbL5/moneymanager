@@ -14,6 +14,9 @@ public class RegisterHandle {
         try {
             UserModel userCheck = null;
             System.out.println(username + " " + password);
+            if(!password.equals(confirmpassword)){
+                return 5;
+            }
             boolean checkemail = UserDao.getInstance().selectByEmail(email);
             if(checkemail==true) {
                 return 4;
