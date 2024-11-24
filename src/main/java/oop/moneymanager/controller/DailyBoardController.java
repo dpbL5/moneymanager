@@ -9,11 +9,14 @@ import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import oop.moneymanager.PreferencesHelper;
 import oop.moneymanager.dao.TransactionDao;
 import oop.moneymanager.model.TransactionModel;
@@ -40,7 +43,14 @@ public class DailyBoardController implements Initializable{
     @FXML
     private Button thisMonthButton;
 
+    @FXML
+    private Button exportToExcelButton;
+
     private ObservableList<TransactionModel> transObsList;
+
+    public ListView<TransactionModel> getListView() {
+        return transListView;
+    }
 
     public DailyBoardController() {
         transObsList = FXCollections.observableArrayList();
@@ -136,6 +146,20 @@ public class DailyBoardController implements Initializable{
             monthChoice.setValue(currentMYear.getMonth().toString());
             yearField.setText(Integer.toString(currentMYear.getYear()));
             update();
+        });
+
+        exportToExcelButton.setOnAction(event -> {            
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/oop/moneymanager/view/ExportToExcelOption.fxml"));
+                Stage stage = new Stage();
+                stage.initModality(javafx.stage.Modality.APPLICATION_MODAL);
+                stage.setTitle("Export to Excel");
+                stage.setResizable(false);
+                stage.setScene(new Scene(loader.load()));
+                stage.show();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         });
 
         // Set the transaction list view and cell factory

@@ -13,8 +13,8 @@
 
 <!-- fix loi  -->
 
-<AnchorPane prefHeight="700.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="oop.moneymanager.controller.DailyBoardController">
-   <Button layoutX="577.0" layoutY="77.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="194.0" style="-fx-background-color: #e78300;" text="Export to Excel" textFill="WHITE">
+<AnchorPane prefHeight="700.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="oop.moneymanager.controller.DailyBoardController">
+   <Button fx:id="exportToExcelButton" layoutX="577.0" layoutY="77.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="194.0" style="-fx-background-color: #e78300;" text="Export to Excel" textFill="WHITE">
       <graphic>
          <ImageView fitHeight="20.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
             <Image url="@../images/Excel_icon.png" />
