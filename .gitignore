@@ -3,6 +3,7 @@ target/
 .idea/
 .vscode/
 
+*.xlsx
 
 # Log file
 *.log
