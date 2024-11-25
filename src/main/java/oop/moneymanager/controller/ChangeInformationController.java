@@ -9,9 +9,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import oop.moneymanager.PreferencesHelper;
 import oop.moneymanager.dao.UserDao;
 import oop.moneymanager.model.UserModel;
+import oop.moneymanager.service.PreferencesHelper;
 
 import java.io.IOException;
 import java.net.URL;

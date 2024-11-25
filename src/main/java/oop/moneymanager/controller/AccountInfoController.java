@@ -11,9 +11,9 @@ import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import oop.moneymanager.PreferencesHelper;
 import oop.moneymanager.dao.UserDao;
 import oop.moneymanager.model.UserModel;
+import oop.moneymanager.service.PreferencesHelper;
 
 import java.io.IOException;
 import java.net.URL;

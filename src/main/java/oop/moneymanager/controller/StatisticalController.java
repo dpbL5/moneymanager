@@ -8,11 +8,11 @@ import javafx.geometry.Side;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
-import oop.moneymanager.PreferencesHelper;
 import oop.moneymanager.dao.TransactionDao;
 import oop.moneymanager.model.DetailModel;
 import oop.moneymanager.model.TransactionModel;
 import oop.moneymanager.model.UserModel;
+import oop.moneymanager.service.PreferencesHelper;
 
 import java.net.URL;
 import java.time.Duration;

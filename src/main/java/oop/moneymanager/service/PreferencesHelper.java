@@ -1,4 +1,4 @@
-package oop.moneymanager;
+package oop.moneymanager.service;
 
 import java.util.ArrayList;
 import java.util.TreeSet;

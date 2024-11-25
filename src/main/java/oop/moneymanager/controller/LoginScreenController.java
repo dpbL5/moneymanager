@@ -7,8 +7,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import oop.moneymanager.PreferencesHelper;
 import oop.moneymanager.service.LoginHandle;
+import oop.moneymanager.service.PreferencesHelper;
 
 import java.io.IOException;
 import java.net.URL;

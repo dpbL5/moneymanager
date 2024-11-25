@@ -15,10 +15,10 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.util.StringConverter;
-import oop.moneymanager.PreferencesHelper;
 import oop.moneymanager.dao.TransactionDao;
 import oop.moneymanager.model.TransactionModel;
 import oop.moneymanager.model.TransactionModel.TransactionKind;
+import oop.moneymanager.service.PreferencesHelper;
 
 public class EditTransactionScreenController {
 

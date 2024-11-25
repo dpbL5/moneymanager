@@ -9,8 +9,8 @@ import javafx.scene.chart.LineChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
-import oop.moneymanager.PreferencesHelper;
 import oop.moneymanager.dao.TransactionDao;
+import oop.moneymanager.service.PreferencesHelper;
 
 import java.net.URL;
 import java.util.List;
