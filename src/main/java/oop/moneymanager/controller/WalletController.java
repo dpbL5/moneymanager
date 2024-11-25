@@ -140,7 +140,15 @@ public class WalletController implements Initializable {
             // Lấy giá trị nhập từ người dùng
             double newLimit = Double.parseDouble(edit_text_fld.getText());
 
-            // Kiểm tra xem totalLimit có tồn tại hay không
+            // Kiểm tra nếu giá trị nhập vào nhỏ hơn hoặc bằng 0
+            if (newLimit <= 0) {
+                message_lbl.setText("The transaction limit must be greater than 0. Please enter again.");
+                total_limit_lbl.setText("INVALID");
+                remaining_lbl.setText("INVALID");
+                return; // Dừng thực hiện nếu giá trị không hợp lệ
+            }
+
+            // Lấy thông tin tổng hạn mức hiện tại
             Map<String, Double> summary = budgetDao.getBudgetAndExpenseSummary(username);
             Double totalLimit = summary.get("total_limit");
 
@@ -155,7 +163,7 @@ public class WalletController implements Initializable {
                 message_lbl.setText("Budget limit inserted successfully.");
             } else {
                 // Nếu totalLimit không null, thực hiện cập nhật
-                budgetDao.update(new BudgetModel(username,newLimit));
+                budgetDao.update(new BudgetModel(username, newLimit));
                 message_lbl.setText("Budget limit updated successfully.");
             }
 
@@ -168,6 +176,7 @@ public class WalletController implements Initializable {
             message_lbl.setText("An error occurred while updating the budget limit.");
         }
     }
+
 
 
     private void loadWalletStatistics(String username) {
@@ -222,11 +231,13 @@ public class WalletController implements Initializable {
         Double totalLimit = summary.get("total_limit");
         double totalExpense = summary.getOrDefault("total_expense", 0.0);
         double remaining = 0;
-        if (totalLimit == null) {
+        if (totalLimit == null || totalLimit == 0.0) {
             total_limit_lbl.setText("NOT SET");
             remaining_lbl.setText("NOT SET");
             percen_bar.setProgress(100);
-            percen_lbl.setText("100%");
+            percen_lbl.setText("Infinity");
+            limit_message_lbl.setText("");
+            return;
         } else {
             remaining = totalLimit - totalExpense;
             total_limit_lbl.setText(String.format("%.0f", totalLimit) + " $");
@@ -246,6 +257,7 @@ public class WalletController implements Initializable {
                 percen_lbl.setText("0%");
                 return;
             }
+            limit_message_lbl.setText("");
             double percent = (remaining / totalLimit) * 100;
             percen_bar.setProgress(percent / 100);
             percen_lbl.setText(String.format("%.1f%%", percent) );
