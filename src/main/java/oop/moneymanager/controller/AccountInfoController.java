@@ -31,10 +31,6 @@ public class AccountInfoController implements Initializable {
 
     private UserModel user;
 
-    public AccountInfoController() {
-
-    }
-
     public Scene setScene() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/oop/moneymanager/view/AccountInfo.fxml"));
         Parent root = loader.load();
@@ -59,6 +55,7 @@ public class AccountInfoController implements Initializable {
 
         // Hiển thị pop-up
         popupStage.showAndWait();
+        update();
     }
 
     // Hàm hiển thị Dialog cho phép nhập username và email
@@ -121,12 +118,17 @@ public class AccountInfoController implements Initializable {
         // Hiển thị Dialog và chờ người dùng đóng lại
         dialog.showAndWait();
     }
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+    void update() {
         user = UserDao.getInstance().selectByUserName(PreferencesHelper.getUsername());
         username_field.setText(user.getUserName());
         email_field.setText(user.getEmail());
         phone_field.setText(user.getPhone());
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        update();
     }
 
 }

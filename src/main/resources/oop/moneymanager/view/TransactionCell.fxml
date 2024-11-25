@@ -37,7 +37,7 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <Label layoutX="680.0" layoutY="10.0" text="đ">
+            <Label fx:id="currencyLabel" layoutX="680.0" layoutY="10.0" text="đ">
                <font>
                   <Font size="14.0" />
                </font>

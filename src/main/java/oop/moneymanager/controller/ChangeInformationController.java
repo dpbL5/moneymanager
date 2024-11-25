@@ -9,6 +9,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+import javafx.scene.Node;
 import oop.moneymanager.dao.UserDao;
 import oop.moneymanager.model.UserModel;
 import oop.moneymanager.service.PreferencesHelper;
@@ -82,8 +84,9 @@ public class ChangeInformationController implements Initializable {
                 alert.setHeaderText(null);
                 alert.setContentText("Đã cập nhật thành công!");
                 alert.showAndWait();
-                SwitchSceneController controller = new SwitchSceneController();
-                controller.switchToMainScreen(event);
+                // Lấy Stage hiện tại từ sự kiện
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.close();
             }
         }
         else {
@@ -99,8 +102,10 @@ public class ChangeInformationController implements Initializable {
     }
     @FXML
     public void handleCancelButton(ActionEvent event) throws IOException {
-        SwitchSceneController switchSceneController = new SwitchSceneController();
-        switchSceneController.switchToMainScreen(event);
+        // Lấy Stage hiện tại từ sự kiện
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        // Đóng cửa sổ
+        stage.close();
     }
 
     @Override
