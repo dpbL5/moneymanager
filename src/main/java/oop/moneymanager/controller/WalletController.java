@@ -139,23 +139,20 @@ public class WalletController implements Initializable {
 
     private void saveEditLimit(String username) {
         try {
-            // Lấy giá trị nhập từ người dùng
             double newLimit = Double.parseDouble(edit_text_fld.getText());
 
-            // Kiểm tra nếu giá trị nhập vào nhỏ hơn hoặc bằng 0
             if (newLimit <= 0) {
                 message_lbl.setText("The transaction limit must be greater than 0. Please enter again.");
                 total_limit_lbl.setText("INVALID");
                 remaining_lbl.setText("INVALID");
-                return; // Dừng thực hiện nếu giá trị không hợp lệ
+                return;
             }
 
-            // Lấy thông tin tổng hạn mức hiện tại
+            // Lay thong tin tong han muc hien tai
             Map<String, Double> summary = budgetDao.getBudgetAndExpenseSummary(username);
             Double totalLimit = summary.get("total_limit");
-
+            // Them moi neu chua ton tai TransactionLimit
             if (totalLimit == null || totalLimit == 0.0) {
-                // Nếu totalLimit là null hoặc 0, thực hiện chèn mới
                 BudgetModel budgetModel = new BudgetModel();
                 budgetModel.setUsername(username);
                 budgetModel.setDate_init(LocalDate.now());
@@ -164,7 +161,7 @@ public class WalletController implements Initializable {
                 budgetDao.insert(budgetModel);
                 message_lbl.setText("Budget limit inserted successfully.");
             } else {
-                // Nếu totalLimit không null, thực hiện cập nhật
+                //Cap nhat neu da ton tai
                 budgetDao.update(new BudgetModel(username, newLimit));
                 message_lbl.setText("Budget limit updated successfully.");
             }
@@ -194,7 +191,6 @@ public class WalletController implements Initializable {
 
         Map<String, Map<String, Double>> summary = transactionDao.getTransactionSummaryByKind(username, startDate, endDate);
 
-        // Định dạng các số liệu thu nhập và chi tiêu theo từng loại
         wallet_in_cash_lbl.setText(formatAmount(summary, "CASH", "INCOME"));
         wallet_in_bank_lbl.setText(formatAmount(summary, "BANK_ACCOUNT", "INCOME"));
         wallet_in_credit_lbl.setText(formatAmount(summary, "CREDIT_CARD", "INCOME"));
@@ -207,7 +203,6 @@ public class WalletController implements Initializable {
         double totalIncome = getTotalAmount(summary, "INCOME");
         double totalExpense = getTotalAmount(summary, "EXPENSE");
 
-        // update label
         wallet_income_lbl.setText(String.format("%.2f $", totalIncome));
         wallet_expense_lbl.setText(String.format("%.2f $", totalExpense));
         wallet_total_lbl.setText(String.format("%.2f $", totalIncome - totalExpense));
@@ -239,7 +234,6 @@ public class WalletController implements Initializable {
             percen_bar.setProgress(100);
             percen_lbl.setText("Infinity");
             limit_message_lbl.setText("");
-            return;
         } else {
             remaining = totalLimit - totalExpense;
             total_limit_lbl.setText(String.format("%.0f", totalLimit) + " $");

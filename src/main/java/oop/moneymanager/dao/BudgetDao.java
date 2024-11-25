@@ -66,6 +66,7 @@ public class BudgetDao implements DaoInterface<BudgetModel> {
     public BudgetModel selectByID(String ID) {
         return null;
     }
+
     public Map<String, Double> getBudgetAndExpenseSummary(String username) {
         Map<String, Double> summary = new HashMap<>();
 
@@ -93,25 +94,4 @@ public class BudgetDao implements DaoInterface<BudgetModel> {
         }
         return summary;
     }
-//    public void updateBudgetLimit(String username, double newLimit) {
-//        String sql = "UPDATE budget " +
-//                "SET amount = ? " +
-//                "WHERE username = ? " +
-//                "AND MONTH(date_init) = MONTH(CURRENT_DATE()) " +
-//                "AND YEAR(date_init) = YEAR(CURRENT_DATE())";
-//        try (Connection connection = JDBCUtil.getConnection();
-//             PreparedStatement statement = connection.prepareStatement(sql)) {
-//            statement.setDouble(1, newLimit); // Giá trị mới cho amount
-//            statement.setString(2, username); // Điều kiện username
-//
-//            int rowsAffected = statement.executeUpdate(); // Thực thi lệnh UPDATE
-//            if (rowsAffected > 0) {
-//                System.out.println("Budget limit updated successfully.");
-//            } else {
-//                System.out.println("No matching budget found for update.");
-//            }
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-//    }
 }

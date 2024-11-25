@@ -20,13 +20,6 @@ public class BudgetModel {
     }
     public BudgetModel() {}
 
-    public int getBudget_id() {
-        return budget_id;
-    }
-
-    public void setBudget_id(int budget_id) {
-        this.budget_id = budget_id;
-    }
 
     public double getAmount() {
         return amount;
