@@ -11,9 +11,9 @@ import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import oop.moneymanager.PreferencesHelper;
 import oop.moneymanager.dao.UserDao;
 import oop.moneymanager.model.UserModel;
+import oop.moneymanager.service.PreferencesHelper;
 
 import java.io.IOException;
 import java.net.URL;
@@ -30,10 +30,6 @@ public class AccountInfoController implements Initializable {
 
 
     private UserModel user;
-
-    public AccountInfoController() {
-
-    }
 
     public Scene setScene() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/oop/moneymanager/view/AccountInfo.fxml"));
@@ -59,6 +55,7 @@ public class AccountInfoController implements Initializable {
 
         // Hiển thị pop-up
         popupStage.showAndWait();
+        update();
     }
 
 private void showInputDialog() {
@@ -155,16 +152,20 @@ private void showInputDialog() {
     // Cài đặt nội dung dialog
     dialog.getDialogPane().setContent(dialogContent);
 
-    // Hiển thị dialog
-    dialog.showAndWait();
-}
+        // Hiển thị Dialog và chờ người dùng đóng lại
+        dialog.showAndWait();
+    }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
+    void update() {
         user = UserDao.getInstance().selectByUserName(PreferencesHelper.getUsername());
         username_field.setText(user.getUserName());
         email_field.setText(user.getEmail());
         phone_field.setText(user.getPhone());
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        update();
     }
 
 }

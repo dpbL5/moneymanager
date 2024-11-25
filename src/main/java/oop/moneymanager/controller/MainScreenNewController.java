@@ -13,9 +13,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
-import oop.moneymanager.PreferencesHelper;
 import oop.moneymanager.dao.UserDao;
 import oop.moneymanager.model.UserModel;
+import oop.moneymanager.service.PreferencesHelper;
 
 public class MainScreenNewController implements Initializable{
     @FXML
