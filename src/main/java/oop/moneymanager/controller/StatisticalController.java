@@ -132,15 +132,6 @@ public class StatisticalController implements Initializable {
             return; // Thoát khỏi hàm nếu ngày bắt đầu lớn hơn ngày kết thúc
         }
 
-//        long daysBetween = Duration.between(startDate.atStartOfDay(), endDate.atStartOfDay()).toDays();
-//
-//        if (daysBetween > 30) {
-//            messageLabel.setText("The selected time range exceeds 30 days. Please select again!");
-//            stat_in_pie_chart.getData().clear();
-//            stat_out_pie_chart.getData().clear();
-//            return; // Thoát khỏi hàm nếu khoảng cách thời gian vượt quá 30 ngày
-//        }
-
         double totalIncome = 0;
         double totalExpense = 0;
 
@@ -174,9 +165,8 @@ public class StatisticalController implements Initializable {
         stat_total_lbl.setText(String.valueOf(totalIncome - totalExpense) + " $");
     }
 
-
     private double addDataToPieChart(PieChart pieChart, Map<String, Double> data, String transactionType) {
-        double threshold = 5.0; // Ngưỡng để xác định các danh mục nhỏ
+        double threshold = 5.0; // Ngưỡng để xác định các danh mục nhỏ (Duoi 5% se nhom thanh 1 nhom )
         double otherTotal = 0.0;
         double totalValue = data.values().stream().mapToDouble(Double::doubleValue).sum(); // Tổng giá trị để tính phần trăm
 
