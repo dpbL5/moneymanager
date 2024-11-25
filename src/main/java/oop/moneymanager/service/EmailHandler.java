@@ -56,9 +56,8 @@ public class EmailHandler {
                     "We encourage you to log in using this new password and then change it to a password that is easy for you to remember while still ensuring its security." + "<br><br>" +
                     "If you did not make this password reset request, please contact us immediately so that we can assist you." + "<br><br>" +
                     "Thank you for using our service." + "<br><br>"+
-                    "Ta Quoc Bao" + "<br>" +
-                    "Nhóm 13" + "<br>" +
-                    "nguoivietsungtay54@gmail.com";
+                    "Money Manager Support" + "<br>" +
+                    "Nhóm 13" + "<br>";
 
 
             //Đặt nội dung email dưới dạng HTML (text/html).

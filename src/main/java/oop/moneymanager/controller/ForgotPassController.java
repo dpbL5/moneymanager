@@ -29,7 +29,7 @@ public class ForgotPassController {
         alert.setTitle("Register");
 
         boolean isCheck = ForgotPasswordHandl.getInstance().checkSendMail(userName,emailText);
-        if (isCheck) ProgressBarController.getInstance(13226L).showProgressBar();
+        if (isCheck) ProgressBarController.getInstance(2500L).showProgressBar();
         Task<Boolean> sendMailTask = new Task<Boolean>() {
             @Override
             protected Boolean call() throws Exception {
