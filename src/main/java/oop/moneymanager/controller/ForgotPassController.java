@@ -42,11 +42,9 @@ public class ForgotPassController {
         sendMailTask.setOnSucceeded(send -> {
             boolean isSend = sendMailTask.getValue();
             if (isSend) {
-
-                alert.setContentText("Cảm ơn bạn đã cung cấp thông tin. Chúng tôi đang xử lý yêu cầu của bạn.\n" +
-                        "Vui lòng kiểm tra hộp thư đến của bạn để nhận mật khẩu mới.\n " +
-                        "Nếu bạn không nhận được email trong vòng vài phút, vui lòng kiểm tra thư mục Spam hoặc liên hệ với " +
-                        "chúng tôi để được hỗ trợ.");
+                alert.setContentText("Thank you for providing the information. We are processing your request.\n" +
+                        "Please check your inbox for the new password.\n" +
+                        "If you do not receive the email within a few minutes, please check your Spam folder or contact us for assistance.");
                 alert.setOnCloseRequest(e -> {
                     SwitchSceneController switchController = new SwitchSceneController();
                     try {
@@ -56,8 +54,8 @@ public class ForgotPassController {
                     }
                 });
             } else {
-                alert.setContentText("Xin lỗi, có vẻ như thông tin bạn đã nhập không đúng.\n" +
-                        "Vui lòng kiểm tra lại và nhập thông tin chính xác.");
+                alert.setContentText("Sorry, it seems the information you entered is incorrect.\n" +
+                        "Please double-check and provide accurate information.");
             }
             alert.show();
         });

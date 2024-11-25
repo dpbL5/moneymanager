@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -28,11 +29,6 @@ public class ChangeInformationController implements Initializable {
     @FXML
     private TextField phoneField;
 
-    @FXML
-    private Button saveButton;
-
-    @FXML
-    private Button cancelButton;
 
     private UserModel user;
 
@@ -53,19 +49,19 @@ public class ChangeInformationController implements Initializable {
         // Kiểm tra dữ liệu hợp lệ
         if (email.isEmpty() || phone.isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Thông báo");
+            alert.setTitle("Alert");
             alert.setHeaderText(null);
-            alert.setContentText("Vui lòng nhập đủ thông tin");
+            alert.setContentText("Please fill all the fields");
             alert.show();
             return;
         }
         String EMAIL_REGEX = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
         if(email.matches(EMAIL_REGEX)==false) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Thông báo");
+            alert.setTitle("Alert:");
             alert.setHeaderText(null);
-            alert.setContentText("Vui lòng nhập đúng định dạng email\n" +
-                    "" +"Ví dụ: baodeptrai@gmail.com");
+            alert.setContentText("Please enter correct email format\n" +
+                    "" +"Example: baodeptrai@gmail.com");
             alert.show();
             return;
         }
@@ -73,16 +69,17 @@ public class ChangeInformationController implements Initializable {
         // Cập nhật đối tượng UserModel
 
         boolean checkuser = UserDao.getInstance().selectByEmail(email);
-        if (checkuser == false) {
+        boolean checkphone = UserDao.getInstance().selectByPhone(phone);
+        if (checkuser == false && checkphone == false) {
             user.setEmail(email);
             user.setPhone(phone);
             int row = UserDao.getInstance().change(user);
             System.out.println(row);
-            if (row == 1) {
+            if (row > 0) {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Thông báo");
+                alert.setTitle("Alert");
                 alert.setHeaderText(null);
-                alert.setContentText("Đã cập nhật thành công!");
+                alert.setContentText("Update successfully!");
                 alert.showAndWait();
                 // Lấy Stage hiện tại từ sự kiện
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -91,9 +88,9 @@ public class ChangeInformationController implements Initializable {
         }
         else {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Thông báo");
+            alert.setTitle("Alert");
             alert.setHeaderText(null);
-            alert.setContentText("Email đã được sử dụng, vui lòng nhập 1 email khác");
+            alert.setContentText("Phone number already in use, enter another phone number");
             alert.showAndWait();
         }
 

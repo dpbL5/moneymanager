@@ -43,7 +43,7 @@ public class EmailHandler {
             msg.addHeader("Content-type", "text/HTML; charset=UTF-8");
             msg.setFrom(new InternetAddress(from));
             msg.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to, false));
-            msg.setSubject("Mật khẩu mới của bạn ");
+            msg.setSubject("Your new password ");
             msg.setSentDate(new Date());
             String name = UserDao.getInstance().selectByUserName(username).getUserName();
             if(name == null)return false;
@@ -52,12 +52,16 @@ public class EmailHandler {
             String updatedPassword = "<strong><em>" + newPassWord + "</em></strong>";
             String Username = "<strong><em>" + name + "</em></strong>";
 
-            String emailContent = "Chào " + Username + "," + "<br><br>" +
-                    "Chúng tôi đã nhận được yêu cầu đặt lại mật khẩu của bạn. Dưới đây là thông tin mật khẩu mới để bạn đăng nhập vào tài khoản của mình:" + "<br><br>" +
-                    "Mật khẩu mới: " + updatedPassword + "<br><br>" +
-                    "Chúng tôi khuyến khích bạn đăng nhập bằng mật khẩu mới này và sau đó đổi lại mật khẩu thành một mật khẩu mà bạn dễ nhớ nhưng cũng đảm bảo an toàn." + "<br><br>" +
-                    "Nếu bạn không thực hiện yêu cầu đặt lại mật khẩu này, vui lòng liên hệ với chúng tôi ngay lập tức để chúng tôi có thể hỗ trợ bạn." + "<br><br>" +
-                    "Cảm ơn bạn đã sử dụng dịch vụ của chúng tôi." + "<br><br>";
+            String emailContent = "Hello " + Username + "," + "<br><br>" +
+                    "We have received your request to reset your password. Below is the new password information for you to log into your account:" + "<br><br>" +
+                    "New Password: " + updatedPassword + "<br><br>" +
+                    "We encourage you to log in using this new password and then change it to a password that is easy for you to remember while still ensuring its security." + "<br><br>" +
+                    "If you did not make this password reset request, please contact us immediately so that we can assist you." + "<br><br>" +
+                    "Thank you for using our service." + "<br><br>"+
+                    "Ta Quoc Bao" + "<br>" +
+                    "Nhóm 13" + "<br>" +
+                    "nguoivietsungtay54@gmail.com";
+
 
             //Đặt nội dung email dưới dạng HTML (text/html).
             msg.setContent(emailContent, "text/html; charset=utf-8");

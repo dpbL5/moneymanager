@@ -118,7 +118,20 @@ public class UserDao implements DaoInterface<UserModel> {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
+    }
+    public boolean selectByPhone(String phone) {
+        String sql = "SELECT * FROM user WHERE phone = ?";
+        try (Connection con = JDBCUtil.getConnection();
+             PreparedStatement stmt = con.prepareStatement(sql)) {
+            stmt.setString(1,phone);
+            ResultSet rs = stmt.executeQuery();
+            while(rs.next()){
+                return true;
+            }
+            return false;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public UserModel selectByUserNamePassWord(String userName, String passWord) {

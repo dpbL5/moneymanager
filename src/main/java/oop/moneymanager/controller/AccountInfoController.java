@@ -18,6 +18,7 @@ import oop.moneymanager.service.PreferencesHelper;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.UUID;
 
 public class AccountInfoController implements Initializable {
     @FXML
@@ -26,8 +27,7 @@ public class AccountInfoController implements Initializable {
     private Label email_field;
     @FXML
     private Label phone_field;
-    @FXML
-    private Label money_field;
+
 
     private UserModel user;
 
@@ -58,62 +58,99 @@ public class AccountInfoController implements Initializable {
         update();
     }
 
-    // Hàm hiển thị Dialog cho phép nhập username và email
-    private void showInputDialog() {
-        Dialog<Void> dialog = new Dialog<>();
-        dialog.setTitle("Nhập thông tin đăng nhập");
+private void showInputDialog() {
+    Dialog<Void> dialog = new Dialog<>();
+    dialog.setTitle("Change password");
 
-        // Tạo giao diện bên trong Dialog
-        VBox dialogContent = new VBox(10);
-        dialogContent.setPadding(new Insets(10));
+    // Tạo giao diện bên trong Dialog
+    VBox dialogContent = new VBox(10);
+    dialogContent.setPadding(new Insets(10));
 
-        // TextField cho username
-        TextField usernameField = new TextField();
-        usernameField.setPromptText("Nhập tên đăng nhập...");
+    // TextField cho mật khẩu cũ
+    PasswordField oldPasswordField = new PasswordField();
+    oldPasswordField.setPromptText("Enter old password...");
 
-        // TextField cho email
-        TextField emailField = new TextField();
-        emailField.setPromptText("Nhập email...");
+    // TextField cho mật khẩu mới
+    PasswordField newPasswordField =  new PasswordField();
+    newPasswordField.setPromptText("Enter new password...");
 
-        // TextField cho new password
-        TextField passwordText = new TextField();
-        passwordText.setPromptText("Nhập mật khẩu mới...");
-        Label newpasswordLabel = new Label();
+    // TextField để nhập lại mật khẩu
+    PasswordField confirmPasswordField =  new PasswordField();
+    confirmPasswordField.setPromptText("Enter confirm password...");
 
-        // Nút "Xác nhận" - là ButtonType
-        ButtonType confirmButtonType = new ButtonType("Xác nhận");
-        dialog.getDialogPane().getButtonTypes().addAll(confirmButtonType, ButtonType.CLOSE);
+    // TextField cho mã captcha
+    TextField captchaField = new TextField();
+    captchaField.setPromptText("Enter captcha...");
 
-        // Nút "Xác nhận" xử lý sự kiện
-        dialog.getDialogPane().lookupButton(confirmButtonType).setOnMousePressed(event -> {
-            String username = usernameField.getText();
-            String email = emailField.getText();
-            String password = passwordText.getText();
-            if (!username.isEmpty() && username.equals(this.user.getUserName()) && !email.isEmpty() && email.equals(this.user.getEmail()) && !password.isEmpty()) {
-                newpasswordLabel.setText( password);
-                user.setPassWord(password);
+    // Label hiển thị mã captcha
+    String captcha = UUID.randomUUID().toString().substring(0,6);; // Bạn có thể tạo mã ngẫu nhiên
+    Label captchaLabel = new Label(captcha);
+    captchaLabel.setStyle("-fx-border-color: black; -fx-padding: 5px;");
+
+    // Nút "Xác nhận" - là ButtonType
+    ButtonType confirmButtonType = new ButtonType("Confirm", ButtonBar.ButtonData.OK_DONE);
+    dialog.getDialogPane().getButtonTypes().addAll(confirmButtonType, ButtonType.CLOSE);
+
+    // Nút "Xác nhận" xử lý sự kiện
+    dialog.getDialogPane().lookupButton(confirmButtonType).setOnMousePressed(event -> {
+        String oldPassword = oldPasswordField.getText();
+        String newPassword = newPasswordField.getText();
+        String confirmPassword = confirmPasswordField.getText();
+        String enteredCaptcha = captchaField.getText();
+
+        if (oldPassword.isEmpty() || newPassword.isEmpty() || confirmPassword.isEmpty() || enteredCaptcha.isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setHeaderText("Alert:");
+            alert.setContentText("Please enter all the fields correctly.");
+            alert.show();
+        } else if (!enteredCaptcha.equals(captcha)) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setHeaderText("Wrong captcha.:");
+            alert.setContentText("Please enter the right captcha: " + captcha);
+            alert.show();
+        } else if (!newPassword.equals(confirmPassword)) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setHeaderText("Alert:");
+            alert.setContentText("the new password do not match.");
+            alert.show();
+        } else {
+            // Giả sử kiểm tra mật khẩu cũ chính xác
+            if (oldPassword.equals(this.user.getPassWord())) {
+                user.setPassWord(newPassword);
                 int row = UserDao.getInstance().update(this.user);
-                if(row > 0)
-                {
+                if (row > 0) {
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                    alert.setHeaderText("Đổi mật khẩu thành công");
-                    alert.setContentText("Mật khẩu mới của bạn là: " + newpasswordLabel.getText());
+                    alert.setHeaderText("Success!:");
+                    alert.setContentText("Change password successfully.!");
+                    alert.showAndWait();
+                    dialog.close();
+                } else {
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setHeaderText("Fail:");
+                    alert.setContentText("an error occured,please try again.");
                     alert.show();
+
                 }
             } else {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setHeaderText("Thông báo ");
-                alert.setContentText("Đổi mật khẩu thất bại, vui lòng xem lại thông tin");
+                alert.setHeaderText("the old password is incorrect.:");
+                alert.setContentText("please try again.");
                 alert.show();
-
             }
-        });
+        }
+    });
 
-        // Thêm các phần tử vào VBox
-        dialogContent.getChildren().addAll(usernameField, emailField, passwordText);
+    // Thêm các trường vào VBox
+    dialogContent.getChildren().addAll(
+            new Label("old password"), oldPasswordField,
+            new Label("new password"), newPasswordField,
+            new Label("confirm new password"), confirmPasswordField,
+            new Label("captcha"), captchaField,
+            captchaLabel
+    );
 
-        // Đặt VBox vào Dialog
-        dialog.getDialogPane().setContent(dialogContent);
+    // Cài đặt nội dung dialog
+    dialog.getDialogPane().setContent(dialogContent);
 
         // Hiển thị Dialog và chờ người dùng đóng lại
         dialog.showAndWait();
