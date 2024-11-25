@@ -3,15 +3,13 @@ package oop.moneymanager.controller;
 import java.io.File;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
-import oop.moneymanager.dao.TransactionDao;
-import oop.moneymanager.model.TransactionModel;
-import oop.moneymanager.service.ExportFileHandle;
+import javafx.stage.Stage;
+import oop.moneymanager.service.ExportFileHandler;
 
 public class ExportToExcelController {
 
@@ -29,69 +27,55 @@ public class ExportToExcelController {
     
     private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM-yyyy");
 
+    void export(LocalDate date, Boolean isMonthly) {
+        Stage stage = (Stage) thisMonth.getScene().getWindow();
+        DirectoryChooser directoryChooser = new DirectoryChooser();
+        directoryChooser.setTitle("Choose directory to save file");
+        directoryChooser.setInitialDirectory(new File(System.getProperty("user.home")));
+        
+        File path = directoryChooser.showDialog(stage);
+        try {
+            if (path != null) {
+                if (isMonthly) {                    
+                    String name = "MonthlyReport_" + formatter.format(date);
+                    ExportFileHandler.exportMonthly(path + name, date);
+                } else {
+                    String name = "AnnualReport_" + date.getYear();
+                    ExportFileHandler.exportAnnually(path + name, date);
+                } 
+                System.out.println("Export: " + formatter.format(date));
+                System.out.println("Exporting to: " + path);
+            } else {
+                System.out.println("No directory selected");
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
     @FXML
     public void initialize() {
         thisMonth.setOnAction(e -> {
                 LocalDate date = LocalDate.now();
-                System.out.println("Export this month:" + formatter.format(date));
-                DirectoryChooser directoryChooser = new DirectoryChooser();
-                directoryChooser.setTitle("Choose directory to save file");
-                FileChooser fileChooser = new FileChooser();
-                fileChooser.setInitialFileName("MonthlyReport_" + formatter.format(date));
-                
-                try {
-                    ExportFileHandle.exportMonthly(directoryChooser.showDialog(null) + fileChooser.getInitialFileName(), date);
-                } catch (Exception ex) {
-                    ex.printStackTrace();
-                }
+                export(date, true);
             }
         );
 
         lastMonth.setOnAction(e -> {
                 LocalDate date = LocalDate.now().minusMonths(1);
-                System.out.println("Export last month:" + formatter.format(date));
-                DirectoryChooser directoryChooser = new DirectoryChooser();
-                directoryChooser.setTitle("Choose directory to save file");
-                FileChooser fileChooser = new FileChooser();
-                fileChooser.setInitialFileName("MonthlyReport_" + formatter.format(date));
-                
-                try {
-                    ExportFileHandle.exportMonthly(directoryChooser.showDialog(null) + fileChooser.getInitialFileName(), date);
-                } catch (Exception ex) {
-                    ex.printStackTrace();
-                }
+                export(date, true);
             }
         );
 
         thisYear.setOnAction(e -> {
                 LocalDate date = LocalDate.now();
-                System.out.println("Export this year:" + date.getYear());
-                DirectoryChooser directoryChooser = new DirectoryChooser();
-                directoryChooser.setTitle("Choose directory to save file");
-                FileChooser fileChooser = new FileChooser();
-                fileChooser.setInitialFileName("YearlyReport_" + date.getYear());
-                
-                try {
-                    ExportFileHandle.exportAnnually(directoryChooser.showDialog(null) + fileChooser.getInitialFileName(), date);
-                } catch (Exception ex) {
-                    ex.printStackTrace();
-                }
+                export(date, false);
             }
         );
 
         lastYear.setOnAction(e -> {
                 LocalDate date = LocalDate.now().minusYears(1);
-                System.out.println("Export last year:" + date.getYear());
-                DirectoryChooser directoryChooser = new DirectoryChooser();
-                directoryChooser.setTitle("Choose directory to save file");
-                FileChooser fileChooser = new FileChooser();
-                fileChooser.setInitialFileName("YearlyReport_" + date.getYear());
-                
-                try {
-                    ExportFileHandle.exportAnnually(directoryChooser.showDialog(null) + fileChooser.getInitialFileName(), date);
-                } catch (Exception ex) {
-                    ex.printStackTrace();
-                }
+                export(date, false);
             }
         );
     }

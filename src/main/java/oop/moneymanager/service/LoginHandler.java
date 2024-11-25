@@ -3,10 +3,10 @@ package oop.moneymanager.service;
 import oop.moneymanager.dao.UserDao;
 import oop.moneymanager.model.UserModel;
 
-public class LoginHandle {
+public class LoginHandler {
     private UserModel user;
-    public static LoginHandle getInstance(){
-        return new LoginHandle();
+    public static LoginHandler getInstance(){
+        return new LoginHandler();
     }
     public boolean isValidLogin(String username, String password) {
         try {

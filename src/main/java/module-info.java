@@ -2,7 +2,7 @@ module oop.moneymanager {
     requires transitive javafx.graphics;
     requires transitive javafx.controls;
     requires javafx.fxml;
-    requires java.sql;
+    requires transitive java.sql;
     requires java.desktop;
     requires java.prefs;
     requires java.mail;

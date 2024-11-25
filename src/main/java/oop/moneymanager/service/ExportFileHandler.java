@@ -4,7 +4,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.List;
 
 import org.apache.poi.ss.usermodel.IndexedColors;
 import org.apache.poi.xssf.usermodel.XSSFCell;
@@ -18,7 +17,7 @@ import oop.moneymanager.dao.TransactionDao;
 import oop.moneymanager.model.TransactionModel;
 
 
-public class ExportFileHandle {
+public class ExportFileHandler {
 
     private static String[] header = { "Date", "Kind", "Category", "Amount", "Income/Expense", "Note"};
     

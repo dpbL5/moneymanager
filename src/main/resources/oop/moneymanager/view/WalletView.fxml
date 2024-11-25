@@ -34,7 +34,6 @@
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="218.199951171875" minWidth="10.0" prefWidth="206.4" />
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="309.20001220703125" minWidth="10.0" prefWidth="227.9999755859375" />
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="325.0" minWidth="10.0" prefWidth="208.80002441406253" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="164.20001220703125" minWidth="10.0" prefWidth="34.60000000000002" />
          </columnConstraints>
          <rowConstraints>
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -136,9 +135,6 @@
                <Glow level="0.29" />
             </effect>
          </Text>
-         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="VND" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-         <Text layoutX="651.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="VND" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-         <Text layoutX="651.0" layoutY="141.0" strokeType="OUTSIDE" strokeWidth="0.0" text="VND" GridPane.columnIndex="3" GridPane.rowIndex="3" />
       </GridPane>
       <Text fill="WHITE" layoutX="15.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Expense" wrappingWidth="59.19998779296873">
          <font>
@@ -165,14 +161,14 @@
             <Font size="14.0" />
          </font>
       </Text>
-      <Label fx:id="wallet_income_lbl" layoutX="9.0" layoutY="16.0" prefHeight="18.0" prefWidth="66.0" text="1.330.000" textFill="WHITE">
+      <Label fx:id="wallet_income_lbl" layoutX="9.0" layoutY="16.0" prefHeight="19.0" prefWidth="136.0" text="1.330.000" textFill="WHITE">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
    </Pane>
    <Pane layoutX="346.0" layoutY="69.0" prefHeight="39.0" prefWidth="150.0" styleClass="pane_2">
-      <Label fx:id="wallet_expense_lbl" layoutX="5.0" layoutY="16.0" prefHeight="19.0" prefWidth="50.0" text="100.000" textFill="WHITE">
+      <Label fx:id="wallet_expense_lbl" layoutX="5.0" layoutY="16.0" prefHeight="19.0" prefWidth="136.0" text="100.000" textFill="WHITE">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
@@ -189,7 +185,7 @@
             <Font size="14.0" />
          </font>
       </Text>
-      <Label fx:id="wallet_total_lbl" layoutX="8.0" layoutY="16.0" prefHeight="18.0" prefWidth="66.0" text="1.330.000" textFill="WHITE">
+      <Label fx:id="wallet_total_lbl" layoutX="8.0" layoutY="16.0" prefHeight="19.0" prefWidth="136.0" text="1.330.000" textFill="WHITE">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
@@ -266,6 +262,9 @@
             <FontAwesomeIconView glyphName="REFRESH" />
          </graphic>
       </Button>
-      <Label fx:id="limit_message_lbl" layoutX="182.0" layoutY="24.0" text="Label" />
+      <Label fx:id="limit_message_lbl" alignment="CENTER" contentDisplay="CENTER" layoutX="11.0" layoutY="24.0" prefHeight="17.0" prefWidth="372.0" text="Label" textAlignment="CENTER" textFill="#eb4141">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></Label>
    </AnchorPane>
 </AnchorPane>

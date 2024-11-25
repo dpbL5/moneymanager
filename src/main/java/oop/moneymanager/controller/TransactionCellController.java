@@ -38,6 +38,9 @@ public class TransactionCellController extends ListCell<TransactionModel> {
     @FXML
     private Label fromAccount;
 
+    @FXML
+    private Label currencyLabel;
+
     private FXMLLoader mLLoader;
 
     public TransactionCellController(DailyBoardController dailyBoardController) {
@@ -96,6 +99,13 @@ public class TransactionCellController extends ListCell<TransactionModel> {
             categoryLabel.setText(transaction.getCategory().toString());
             noteLabel.setText(transaction.getNote().toString());
             DecimalFormat numberFormat = new DecimalFormat("#,###.##");
+            if (transaction.getType() == TransactionModel.TransactionType.INCOME) {
+                currencyLabel.setStyle("-fx-text-fill: dodgerblue;");
+                amountLabel.setStyle("-fx-text-fill: dodgerblue;");
+            } else {
+                currencyLabel.setStyle("-fx-text-fill: red;");
+                amountLabel.setStyle("-fx-text-fill: red;");
+            }
             amountLabel.setText(numberFormat.format(transaction.getAmount()));
             fromAccount.setText(transaction.getKind().toString());
 
