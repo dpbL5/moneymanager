@@ -8,12 +8,10 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import java.util.Date;
 import java.util.Properties;
-import javax.mail.Session;
 
 public class EmailHandler {
-    final static String from = "nguoivietsungtay54@gmail.com";
-    final static String password = "qgmb qspa rphy lygg";
-
+    final static String from = "moneymanager13sp@gmail.com";
+    final static String password = "ujmt bvrv rzla vdku";
 
     public static boolean sendMail(String to, String newPassWord, String username ){
 //        mail.smtp.host: Địa chỉ máy chủ SMTP của Gmail (smtp.gmail.com).
