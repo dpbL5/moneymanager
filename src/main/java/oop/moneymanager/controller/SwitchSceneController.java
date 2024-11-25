@@ -54,7 +54,6 @@ public class SwitchSceneController {
         stage.show();
     }
 
-    private Scene previousScene;
     public void switchtoChangeInformation(ActionEvent event) throws IOException {
         ChangeInformationController controller = new ChangeInformationController();
         scene = controller.setScene();

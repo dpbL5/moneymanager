@@ -55,7 +55,7 @@ public class StatisticalController implements Initializable {
     private PieChart stat_out_pie_chart;
 
     private TransactionDao transactionDao;
-    private UserModel userModel;
+    
     private ObservableList<DetailModel> Incomedetails = FXCollections.observableArrayList();
     private ObservableList<DetailModel> Expensedetails = FXCollections.observableArrayList();
     private static LocalDate  startDate = LocalDate.now().minusDays(30);

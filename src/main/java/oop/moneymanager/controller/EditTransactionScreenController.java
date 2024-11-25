@@ -130,7 +130,7 @@ public class EditTransactionScreenController {
         
         // Check if userinput is valid
         if (result == 0) {
-            Dialog dialog = new Dialog();
+            Dialog dialog = new Dialog<>();
             dialog.setContentText("Invalid input");
             dialog.setTitle("Error");
             dialog.getDialogPane().getButtonTypes().add(javafx.scene.control.ButtonType.OK);
@@ -145,7 +145,7 @@ public class EditTransactionScreenController {
     void deleteHandle(ActionEvent event) {
         TransactionDao transactionDao = new TransactionDao();
 
-        Dialog dialog = new Dialog();
+        Dialog dialog = new Dialog<>();
         dialog.setContentText("Are you sure you want to delete this transaction?");
         dialog.setTitle("Delete Transaction");
         dialog.getDialogPane().getButtonTypes().add(javafx.scene.control.ButtonType.YES);
