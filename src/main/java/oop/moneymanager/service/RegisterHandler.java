@@ -5,10 +5,10 @@ import oop.moneymanager.model.UserModel;
 
 import java.sql.SQLException;
 
-public class RegisterHandle {
-    private static UserModel user;
-    public static RegisterHandle getInstance(){
-        return new RegisterHandle();
+public class RegisterHandler {
+    
+    public static RegisterHandler getInstance(){
+        return new RegisterHandler();
     }
     public int isRegister(String username,String email,String phone, String password, String confirmpassword) throws SQLException {
         try {

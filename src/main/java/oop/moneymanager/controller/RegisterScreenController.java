@@ -7,7 +7,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
-import oop.moneymanager.service.RegisterHandle;
+import oop.moneymanager.service.RegisterHandler;
 import javafx.scene.control.Button;
 
 import java.io.IOException;
@@ -28,7 +28,7 @@ public class RegisterScreenController {
     public TextField re_confirm_fld;
 
 
-    private RegisterHandle registerHandle = new RegisterHandle();
+    private RegisterHandler registerHandle = new RegisterHandler();
     public Scene setScene() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/oop/moneymanager/view/RegisterScreen.fxml"));
         Parent root = loader.load();

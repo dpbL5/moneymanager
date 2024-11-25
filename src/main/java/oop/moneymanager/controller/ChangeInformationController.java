@@ -11,9 +11,10 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import oop.moneymanager.PreferencesHelper;
+import javafx.scene.Node;
 import oop.moneymanager.dao.UserDao;
 import oop.moneymanager.model.UserModel;
+import oop.moneymanager.service.PreferencesHelper;
 
 import java.io.IOException;
 import java.net.URL;
@@ -80,18 +81,12 @@ public class ChangeInformationController implements Initializable {
                 alert.setHeaderText(null);
                 alert.setContentText("Update successfully!");
                 alert.showAndWait();
-                SwitchSceneController controller = new SwitchSceneController();
-                controller.switchToMainScreen(event);
+                // Lấy Stage hiện tại từ sự kiện
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.close();
             }
         }
-        else if(checkuser == true) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Alert");
-            alert.setHeaderText(null);
-            alert.setContentText("Email already in use, enter another email");
-            alert.showAndWait();
-        }
-        else if(checkphone == true) {
+        else {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Alert");
             alert.setHeaderText(null);

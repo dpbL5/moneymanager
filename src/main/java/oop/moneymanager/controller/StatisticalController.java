@@ -8,11 +8,11 @@ import javafx.geometry.Side;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
-import oop.moneymanager.PreferencesHelper;
 import oop.moneymanager.dao.TransactionDao;
 import oop.moneymanager.model.DetailModel;
 import oop.moneymanager.model.TransactionModel;
 import oop.moneymanager.model.UserModel;
+import oop.moneymanager.service.PreferencesHelper;
 
 import java.net.URL;
 import java.time.Duration;
@@ -55,7 +55,7 @@ public class StatisticalController implements Initializable {
     private PieChart stat_out_pie_chart;
 
     private TransactionDao transactionDao;
-    private UserModel userModel;
+    
     private final ObservableList<DetailModel> Incomedetails = FXCollections.observableArrayList();
     private final ObservableList<DetailModel> Expensedetails = FXCollections.observableArrayList();
     private static LocalDate  startDate = LocalDate.now().minusDays(30);

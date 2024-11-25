@@ -7,8 +7,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import oop.moneymanager.PreferencesHelper;
-import oop.moneymanager.service.LoginHandle;
+import oop.moneymanager.service.LoginHandler;
+import oop.moneymanager.service.PreferencesHelper;
 
 import java.io.IOException;
 import java.net.URL;
@@ -22,7 +22,7 @@ public class LoginScreenController implements Initializable {
     @FXML
     private Button login ;
 
-    private LoginHandle loginHandle = new LoginHandle();
+    private LoginHandler loginHandle = new LoginHandler();
 
     @FXML
     public Scene setScene() throws IOException {
